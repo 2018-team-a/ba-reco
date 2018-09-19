@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     def index
         productx = Product.search(params[:search])
         @products = productx.page(params[:page]).reverse_order
+        @cart = Cart.new
     end
 
     def create
@@ -22,5 +23,10 @@ class ProductsController < ApplicationController
         @products = Product.search(params[:search])
         redirect_to products_path
     end
+
+    private
+        def product_params
+            params.require(:product).permit(:title, :label_id, :price, :image_id, :release_date, :stock_count)
+        end
 
 end

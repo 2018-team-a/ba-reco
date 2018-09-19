@@ -12,24 +12,32 @@
        <%= a.max_by { |v| a.count(v)} %>
   <% end %><br>
 <% end %>
+<br>
 
 
 
 <% @products.each do |product| %>
-	<%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg' %>
-	  <%= product.title %>
-	  <%= product.price %>えん
-      <%= product.id %>
-    <% product.discs.each do |disc| %>
-        <% a = [] %>
-        <% disc.tunes.each do |tune| %>
-            <% a.push(tune.artist.name) %>
+  <%= link_to product_path(product.id) do %>
+	  <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg' %>
+  <% end %>
+	<%= link_to product.title, product_path(product.id) %>
+	<%= product.price %>えん
+  <% product.discs.each do |disc| %>
+    <% a = [] %>
+    <% disc.tunes.each do |tune| %>
+      <% a.push(tune.artist.name) %>
 		<% end %>
-       <%= a.max_by { |v| a.count(v)} %>
+      <%= a.max_by { |v| a.count(v)} %>
 	<% end %>
-  <button class="btn btn-default">
+  <% if user_signed_in? %>
+  <%= form_for (@cart),url: sss_path(product_id: product) do |f| %>
+    <%= f.label :枚数 %>
+    <%= f.number_field :sheet_number %>
+    <button class="btn btn-default">
   <%= link_to "カート追加", carts_path %>
-  </button><br>
+  </button>
+  <% end %>
+  <% end %><br>
 <% end %>
 
 <%= paginate @products, class: "pagenate" %>

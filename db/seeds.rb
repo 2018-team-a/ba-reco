@@ -35,3 +35,8 @@ Product.create(:title => "商品１", :label_id => 1, :price => 1000, :image_id 
 
 Disc.create(:product_id => 1)
 
+Artist.create(:name => "RIP SLYME")
+
+Genre.create(:name => "J-pop")
+
+Tune.create(:title => "曲1", :artist_id => 1, :genre_id => 1, :disc_id => 1, :track_number => 1 )
