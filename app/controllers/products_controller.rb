@@ -1,13 +1,15 @@
 class ProductsController < ApplicationController
 
 
-	def show
-		@product = Product.find(params[:id])
-	end
+    def show
+        @product = Product.find(params[:id])
+        @cart = Cart.new
+        
+    end
 
     def index
-    	productx = Product.search(params[:search])
-        @products = productx.page(params[:page]).reverse_order
+        @products = Product.search(params[:search])
+        @cart = Cart.new
     end
 
     def create
@@ -17,8 +19,8 @@ class ProductsController < ApplicationController
     end
 
     def search
-    	@products = Product.search(params[:search])
-    	redirect_to products_path
+        @products = Product.search(params[:search])
+        redirect_to products_path
     end
 
 end
