@@ -4,12 +4,12 @@ class ProductsController < ApplicationController
     def show
         @product = Product.find(params[:id])
         @cart = Cart.new
-        
+
     end
 
     def index
-        @products = Product.search(params[:search])
-        @cart = Cart.new
+        productx = Product.search(params[:search])
+        @products = productx.page(params[:page]).reverse_order
     end
 
     def create
