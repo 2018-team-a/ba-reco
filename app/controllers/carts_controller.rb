@@ -27,6 +27,12 @@ class CartsController < ApplicationController
 			redirect_to carts_path
 	end
 
+	def destroy
+		cart = Cart.find(params[:id])
+		cart.destroy
+    	redirect_to root_path
+	end
+
 	private
 		def cart_params
         	params.require(:cart).permit(:product_id, :sheet_number, :user_id)
