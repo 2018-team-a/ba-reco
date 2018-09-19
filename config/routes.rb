@@ -17,6 +17,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
     }
 
+  post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
+
   root to: 'products#index'
 
   get 'admins/top' => 'admins#top', as: :admins_top
