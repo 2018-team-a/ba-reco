@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>BaRecord</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class='nav navbar-nav navbar-left' >
+          <span>婆ーレコード</span>
+        </nav>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <% if admin_signed_in? %>
+              <li>ログイン中</li>
+              <li><%= link_to " logout", destroy_admin_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %></li>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <%= yield %>
+  </body>
+</html>

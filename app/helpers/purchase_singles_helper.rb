@@ -1,0 +1,2 @@
+module PurchaseSinglesHelper
+end

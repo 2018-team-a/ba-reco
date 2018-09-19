@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  label: 1
+  price: 1
+  image_id: MyText
+  release_date: 2018-09-18 18:53:47
+  stock_count: 1
+
+two:
+  title: MyString
+  label: 1
+  price: 1
+  image_id: MyText
+  release_date: 2018-09-18 18:53:47
+  stock_count: 1

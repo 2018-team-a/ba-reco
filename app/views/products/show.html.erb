@@ -1,0 +1,20 @@
+<h1>商品詳細ページ</h1>
+
+<%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
+<%= @product.title %>
+<%= @product.price %>
+<%= @product.stock_count %>
+<%= link_to"カートに入れる",carts_path %>
+
+<% @product.discs.each do |disc| %>
+<p>ディスク</p>
+<%= disc.id %>
+
+<% disc.tunes.each do |tune| %>
+<p>曲名</p>
+<%= tune.title %>
+<p>アーティスト名</p>
+<%= tune.artist.name %>
+
+<% end %>
+<% end %>

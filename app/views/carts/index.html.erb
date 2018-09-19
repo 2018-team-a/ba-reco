@@ -1,0 +1,24 @@
+<h1>カートページ</h1>
+
+<h2>買い物かご</h2>
+
+
+<% current_user.products.each do |product| %>
+<%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpeg' %>
+<%= product.title %>
+数量
+<%= product.price %> 円
+
+
+
+
+
+この商品を購入
+カートから出す
+
+
+
+<% end %>
+まとめて購入
+<%= link_to "お買い物を続ける", products_path %>
+お問い合わせs
