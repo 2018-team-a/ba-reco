@@ -1,24 +1,29 @@
-<h1>カートページ</h1>
+<h1>商品詳細ページ</h1>
 
-<h2>買い物かご</h2>
+<%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
+<%= @product.title %>
+<%= @product.price %>
+<%= @product.stock_count %>
 
+<%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
+<%= f.label :枚数 %>
+<%= f.number_field :sheet_number %>
 
-<% current_user.products.each do |product| %>
-<%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpeg' %>
-<%= product.title %>
-数量
-<%= product.price %> 円
+<button class="btn btn-default">
+  <%= f.submit %>
+ </button>
+<% end %>
 
+<% @product.discs.each do |disc| %>
+<p>ディスク</p>
+<%= disc.id %>
 
-
-
-
-この商品を購入
-カートから出す
-
-
+<% disc.tunes.each do |tune| %>
+<p>曲名</p>
+<%= tune.title %>
+<p>アーティスト名</p>
+<%= tune.artist.name %>
 
 <% end %>
-まとめて購入
-<%= link_to "お買い物を続ける", products_path %>
-お問い合わせs
+<% end %>
+

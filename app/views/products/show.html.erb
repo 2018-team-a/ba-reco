@@ -4,7 +4,15 @@
 <%= @product.title %>
 <%= @product.price %>
 <%= @product.stock_count %>
-<%= link_to"カートに入れる",carts_path %>
+
+<%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
+<%= f.label :枚数 %>
+<%= f.number_field :sheet_number %>
+
+<button class="btn btn-default">
+  <%= f.submit %>
+ </button>
+<% end %>
 
 <% @product.discs.each do |disc| %>
 <p>ディスク</p>
@@ -18,3 +26,9 @@
 
 <% end %>
 <% end %>
+
+
+
+
+
+
