@@ -35,3 +35,8 @@ Tune.create({:title =>"Wonder",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id
 
 
 
+Artist.create(:name => "RIP SLYME")
+
+Genre.create(:name => "J-pop")
+
+Tune.create(:title => "曲1", :artist_id => 1, :genre_id => 1, :disc_id => 1, :track_number => 1 )
