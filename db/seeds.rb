@@ -31,3 +31,7 @@ Tune.create({:title =>"WEEEK",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id,
 Tune.create({:title =>"渚のお姉サマー",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id,:track_number => 8})
 Tune.create({:title =>"Wonder",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id,:track_number => 9})
 
+Product.create(:title => "商品１", :label_id => 1, :price => 1000, :image_id => "aaa", :release_date => 1.1, :stock_count => 30 )
+
+Disc.create(:product_id => 1)
+
