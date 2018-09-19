@@ -14,7 +14,7 @@ genre = Genre.create(:name => "J-pop")
 artist = Artist.create(:name =>"NEWS")
 
 
-product = Product.create({:title => "newsベストアルバム",:label_id => label.id,:price => 3500,:image => "",:release_date =>20180916,:stock_count => 5,})
+product = Product.create({:title => "newsベストアルバム",:label_id => 1,:price => 3500,:image => "jpg",:release_date =>20180916,:stock_count => 5,})
 Cart.create({:product_id => 1,:user_id => user.id,:sheet_number => 1})
 
 disc1 = Disc.create({:product_id =>product.id})
