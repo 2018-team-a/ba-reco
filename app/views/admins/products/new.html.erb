@@ -1,0 +1,23 @@
+<h1>Admins::Products#new</h1>
+
+<%= form_for(@product) do |t| %>
+	<h3>ジャケット画像</h3>
+	<%= t.attachment_field :image %>
+
+	<h3>商品名</h3>
+	<%= t.text_field :title %>
+
+	<h3>レーベル名(セレクトボックス)</h3>
+
+	<h3>値段</h3>
+	<%= t.text_field :title %>
+
+	<h3>在庫数</h3>
+	<%= t.text_field :title %>
+
+    <h4><%= t.submit '投稿' %></h4>
+
+<%end%>
+
+<!-- 	<h3>Disk名</h3> -->
+
