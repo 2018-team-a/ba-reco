@@ -22,7 +22,7 @@ artist = Artist.create(:name =>"NEWS")
 
 
 product = Product.create({:title => "newsベストアルバム",:label_id => 1,:price => 3500,:image => "jpg",:release_date =>20180916,:stock_count => 5,})
-Cart.create({:product_id => 1,:user_id => ,:sheet_number => 1})
+Cart.create({:product_id => 2,:user_id => 2,:sheet_number => 1})
 
 disc1 = Disc.create({:product_id =>product.id})
 disc2 = Disc.create({:product_id =>product.id})
