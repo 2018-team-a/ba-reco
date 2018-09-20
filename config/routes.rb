@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   namespace :admins do
       resources :products do
         resources :discs do
-          tune
+          resources :tune
         end
       end
   end
