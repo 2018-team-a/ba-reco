@@ -8,6 +8,13 @@
 user1 = User.create({:name_family_name => "河合",:name_name => "佑弥",:furigana_family_name => "かわい",:furigana_name => "ゆうや",:postal_code => "1234-5678",:address =>"東京都世田谷区",:phone_number => "090-1234-5678",:email => "aaaaa@aaaa.com",:password => "123456"})
 user2 = User.create({:name_family_name => "kawai",:name_name => "yuya",:furigana_family_name => "かわい",:furigana_name => "ゆうや",:postal_code => "1234-5678",:address =>"東京都世田谷区",:phone_number => "090-1234-5678",:email => "aaaaa@aaaa.com",:password => "123456"})
 
+Destination.create({:postal_code => "000-0000",:destination => "鳥取県米子市",:user_id => 1})
+Destination.create({:postal_code => "000-0000",:destination => "東京都世田谷区",:user_id => 2})
+Destination.create({:postal_code => "000-0000",:destination => "東京都新宿区",:user_id => 5})
+
+
+
+
 label = Label.create({:name => "ジャニーズ事務所"})
 
 genre = Genre.create(:name => "J-pop")
