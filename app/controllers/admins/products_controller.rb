@@ -7,10 +7,11 @@ class Admins::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
-    redirect_to product_path(product.id)
+    redirect_to new_admins_product_disc_path(product.id)
   end
 
   def index
+    @products = Product.all
   end
 
   def show
@@ -28,6 +29,6 @@ class Admins::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:image , :label , :disc , :price , :stock_count )
+    params.require(:product).permit(:title, :label_id , :disc , :price , :stock_count )
   end
 end

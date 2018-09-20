@@ -1,0 +1,8 @@
+<h1>tunes#new</h1>
+
+<%= form_for (@tune) do |f| %>
+<%= f.text_field :title %>
+<%= f.submit "登録" %>
+<% end %>
+
+<h3><%= link_to "一覧", tunes_path %></h3>

@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
-  #admins/productsコントローラを作成
   namespace :admins do
-      resources :products
+      resources :products do
+        resources :discs do
+          tune
+        end
+      end
   end
 
-    devise_for :admins, controllers: {
+  devise_for :admins, controllers: {
       sessions:      'admins/sessions',
       passwords:     'admins/passwords',
       registrations: 'admins/registrations'
@@ -39,7 +42,7 @@ Rails.application.routes.draw do
   resources :unsubscribes
 
   resources :artists
-  resources :discs
+  # resources :discs
   resources :tunes
   resources :labels
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

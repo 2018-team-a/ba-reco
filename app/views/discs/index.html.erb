@@ -1,0 +1,7 @@
+<h1>discs#index</h1>
+
+<% @discs.each do |f| %>
+<%= link_to f.name, disc_path(f.id) %>
+<%end%>
+
+<h3><%= link_to "登録ページ", new_disc_path %></h3>
