@@ -1,8 +1,6 @@
-<h1>トップページ</h1>
 <% @products.first(2).each do |product| %>
-  <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg' %>
+    <div class="box"></div>
     <%= product.title %>
-    <%= product.price %>えん
       <%= product.id %>
     <% product.discs.each do |disc| %>
         <% a = [] %>
@@ -18,7 +16,7 @@
 
 <% @products.each do |product| %>
   <%= link_to product_path(product.id) do %>
-	  <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg' %>
+	  <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg', fallback: "no_image.jpg" %>
   <% end %>
 	<%= link_to product.title, product_path(product.id) %>
 	<%= product.price %>えん
