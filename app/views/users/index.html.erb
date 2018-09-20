@@ -1,7 +1,25 @@
+<%= form_tag admins_users_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+<% end %>
+
 <h1>Userのインデックスだよ</h1>
 
-<% @users.each do |user| %>
-  <tr>
-    <td><%= user.name %></td>
-  </tr>
+<% @users_search.each do |user| %>
+<ul>
+  <li><%= user.email %></li>
+  <li><%= user.encrypted_password  %></li>
+  <li><%= user.name_family_name %></li>
+  <li><%= user.name_name %></li>
+  <li><%= user.furigana_family_name %></li>
+  <li><%= user.furigana_name %></li>
+  <li><%= user.postal_code %></li>
+  <li><%= user.address %></li>
+  <li><%= user.phone_number %></li>
+  <li><%= link_to "edit", edit_user_path(user), class: "user_#{user.id}" %></li>
+</ul>
 <% end %>
+
+<%= paginate @users_search %>
