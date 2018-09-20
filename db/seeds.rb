@@ -8,14 +8,21 @@
 user1 = User.create({:name_family_name => "河合",:name_name => "佑弥",:furigana_family_name => "かわい",:furigana_name => "ゆうや",:postal_code => "1234-5678",:address =>"東京都世田谷区",:phone_number => "090-1234-5678",:email => "aaaaa@aaaa.com",:password => "123456"})
 user2 = User.create({:name_family_name => "kawai",:name_name => "yuya",:furigana_family_name => "かわい",:furigana_name => "ゆうや",:postal_code => "1234-5678",:address =>"東京都世田谷区",:phone_number => "090-1234-5678",:email => "aaaaa@aaaa.com",:password => "123456"})
 
+Destination.create({:postal_code => "000-0000",:destination => "鳥取県米子市",:user_id => 1})
+Destination.create({:postal_code => "000-0000",:destination => "東京都世田谷区",:user_id => 2})
+Destination.create({:postal_code => "000-0000",:destination => "東京都新宿区",:user_id => 5})
+
+
+
+
 label = Label.create({:name => "ジャニーズ事務所"})
 
 genre = Genre.create(:name => "J-pop")
 artist = Artist.create(:name =>"NEWS")
 
 
-product = Product.create({:title => "newsベストアルバム",:label_id => label.id,:price => 3500,:image => "",:release_date =>20180916,:stock_count => 5,})
-Cart.create({:product_id => 1,:user_id => user.id,:sheet_number => 1})
+product = Product.create({:title => "newsベストアルバム",:label_id => 1,:price => 3500,:image => "jpg",:release_date =>20180916,:stock_count => 5,})
+Cart.create({:product_id => 1,:user_id => ,:sheet_number => 1})
 
 disc1 = Disc.create({:product_id =>product.id})
 disc2 = Disc.create({:product_id =>product.id})
@@ -31,3 +38,12 @@ Tune.create({:title =>"WEEEK",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id,
 Tune.create({:title =>"渚のお姉サマー",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id,:track_number => 8})
 Tune.create({:title =>"Wonder",:artist_id =>1,:genre_id =>1,:disc_id => disc2.id,:track_number => 9})
 
+
+
+
+
+Artist.create(:name => "RIP SLYME")
+
+Genre.create(:name => "J-pop")
+
+Tune.create(:title => "曲1", :artist_id => 1, :genre_id => 1, :disc_id => 1, :track_number => 1 )
