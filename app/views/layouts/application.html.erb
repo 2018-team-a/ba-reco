@@ -9,21 +9,21 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
-    <header>
-      <div class="container">
-        <div>
-          <div class="col-lg-4">
-            <h1>
+  <body>
+    <div class="header-box">
+    <header class="container text-center" style="background-color: #ffffff";>
+        <div class="row">
+            <h1 class="col-lg-4">
               <%= link_to "婆ーレコード", products_path %>
             </h1>
-            <h2 class="col-lg-2">
+            <h2 class="col-lg-4">
               <% if user_signed_in? %>
               ログインしているよ
               <% else %>
               未ログインだよ
               <% end %>
             </h2>
-            <div class="col-lg-6">
+            <nav class="col-lg-4">
               <ul class="list-inline">
                 <% if user_signed_in? %>
                   <li><%= link_to "マイページ", edit_user_path(current_user.id) %></li>
@@ -34,16 +34,22 @@
                   <li><%= link_to "ログイン", user_session_path %></li>
                 <% end %>
               </ul>
-            </div>
-          </div>
+            </nav>
         </div>
-      </div>
     </header>
+      <div class="row text-center">
     <%= form_tag products_path, :method => 'get' do %>
+    タイトル検索
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "検索", :title => nil %>
     <% end %>
-  <body>
+  </div>
+    </div>
+    <div class="container" style="height: 1500px; padding-top: 100px;">
     <%= yield %>
+  </div>
+  <footer class="container-field" style="background-color: black; height: 200px;">
+    ba-record
+  </footer>
   </body>
 </html>
