@@ -33,4 +33,12 @@ class User < ApplicationRecord
                     with: /\A\d{10}$|^\d{11}\z/
                   }
 
+  def self.search(search)
+    if search
+      User.where(['email LIKE ?', "%#{search}%"])
+    else
+      User.all
+    end
+  end
+
 end

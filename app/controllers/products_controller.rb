@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-
+  layout 'admins'
 
 	def show
 		@product = Product.find(params[:id])
