@@ -10,11 +10,14 @@
 
 
 
-この商品を購入
+<%= link_to 'この商品を購入',purchase_single_path(cart.id)%>
+
 <%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
 
 
 <% end %>
-まとめて購入
+
+
+
 <%= link_to "お買い物を続ける", products_path %>
 お問い合わせ

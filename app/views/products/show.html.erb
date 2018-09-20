@@ -6,7 +6,7 @@
 <%= @product.stock_count %>
 
 <%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
-<%= f.label :枚数 %>
+<%= f.label :sheet_number %>
 <%= f.number_field :sheet_number %>
 
 <button class="btn btn-default">
