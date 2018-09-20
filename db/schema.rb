@@ -38,6 +38,14 @@ ActiveRecord::Schema.define(version: 2018_09_20_062314) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "destinations", force: :cascade do |t|
+    t.string "postal_code"
+    t.text "destination"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "discs", force: :cascade do |t|
     t.integer "product_id"
     t.datetime "created_at", null: false
