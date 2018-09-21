@@ -7,6 +7,7 @@ class Admins::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
+    # redirect_to admins_products_path
     redirect_to new_admins_product_disc_path(product.id)
   end
 
