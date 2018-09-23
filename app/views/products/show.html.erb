@@ -1,31 +1,75 @@
-<h1>商品詳細ページ</h1>
-
-<%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
-<%= @product.title %>
-<%= @product.price %>
-<%= @product.stock_count %>
-
-<%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
-<%= f.label :sheet_number %>
-<%= f.number_field :sheet_number %>
-
-<button class="btn btn-default">
-  <%= f.submit %>
- </button>
-<% end %>
-
-<% @product.discs.each do |disc| %>
-<p>ディスク</p>
-<%= disc.id %>
-
-<% disc.tunes.each do |tune| %>
-<p>曲名</p>
-<%= tune.title %>
-<p>アーティスト名</p>
-<%= tune.artist.name %>
-
-<% end %>
-<% end %>
+<div class="row" style="padding-bottom: 150px;">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6">
+    <div class="info-box" style="background-color: #ffffff;">
+      <div class="info-image">
+        <%= attachment_image_tag @product, :image, :fill, 100, 100, format: 'jpeg' %>
+      </div>
+      <div class="show-info-title">
+        <%= @product.title %>
+      </div>
+      <div class="show-info-price">
+        <%= @product.price %>円
+      </div>
+      <div class="show-info-stock">
+        <% s = @product.stock_count %>
+        <% if s == 0 %>
+          在庫無し
+        <% elsif s >= 1 && s <= 10 %>
+          在庫残りわずか
+        <% else s >= 11 %>
+          在庫有り
+        <% end %>
+      </div>
+      <% a = [] %>
+      <% @product.discs.each do |disc| %>
+        <% disc.tunes.each do |tune| %>
+          <% a.push(tune.artist.name) %>
+        <% end %>
+      <% end %>
+      <div class="show-info-artist">
+        <%= a.max_by { |v| a.count(v)} %>
+      </div>
+      <% if user_signed_in? %>
+        <%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
+          <div class="show-info-number-box">
+            <%= f.label :枚数 %>
+            <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
+          </div>
+          <div class="show-info-cart-button">
+          	<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
+            <%= f.submit(["カート追加"]) %>
+            </span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    <% b = 1 %>
+    <% @product.discs.each do |disc| %>
+    <div class="show-tune-box">
+    disc<%= b %>
+    <table>
+      <tr>
+      	<th style="padding-left: 10px">曲順</th>
+	    <th style="padding-left: 20px">曲名</th>
+	    <th style="padding-left: 30px">アーティスト名</th>
+      </tr>
+      <% c = 1 %>
+      <% disc.tunes.each do |tune| %>
+      <tr>
+      	<td style="padding-left: 10px"><%= c %></td>
+	    <td style="padding-left: 20px"><%= tune.title %></td>
+        <td style="padding-left: 30px"><%= tune.artist.name %></td>
+      </tr>
+      <% c += 1 %>
+      <% end %>
+    </table>
+    <% b += 1 %>
+    </div>
+    <% end %>
+  </div>
+  <div class="col-lg-3"></div>
+</div>
 
 
 
