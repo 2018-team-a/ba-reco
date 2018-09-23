@@ -1,4 +1,4 @@
-<h2>買い物かご</h2>
+<h2>カートページ</h2>
 
 
 <% @cart.each do |cart| %>
@@ -10,7 +10,6 @@
 
 
 
-<%= link_to 'この商品を購入',purchase_single_path(cart.id)%>
 
 <%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
 
@@ -18,6 +17,7 @@
 <% end %>
 
 
+<%= link_to '商品を購入', purchases_path%>
 
 <%= link_to "お買い物を続ける", products_path %>
 お問い合わせ
