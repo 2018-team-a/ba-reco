@@ -16,12 +16,22 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+ .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+.header-title{
+	font-size: 50px;
+	font-family: serif;
+}
 .header-box{
     width: 100%;
 	position: fixed;
+	z-index: 5000;
 }
-.box{
-	height: 200px;
-	width: 200px;
-	background-color: red;
+.footer-text{
+    color: #ffffff;
+	padding-top: 70px;
+	text-align: center;
 }

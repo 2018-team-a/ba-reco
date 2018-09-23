@@ -1,3 +1,142 @@
 // Place all the styles related to the products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.top-image-box{
+	height: 800px;
+	width: 100%;
+	background-color: #000000;
+	position: relative;
+}
+.image-box1{
+    height: 500px;
+    width: 500px;
+    background-color: #ffffff;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 1;
+}
+.image-box2{
+    height: 300px;
+    width: 300px;
+    background-color: #ffff00;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 2;
+}
+.image-box3{
+    height: 400px;
+    width: 400px;
+    background-color: #ff00ff;
+    position: absolute;
+    bottom: 0;
+    left: 200px;
+    z-index: 3;
+}
+.image-box4{
+    height: 400px;
+    width: 400px;
+    background-color: #00ffff;
+    position: absolute;
+    top: 0;
+    left: 500px;
+    z-index: 4;
+}
+.image-box5{
+    height: 600px;
+    width: 600px;
+    background-color: #ff0000;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 5;
+}
+.image-box6{
+    height: 600px;
+    width: 600px;
+    background-color: #00ff00;
+    position: absolute;
+    bottom: 0;
+    left: 400px;
+    z-index: 6;
+}
+.info-box{
+    height: 200px;
+	margin-top: 60px;
+	border: double;
+	position: relative;
+}
+.info-image{
+    height: 100%;
+	width: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: red;
+}
+.index-info-title{
+	position: absolute;
+	top: 50px;
+	left: 250px;
+}
+.index-info-price{
+	position: absolute;
+	top: 110px;
+	left: 250px;
+}
+.index-info-artist{
+	position: absolute;
+	top: 50px;
+	left: 400px;
+}
+.index-info-number-box{
+	position: absolute;
+	top: 110px;
+	left: 400px;
+}
+.number-field{
+	width: 40px;
+}
+.index-info-cart-button{
+	position: absolute;
+	top: 110px;
+	left: 530px;
+}
+.show-info-title{
+	position: absolute;
+	top: 30px;
+	left: 250px;
+}
+.show-info-price{
+	position: absolute;
+	top: 85px;
+	left: 400px;
+}
+.show-info-stock{
+	position: absolute;
+	top: 85px;
+	left: 250px
+}
+.show-info-number-box{
+	position: absolute;
+	top: 140px;
+	left: 250px;
+}
+.show-info-cart-button{
+	position: absolute;
+	top: 140px;
+	left: 400px;
+}
+.show-info-artist{
+	position: absolute;
+	top: 30px;
+	left: 400px;
+}
+.show-tune-box{
+	height: auto;
+	width: 100%;
+	border: solid;
+	margin-top: 20px;
+	background-color: #ffffff;
+}
