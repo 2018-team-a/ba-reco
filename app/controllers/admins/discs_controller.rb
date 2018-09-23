@@ -1,7 +1,10 @@
 class Admins::DiscsController < ApplicationController
 
   def new
-    @discs = Disc.all
+    # .allではない　回数分を表示する
+    binding.pry
+    @product = Product.find(params[:product_id])
+    @discs = [].fill(Disc.new, 0, 5)
   end
 
   def create

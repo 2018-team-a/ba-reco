@@ -1,0 +1,14 @@
+<h1>Admins::Tunes#new</h1>
+
+<% @discs.each do |disc| %>
+	<%= form_for @tune, url: admins_product_disc_tunes_path(product_id: @product.id, disc_id: disc) do |f| %>
+		<h3>曲名</h3>
+		<%= f.text_field :title %>
+		<h3>アーティスト名</h3>
+		<%= f.text_field :artist_id %>
+		<h3>ジャンル名</h3>
+		<%= f.text_field :genre_id %>
+		<%= f.submit "submit"%>
+	<%end%>
+<% end %>
+<!-- @discs = Disc.all -->

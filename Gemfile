@@ -72,3 +72,7 @@ gem 'jquery-rails'
 # add to development
 gem 'pry-rails'
 gem 'seed-fu'
+gem "jquery-rails"
+gem 'jquery-turbolinks'
+# 登録フォームをaddボタンで追加、deleteボタンで削除するgem
+gem 'nested_form', '~> 0.3.2'
