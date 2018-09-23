@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
   namespace :admins do
-      resources :products do
-        resources :discs do
-          resources :tune
-        end
+    resources :products do
+      resources :discs do
+        resources :tunes
       end
+    end
   end
+
+
+
 
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
@@ -43,7 +46,7 @@ Rails.application.routes.draw do
   resources :purchase_singles
   resources :unsubscribes
 
-  resources :artists
+
   # resources :discs
   resources :tunes
   resources :labels

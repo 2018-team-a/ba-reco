@@ -10,12 +10,15 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= require jquery
+//= require jquery.turbolinks
 //= require rails-ujs
+//= require jquery_nested_form
 //= require activestorage
 //= require turbolinks
-//= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+
 $(function(){
 	$('.image-box1').mouseover(function(){
 		$('.image-box1').css({'z-index': '10'});
@@ -71,4 +74,3 @@ $(function(){
 	$('.image-box6').mouseout(function(){
 		$('.image-box6').css({'z-index': '6'});
 	});
-});

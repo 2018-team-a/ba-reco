@@ -1,0 +1,8 @@
+<h1>Admins::Artists#edit</h1>
+
+<h3><%= form_for [:admins, @artist] do |f| %></h3>
+<%= f.text_field :name %>
+<%= f.submit '保存' %>
+<%end%>
+
+<h3><%= link_to '戻る', artist_path(@artist.id) %></h3>

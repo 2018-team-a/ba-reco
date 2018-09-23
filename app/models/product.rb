@@ -7,6 +7,8 @@ class Product < ApplicationRecord
     belongs_to :label
 	attachment :image
 
+    accepts_nested_attributes_for :discs
+
 	def self.search(search)
     if search
     Product.where(['title LIKE ?', "%#{search}%"])
