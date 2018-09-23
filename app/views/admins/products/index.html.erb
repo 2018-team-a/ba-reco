@@ -1,0 +1,7 @@
+<h1>Admins::products#index</h1>
+
+<% @products.each do |f| %>
+<%= f.title %>
+<%end%>
+
+<h3><%= link_to "登録ページ", new_admins_product_path %></h3>

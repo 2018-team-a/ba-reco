@@ -1,0 +1,7 @@
+<h1>tunes#index</h1>
+
+<% @tunes.each do |f| %>
+<%= link_to f.title, tune_path(f.id) %>
+<%end%>
+
+<h3><%= link_to "登録ページ", new_tune_path %></h3>

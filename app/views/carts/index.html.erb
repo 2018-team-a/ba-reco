@@ -1,24 +1,42 @@
-<h1>カートページ</h1>
 
-<h2>買い物かご</h2>
+<div class="row text-center" style="padding-bottom: 150px;">
+  <div class="col-lg-3"></div>
 
-
-<% current_user.products.each do |product| %>
-<%= attachment_image_tag product, :image, :fill, 100, 100, format: 'jpeg' %>
-<%= product.title %>
-数量
-<%= product.price %> 円
-
-
-
+  <div class="col-lg-6">
+  	<h2>買い物かご</h2>
+  	<% @cart.each do |cart| %>
+    <div class="info-box" style="background-color: #ffffff;">
+      <div class="info-image">
+        <%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpeg' %>
+      </div>
 
 
-この商品を購入
-カートから出す
 
+
+
+
+
+<%= cart.product.title %>
+<%= cart.sheet_number %>
+<%= cart.product.price %> 円
+
+
+
+
+
+
+<%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
 
 
 <% end %>
-まとめて購入
+</div>
+
+
+
+<%= link_to '商品を購入', purchases_path%>
+
 <%= link_to "お買い物を続ける", products_path %>
-お問い合わせs
+お問い合わせ
+</div>
+<div class="col-lg-3"></div>
+</div>

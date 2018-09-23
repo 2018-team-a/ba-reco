@@ -1,4 +1,7 @@
-<h2>Log in</h2>
+<div class="row text-center" style="padding-bottom: 130px;">
+  <div class="col-lg-5"></div>
+  <div class="col-lg-2 log-box">
+<h2>ログイン</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
@@ -7,7 +10,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :パスワード %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
 
@@ -19,8 +22,11 @@
   <% end -%>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
 <%= render "users/shared/links" %>
+</div>
+<div class="col-lg-5"></div>
+</div>

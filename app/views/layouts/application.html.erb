@@ -9,41 +9,60 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
-    <header>
-      <div class="container">
-        <div>
-          <div class="col-lg-4">
-            <h1>
-              <%= link_to "婆ーレコード", products_path %>
+  <body style="background-color: #d6ffff">
+    <div class="header-box">
+    <header class="container-field text-center" style="background-color: #ffffff">
+        <div class="row">
+            <h1 class="col-lg-4">
+              <%= link_to "婆ーレコード", products_path, class:"header-title"%>
             </h1>
-            <h2 class="col-lg-2">
+            <h2 class="col-lg-4">
+              ようこそ、
               <% if user_signed_in? %>
-              ログインしているよ
+              <%= current_user.name_family_name %>
               <% else %>
-              未ログインだよ
+              ゲスト
+              <% end %>
+              さん
+              <br>
+              <%= form_tag products_path, :method => 'get' do %>
+              タイトル検索
+              <%= text_field_tag :search, params[:search], :size => "10"%>
+              <%= submit_tag "検索", :title => nil %>
               <% end %>
             </h2>
-            <div class="col-lg-6">
+            <nav class="col-lg-4" style="padding-top: 50px;">
               <ul class="list-inline">
                 <% if user_signed_in? %>
-                  <li><%= link_to "マイページ", edit_user_path(current_user.id) %></li>
-                  <li><%= link_to "カート", carts_path %></li>
-                  <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+                  <li>
+                      <%= link_to "マイページ", edit_user_path(current_user.id), class:"btn btn-success" %>
+                  </li>
+                  <li>
+                      <%= link_to "カート", carts_path, class:"btn btn-success" %>
+                  </li>
+                  <li>
+                      <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"btn btn-success" %>
+                  </li>
+                  <li><%= link_to "退会", user_path(current_user.id) %>
                 <% else %>
-                  <li><%= link_to "新規登録", new_user_registration_path %></li>
-                  <li><%= link_to "ログイン", user_session_path %></li>
+                  <li>
+                      <%= link_to "新規登録", new_user_registration_path, class:"btn btn-warning"%>
+                  </li>
+                  <li>
+                      <%= link_to "ログイン", user_session_path, class:"btn btn-warning" %>
+                  </li>
                 <% end %>
               </ul>
-            </div>
-          </div>
+            </nav>
         </div>
-      </div>
     </header>
-    <%= form_tag products_path, :method => 'get' do %>
-    <%= text_field_tag :search, params[:search] %>
-    <%= submit_tag "検索", :title => nil %>
-    <% end %>
-  <body>
+    </div>
+    <div class="container-field" style="height: auto; padding-top: 200px;">
     <%= yield %>
+  </div>
+  <footer class="container-field" style="background-color: black; height: 200px;">
+    <h2 class="footer-text">ba-record</h2>
+  </footer>
+
   </body>
 </html>

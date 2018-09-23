@@ -1,6 +1,17 @@
 Rails.application.routes.draw do
 
-    devise_for :admins, controllers: {
+  namespace :admins do
+    resources :products do
+      resources :discs do
+        resources :tunes
+      end
+    end
+  end
+
+
+
+
+  devise_for :admins, controllers: {
       sessions:      'admins/sessions',
       passwords:     'admins/passwords',
       registrations: 'admins/registrations'
@@ -12,6 +23,8 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
     }
 
+  post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
+  # post "purchase" => "purchases#create", as: "purchase"
   root to: 'products#index'
 
   get 'admins/top' => 'admins#top', as: :admins_top
@@ -23,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :carts
   resources :users
+  resources :purchases
   resources :destinations
   resources :products do
     collection do
@@ -30,11 +44,11 @@ Rails.application.routes.draw do
     end
   end
   resources :purchase_singles
-  resources :purchases
   resources :unsubscribes
 
-  resources :artists
-  resources :discs
+
+  # resources :discs
   resources :tunes
+  resources :labels
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

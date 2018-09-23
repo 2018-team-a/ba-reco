@@ -1,0 +1,22 @@
+<h1>Admins::Products#new</h1>
+
+<%= form_for [:admins, @product] do |f| %>
+
+	<h3>商品名</h3>
+	<%= f.text_field :title %>
+
+	<h3>レーベル名</h3>
+	<%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %>
+
+	<h3>値段</h3>
+    <%= f.text_field :price %>
+
+	<h3>在庫数</h3>
+	<%= f.text_field :stock_count %>
+
+	<h3>ディスク枚数</h3>
+	<%= f.text_field :disc_count %>
+
+    <h4><%= f.submit '登録' %></h4>
+<%end%>
+

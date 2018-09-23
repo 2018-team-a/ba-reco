@@ -1,0 +1,8 @@
+<h1>Admins::Artists#new</h1>
+
+<%= form_for [:admins, (@artist)] do |f| %>
+<%= f.text_field :name %>
+<%= f.submit "登録" %>
+<% end %>
+
+<h3><%= link_to "一覧", admins_artists_path %></h3>
