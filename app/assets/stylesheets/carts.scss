@@ -1,3 +1,17 @@
 // Place all the styles related to the carts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.info-box{
+    height: 200px;
+	margin-top: 60px;
+	border: double;
+	position: relative;
+}
+.info-image{
+    height: 100%;
+	width: 200px;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: red;
+}

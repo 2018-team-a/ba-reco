@@ -1,64 +1,76 @@
-<h2>Sign up</h2>
+<div class="row text-center" style="padding-bottom: 100px;">
+  <div class="col-lg-3"></div>
+  <div class="col-lg-6 regi-box">
+<h2>新規登録</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
+<table class="table-box">
+  <tr>
   <div class="field">
-    <%= f.label :苗字 %><br />
-    <%= f.text_field :name_family_name, autofocus: true %>
+    <td class="table-box text-right"><%= f.label :名前 %><br>(名字、名前別)</td>
+    <td class="table-box text-left"><%= f.text_field :name_family_name, autofocus: true %></td>
   </div>
 
   <div class="field">
-    <%= f.label :名前 %><br />
-    <%= f.text_field :name_name %>
+    <td class="table-box text-left"><%= f.text_field :name_name %></td>
   </div>
+  </tr>
 
+  <tr>
   <div class="field">
-    <%= f.label :フリガナ苗字（全角カタカナ） %><br />
-    <%= f.text_field :furigana_family_name %>
+    <td class="table-box text-right"><%= f.label :フリガナ %><br>(名字、名前別)</td>
+    <td class="table-box text-left"><%= f.text_field :furigana_family_name %></td>
   </div>
-
   <div class="field">
-    <%= f.label :フリガナ名前（全角カタカナ） %><br />
-    <%= f.text_field :furigana_name %>
+    <td class="table-box text-left"><%= f.text_field :furigana_name %></td>
   </div>
-
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :郵便番号 %><br />
-    <%= f.text_field :postal_code, autocomplete: "postal_code", onKeyUp: "AjaxZip3.zip2addr(this,'','user[address]','user[address]');" %>
+    <td class="table-box text-right"><%= f.label :郵便番号 %></td>
+    <td class="table-box text-left" colspan="2"><%= f.text_field :postal_code, autocomplete: "postal_code", onKeyUp: "AjaxZip3.zip2addr(this,'','user[address]','user[address]');" %></td>
   </div>
+  </tr>
 
-  <div class="field">
-    <%= f.label :住所 %><br />
-    <%= f.text_area :address, name: "user[address]" %>
+  <tr>
+    <div class="field">
+    <td class="table-box text-right"><%= f.label :住所 %></td>
+    <td class="table-box text-left"  colspan="2"><%= f.text_field :address, name: "user[address]", :size => "60" %></td>
   </div>
-
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :電話番号（半角ハイフン無し） %><br />
-    <%= f.text_field :phone_number %>
+    <td class="table-box text-right"><%= f.label :電話番号 %><br>(半角ハイフン無し)</td>
+    <td class="table-box text-left" colspan="2"><%= f.text_field :phone_number %></td>
   </div>
-
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <td class="table-box text-right"><%= f.label :email %></td>
+    <td class="table-box text-left" colspan="2"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "20" %></td>
   </div>
-
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :password %>
+    <td class="table-box text-right"><%= f.label :パスワード %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <em>(<%= @minimum_password_length %> 桁)</em>
+    <% end %></td>
+    <td class="table-box text-left" colspan="2"><%= f.password_field :password, autocomplete: "new-password" %></td>
   </div>
-
+  </tr>
+  <tr>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <td class="table-box text-right"><%= f.label :パスワード（再） %></td>
+    <td class="table-box text-left" colspan="2"><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
   </div>
-
-  <div class="actions">
+  </tr>
+</table>
+  <div class="actions regi-botton">
     <%= f.submit "Sign up" %>
   </div>
 <% end %>
-
-<%= render "users/shared/links" %>
+</div>
+<div class="col-lg-3"></div>
+</div>

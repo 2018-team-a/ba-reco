@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
     def index
         productx = Product.search(params[:search])
         @products = productx.page(params[:page]).reverse_order
+        @product = Product.all
         @cart = Cart.new
     end
 

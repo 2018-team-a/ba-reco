@@ -14,7 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def after_sign_out_path_for(resource)
-    admin_session_path
+    if admin_signed_in?
+      admin_session_path
+    elsif user_signed_in?
+      products_path
+    else
+      products_path
+    end
   end
 
 

@@ -24,7 +24,7 @@ Rails.application.routes.draw do
     }
 
   post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
-
+  # post "purchase" => "purchases#create", as: "purchase"
   root to: 'products#index'
 
   get 'admins/top' => 'admins#top', as: :admins_top
@@ -36,6 +36,7 @@ Rails.application.routes.draw do
 
   resources :carts
   resources :users
+  resources :purchases
   resources :destinations
   resources :products do
     collection do
@@ -43,7 +44,6 @@ Rails.application.routes.draw do
     end
   end
   resources :purchase_singles
-  resources :purchases
   resources :unsubscribes
 
 
