@@ -1,7 +1,4 @@
 class UsersController < ApplicationController
-before_action :authenticate_admin! || :authenticate_user!, only: [:index, :edit, :update, :destroy]
-
-	layout 'users'
 
 	def index
     @users = User.page(params[:page]).reverse_order
@@ -11,11 +8,11 @@ before_action :authenticate_admin! || :authenticate_user!, only: [:index, :edit,
 
   def edit
     @users = User.find(params[:id])
-    unless admin_signed_in?
-      if @users.id != current_user
-        redirect_to new_user_session_path
-      end
-    end
+    # unless admin_signed_in?
+    #   if @users.id != current_user
+    #     redirect_to new_user_session_path
+    #   end
+    # end
   end
 
   def update
@@ -30,7 +27,7 @@ before_action :authenticate_admin! || :authenticate_user!, only: [:index, :edit,
   end
 
   private
-      def user_params
-          params.require(:user).permit(:name_family_name, :name_name, :furigana_family_name, :furigana_name, :postal_code, :address, :phone_number, :email)
-      end
+    def user_params
+        params.require(:user).permit(:name_family_name, :name_name, :furigana_family_name, :furigana_name, :postal_code, :address, :phone_number, :email)
+    end
 end

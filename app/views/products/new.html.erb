@@ -1,1 +1,45 @@
 <h1>商品の登録ページだよ</h1>
+
+<%= form_for(@product) do |f| %>
+
+  <div class="field">
+    <label for="title">title</label>
+    <br>
+    <%= f.text_field :title, class: "title" %>
+  </div>
+
+  <div class="field">
+    <label for="label">label</label>
+    <br>
+    <%= f.text_field :label, class: "label" %>
+  </div>
+
+  <div class="field">
+    <label for="price">price</label>
+    <br>
+    <%= f.text_field :price, class: "price" %>
+  </div>
+
+  <div class="field">
+    <label for="image_id">image</label>
+    <br>
+    <%= f.attachment_field :image, placeholder:"ジャケット画像", class:"image_id" %>
+  </div>
+
+  <div class="field">
+    <label for="release_date">release_date</label>
+    <br>
+    <%= f.text_field :release_date, class: "release_date" %>
+  </div>
+
+  <div class="field">
+    <label for="stock_count">stock_count</label>
+    <br>
+    <%= f.text_field :stock_count, class: "stock_count" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+
+<% end %>
