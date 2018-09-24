@@ -18,7 +18,7 @@ class Admins::ProductsController < ApplicationController
     # book = Book.find_by(title: "dddd")
 
     redirect_to new_admins_product_disc_tune_path(product_id: product.id,disc_id: disc.id)
-
+    binding.pry
   end
 
   def index
@@ -40,7 +40,7 @@ class Admins::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:title, :label_id , :disc, :price, :stock_count, :disc_count,
+    params.require(:product).permit(:image_id, :title, :label_id , :disc, :price, :stock_count, :disc_count,
     discs_attributes: [:id, :disc_id, :_destroy] )
   end
 end
