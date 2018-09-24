@@ -1,0 +1,13 @@
+<h1>購入確定画面</h1>
+
+<% @cart.each do |cart| %>
+<%= curent_user.cart.product.title %>
+<%= curent_user.cart.sheet_number %>
+<%= curent_user.cart.product.price %> 円
+
+合計<%= cart.product.price * cart.sheet_number %>円
+<% end %>
+<%= form_for (@purchase), url:cart_show(cart_id: @cart.id) do |f| %>
+<%= f.select :destination_id, @destinations_array %>
+<%= f.submit "購入する"  %>
+<% end %>

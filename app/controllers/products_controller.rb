@@ -1,33 +1,36 @@
 class ProductsController < ApplicationController
-  layout 'admins'
 
     def show
         @product = Product.find(params[:id])
         @cart = Cart.new
-
     end
 
 
-  def index
-  	productx = Product.search(params[:search])
+    def index
+  	  productx = Product.search(params[:search])
       @products = productx.page(params[:page]).reverse_order
-  end
+      @product = Product.all
+      @cart = Cart.new
+    end
 
 
-	def new
-		@product = Product.new
-	end
 
-  def create
-    @product = Product.new(product_params)
-    @product.save
-    redirect_to new_product_path
-  end
 
-  def search
-  	@products = Product.search(params[:search])
-  	redirect_to products_path
-  end
+	  def new
+		  @product = Product.new
+      render :layout => 'admins'
+	  end
+
+    def create
+      @product = Product.new(product_params)
+      @product.save
+      redirect_to new_product_path
+    end
+
+    def search
+  	  @products = Product.search(params[:search])
+  	  redirect_to products_path
+    end
 
 
 	private
