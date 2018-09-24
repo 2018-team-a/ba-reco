@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get "carts/cart_ccc" => "carts#cart_ccc", as: "ccc"
+  post "carts/cart_last" => "carts#cart_last", as: "cart_last"
   namespace :admins do
     resources :products do
       resources :discs do
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
     }
 
   post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
-  # post "purchase" => "purchases#create", as: "purchase"
   root to: 'products#index'
 
   get 'admins/top' => 'admins#top', as: :admins_top
@@ -34,8 +35,8 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :edit, :update, :destroy]
   end
 
-  resources :carts
   resources :users
+  resources :carts
   resources :purchases
   resources :destinations
   resources :products do
