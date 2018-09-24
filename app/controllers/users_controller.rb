@@ -4,7 +4,8 @@ class UsersController < ApplicationController
 	def index
     @users = User.page(params[:page]).reverse_order
     userx = User.search(params[:search])
-      @users_search = userx.page(params[:page]).reverse_order
+    @users_search = userx.page(params[:page]).reverse_order
+    render :layout => 'admins'
 
   end
 
@@ -38,7 +39,6 @@ class UsersController < ApplicationController
     sign_out(@user)
     redirect_to products_path
   end
-  
 
   private
     def user_params

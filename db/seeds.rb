@@ -9,13 +9,13 @@
 
 Label.create(:name => "bvex")
 
-Product.create(:title => "商品１",:label_id => 1,:price => 1000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
-Product.create(:title => "商品２",:label_id => 2,:price => 1500,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
-Product.create(:title => "商品３",:label_id => 1,:price => 2000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
-Product.create(:title => "CD４",:label_id => 2,:price => 2500,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
-Product.create(:title => "CD５",:label_id => 1,:price => 3000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
-Product.create(:title => "CD６",:label_id => 2,:price => 3500,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
-Product.create(:title => "商品７",:label_id => 1,:price => 4000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30)
+Product.create(:title => "商品１",:label_id => 1,:price => 1000,:image_id => "no_image.jpg",:release_date =>0916,:stock_count => 30,:disc_count => 1)
+Product.create(:title => "商品２",:label_id => 2,:price => 1500,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30,:disc_count => 1)
+Product.create(:title => "商品３",:label_id => 1,:price => 2000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30,:disc_count => 1)
+Product.create(:title => "CD４",:label_id => 2,:price => 2500,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30,:disc_count => 1)
+Product.create(:title => "CD５",:label_id => 1,:price => 3000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30,:disc_count => 1
+Product.create(:title => "CD６",:label_id => 2,:price => 3500,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30,:disc_count => 1)
+Product.create(:title => "商品７",:label_id => 1,:price => 4000,:image => "no_image.jpg",:release_date =>20180916,:stock_count => 30,:disc_count => 1)
 
 Disc.create(:product_id => 1)
 Disc.create(:product_id => 2)
