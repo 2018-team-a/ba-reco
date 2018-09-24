@@ -3,6 +3,8 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  has_many :destinations
+  accepts_nested_attributes_for :destinations, allow_destroy: true, reject_if: :all_blank
 
   def soft_delete
     update(deleted_at: Time.now)
