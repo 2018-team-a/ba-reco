@@ -10,13 +10,13 @@
   </head>
 
   <body>
-    <header class="navbar navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <nav class='nav navbar-nav navbar-left' >
+    <header>
+      <div >
+        <nav>
           <span>婆ーレコード</span>
         </nav>
         <nav>
-          <ul class="nav navbar-nav navbar-right">
+          <ul>
             <% if admin_signed_in? %>
               <li>ログイン中</li>
               <li><%= link_to " logout", destroy_admin_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %></li>

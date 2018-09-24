@@ -1,6 +1,6 @@
 <h1>Userの詳細、編集ページだよ</h1>
 
-<%= form_for(@users) do |f| %>
+<%= nested_form_for @user do |f| %>
 
   <div class="field">
     <label for="user_name_family_name">name_family_name</label>
@@ -42,6 +42,26 @@
     <br>
     <%= f.text_field :email, class: "email" %>
   </div>
+
+    <%= f.fields_for :destinations do |df| %>
+      <div class="postal_code">
+        <label for="postal_code">postal_code</label>
+        <br>
+        <%= df.text_field :postal_code, class: "postal_code" %>
+      </div>
+
+      <div class="destination">
+        <label for="destination">destination</label>
+        <br>
+        <%= df.text_field :destination, class: "destination" %>
+      </div>
+
+      <% if @user.persisted? %>
+        <%= df.check_box :_destroy %>
+        <%= df.label :_destroy, "削除" %><br />
+      <% end %>
+
+    <% end %>
 
   <div class="actions">
     <%= f.submit %>
