@@ -16,7 +16,16 @@
             <h1 class="col-lg-4">
               <%= link_to "婆ーレコード", products_path, class:"header-title"%>
             </h1>
-            <h2 class="col-lg-4">
+            <h3 class="col-lg-5" style="padding-top: 10px;">
+              <div class="search-box text-left">
+              <%= form_tag products_path, :method => 'get' do %>
+              タイトル検索
+              <%= text_field_tag :search, params[:search], :size => "20"%>
+              <%= submit_tag "検索", :title => nil %>
+              <% end %>
+              </div>
+            </h3>
+            <nav class="col-lg-3" style="padding-top: 20px;">
               ようこそ、
               <% if user_signed_in? %>
               <%= current_user.name_family_name %>
@@ -24,14 +33,6 @@
               ゲスト
               <% end %>
               さん
-              <br>
-              <%= form_tag products_path, :method => 'get' do %>
-              タイトル検索
-              <%= text_field_tag :search, params[:search], :size => "10"%>
-              <%= submit_tag "検索", :title => nil %>
-              <% end %>
-            </h2>
-            <nav class="col-lg-4" style="padding-top: 50px;">
               <ul class="list-inline">
                 <% if user_signed_in? %>
                   <li>
@@ -57,7 +58,7 @@
         </div>
     </header>
     </div>
-    <div class="container-field" style="height: auto; padding-top: 200px;">
+    <div class="container-field" style="height: auto;">
     <%= yield %>
   </div>
   <footer class="container-field" style="background-color: black; height: 200px;">

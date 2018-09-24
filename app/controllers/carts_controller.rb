@@ -27,6 +27,7 @@ class CartsController < ApplicationController
 		@destinations.each do |destination|
  		@destinations_array << [destination.destination, destination.id]
 	 	end
+
 	end
 
 	def cart_last

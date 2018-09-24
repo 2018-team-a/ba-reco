@@ -2,64 +2,100 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .top-image-box{
-	height: 800px;
+	height: 850px;
 	width: 100%;
 	background-color: #000000;
 	position: relative;
 }
 .image-box1{
-    height: 500px;
-    width: 500px;
+    height: 200px;
+    width: 200px;
     background-color: #ffffff;
     position: absolute;
-    top: 0;
+    bottom: 10px;
     left: 0;
     z-index: 1;
 }
 .image-box2{
-    height: 300px;
-    width: 300px;
+    height: 200px;
+    width: 200px;
     background-color: #ffff00;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 20px;
+    left: 0;
     z-index: 2;
 }
 .image-box3{
-    height: 400px;
-    width: 400px;
+    height: 200px;
+    width: 200px;
     background-color: #ff00ff;
     position: absolute;
-    bottom: 0;
-    left: 200px;
+    bottom: 30px;
+    left: 0;
     z-index: 3;
 }
 .image-box4{
-    height: 400px;
-    width: 400px;
+    height: 200px;
+    width: 200px;
     background-color: #00ffff;
     position: absolute;
-    top: 0;
-    left: 500px;
+    bottom: 40px;
+    left: 0;
     z-index: 4;
 }
 .image-box5{
-    height: 600px;
-    width: 600px;
+    height: 200px;
+    width: 200px;
     background-color: #ff0000;
     position: absolute;
-    top: 0;
-    right: 0;
+    bottom: 50px;
+    left: 0;
     z-index: 5;
 }
 .image-box6{
-    height: 600px;
-    width: 600px;
-    background-color: #00ff00;
+    height: 200px;
+    width: 200px;
+    background-color: #666666;
     position: absolute;
-    bottom: 0;
-    left: 400px;
+    bottom: 60px;
+    left: 0;
     z-index: 6;
+}
+.image-box7{
+    height: 200px;
+    width: 200px;
+    background-color: #aaaaaa;
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    z-index: 7;
+}
+.image-box8{
+    height: 200px;
+    width: 200px;
+    background-color: #cccccc;
+    position: absolute;
+    bottom: 80px;
+    left: 0;
+    z-index: 8;
+}
+.image-box9{
+    height: 200px;
+    width: 200px;
+    background-color: #444444;
+    position: absolute;
+    bottom: 90px;
+    right: 0;
+    z-index: 9;
+}
+.image-box10{
+    height: 200px;
+    width: 200px;
+    background-color: #777777;
+    position: absolute;
+    bottom: 100px;
+    left: 0;
+    z-index: 10;
 }
 .info-box{
     height: 200px;
