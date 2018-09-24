@@ -4,7 +4,7 @@ class UsersController < ApplicationController
     @users = User.page(params[:page]).reverse_order
     userx = User.search(params[:search])
     @users_search = userx.page(params[:page]).reverse_order
-
+    render :layout => 'admins'
   end
 
   def show
