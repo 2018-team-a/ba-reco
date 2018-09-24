@@ -27,7 +27,7 @@
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
   	<h2>カート</h2>
-  	<% @cart.each do |cart| %>
+  	<% current_user.carts.each do |cart| %>
       <div class="info-box" style="background-color: #ffffff;">
         <div class="info-image">
           <%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpeg' %>
@@ -55,7 +55,7 @@
         </div>
       </div>
     <% end %>
-    <%= link_to 'カートに入っている商品を購入', purchases_path%>
+    <%= link_to 'カートに入っている商品を購入', ccc_path%>
     <%= link_to "お買い物を続ける", products_path %>
       お問い合わせ
   </div>
