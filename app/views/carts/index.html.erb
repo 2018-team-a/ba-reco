@@ -1,28 +1,3 @@
-
-<h2>カートページ</h2>
-
-
-<% current_user.carts.each do |cart| %>
-<%= cart.product.title %>
-<%= cart.sheet_number %>
-<%= cart.product.price %> 円
-
-
-
-
-
-
-<%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
-
-
-<% end %>
-
-
-<%= link_to '購入画面へ', ccc_path %>
-
-<%= link_to "お買い物を続ける", products_path %>
-お問い合わせ
-
 <div class="row text-center" style="padding-top: 150px;padding-bottom: 150px;">
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
@@ -55,9 +30,10 @@
         </div>
       </div>
     <% end %>
-    <%= link_to 'カートに入っている商品を購入', ccc_path%>
-    <%= link_to "お買い物を続ける", products_path %>
-      お問い合わせ
+    <div class="info-box" style="background-color: #ffffff;">
+    <%= link_to '購入ページへ', ccc_path, class:"purchase-button" %>
+    <%= link_to "お買い物を続ける", products_path, class:"back-button" %>
+  </div>
   </div>
   <div class="col-lg-3"></div>
 </div>

@@ -2,7 +2,9 @@ class CartsController < ApplicationController
 
 
 	def index
-		 # @carts = Cart.where(user_id: current_user.id)
+
+	 	 # @carts = Cart.where(user_id: current_user.id)
+
 	end
 
 
@@ -22,7 +24,6 @@ class CartsController < ApplicationController
 
 	def cart_ccc
 		@purchase = current_user.purchases.new
-		
 		@destinations = current_user.destinations
 		@destinations_array = []
 		@destinations.each do |destination|

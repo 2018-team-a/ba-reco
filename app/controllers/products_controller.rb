@@ -13,9 +13,6 @@ class ProductsController < ApplicationController
       @cart = Cart.new
     end
 
-
-
-
 	  def new
 		  @product = Product.new
       render :layout => 'admins'
@@ -26,12 +23,6 @@ class ProductsController < ApplicationController
       @product.save
       redirect_to new_product_path
     end
-
-    def search
-  	  @products = Product.search(params[:search])
-  	  redirect_to products_path
-    end
-
 
 	private
     def product_params
