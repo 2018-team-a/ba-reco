@@ -2,13 +2,50 @@ class CartsController < ApplicationController
 
 
 	def index
-		@cart = Cart.all
+	# 	 @carts = Cart.where(user_id: current_user.id)
 	end
 
-	# def create
-	# 	cart = Cart.new(cart_params)
-	# 	cart.save
-	# 	redirect_to carts_path
+	# def cart_ccc
+	# 	@user = User.find(current_user.id)
+	# 	# @cart = Cart.all
+	# 	binding.pry
+	# 	@carts = Cart.where(user_id: 2)
+	# 	@purchase = @user.purchases.new
+	# 	@destinations = @user.destinations
+
+	# 	@destinations_array = []
+	# 	@destinations.each do |destination|
+	# 		@destinations_array << [destination.destination, destination.id]
+	# 	end
+	# end
+
+	def cart_ccc
+		@purchase = current_user.purchases.new
+		
+		@destinations = current_user.destinations
+		@destinations_array = []
+		@destinations.each do |destination|
+ 		@destinations_array << [destination.destination, destination.id]
+	 	end
+
+	end
+
+	def cart_last
+		puts "aaaaaa"
+			cart = Cart.find(params[:id])
+			purchase = Purchase.new(user_id: current_user.id, destination_id: params[:destination_id])
+			purchases.user_id = current_user.id
+
+			purchases.save
+			cart.destroy
+			redirect_to root_path
+	end
+
+	def destroy
+		cart = Cart.find(params[:id])
+		cart.destroy
+		redirect_to carts_path
+	end
 
 	def add_carts
 		add_cart = Cart.new(cart_params)
@@ -26,8 +63,23 @@ class CartsController < ApplicationController
 			redirect_to carts_path
 	end
 
+
+# ex: def (ここでform受け取って2個の処理をしてtopにredirectさせる)
+# end
+
 	private
+
 		def cart_params
         	params.require(:cart).permit(:product_id, :sheet_number, :user_id)
     	end
+
+    	def cart_last
+        	params.require(:purchase).permit(:destination_id)
+    	end
+
+    	# def cart_ccc
+    	# 	params.require(:user).permit(:user_id)
+    	# end
+
 end
+

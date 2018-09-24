@@ -4,8 +4,8 @@ class Product < ApplicationRecord
     has_many :users, through: :carts
 	has_many :discs
 	has_many :purchases
+  belongs_to :label
 
-    belongs_to :label
 	attachment :image
 
     accepts_nested_attributes_for :discs
