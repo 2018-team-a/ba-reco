@@ -3,7 +3,7 @@ class Product < ApplicationRecord
 	has_many :carts
     has_many :users, through: :carts
 	has_many :discs
-	belongs_to :purchase
+	has_many :purchases
     belongs_to :label
 	attachment :image
 
