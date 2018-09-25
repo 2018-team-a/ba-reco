@@ -39,10 +39,11 @@ class CartsController < ApplicationController
 
 			cart.destroy
 
-			purchase = Purchase.new(user_id: current_user.id, destination_id: params[:destination_id],total_price: params[:total_price],
-				postal_code: 0000000, destination: "目的地", status: "準備中", product_id: 2, sheet_number: 15)
+			purchase = Purchase.new(user_id: current_user.id, destination_id: params[:destination_id],total_price: params[:total_price]
+				, status: params[:status] , product_id: params[:id], sheet_number: )
 
 			purchase.save
+			
 			redirect_to root_path
 	end
 
@@ -79,7 +80,7 @@ class CartsController < ApplicationController
     	end
 
     	def last
-        	params.require(:purchase).permit(:destination_id,:total_price)
+        	params.require(:purchase).permit(:destination_id,)
     	end
 
     	# def cart_ccc

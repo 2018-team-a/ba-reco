@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
   get "carts/cart_ccc" => "carts#cart_ccc", as: "ccc"
-  post "carts/:user_id" => "carts#cart_last", as: "last"
-
+  post "carts/:user_id" => "carts#cart_last", as: "last" 
+  post "carts/purchase_singles" => "carts#cart_single", as:"single"
   namespace :admins do
     resources :products do
       resources :discs do
