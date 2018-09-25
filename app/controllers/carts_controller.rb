@@ -37,6 +37,7 @@ class CartsController < ApplicationController
             purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
             purchase_single.save
 			cart.destroy
+		end
 			redirect_to root_path
 	end
 
