@@ -1,7 +1,31 @@
-<h1>Admins::products#index</h1>
+<%= form_tag admins_products_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+<% end %>
 
-<% @products.each do |f| %>
-<%= f.title %>
-<%end%>
+<h1>Userのインデックスだよ</h1>
 
-<h3><%= link_to "登録ページ", new_admins_product_path %></h3>
+<% @products.each do |product| %>
+<ul>
+  <li>商品名</li>
+  <li><%= product.title %></li>
+  <li>レーベル名</li>
+  <li><%= product.label_id %></li>
+  <li>値段</li>
+  <li><%= product.price %></li>
+  <li>ジェケ写</li>
+  <li><%= attachment_image_tag product, :image, :fill, 50, 50, format: 'jpeg', class: "attachment", fallback: "no_image.jpg" %></li>
+  <li>リリース日</li>
+  <li><%= product.release_date %></li>
+  <li>在庫数</li>
+  <li><%= product.stock_count %></li>
+  <li>収容Disc数</li>
+  <li><%= product.disc_count %></li>
+  <li>商品編集画面</li>
+  <li><%= link_to "edit", edit_product_path(product) %></li>
+</ul>
+<% end %>
+
+<%= paginate @products %>
