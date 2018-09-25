@@ -36,6 +36,8 @@ class CartsController < ApplicationController
             carts.each do |cart|
             purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
             purchase_single.save
+            cart.product.stock_count -= cart.sheet_number
+            cart.product.save
 			cart.destroy
 		end
 			redirect_to root_path
@@ -49,18 +51,29 @@ class CartsController < ApplicationController
 
 	def add_carts
 		add_cart = Cart.new(cart_params)
+		product = Product.find(params[:product_id])
 		 if Cart.exists?(user_id: current_user.id ,product_id: params[:product_id])
 		 	cart = Cart.find_by(user_id: current_user.id ,product_id: params[:product_id])
 		 	cart.sheet_number = cart.sheet_number + add_cart.sheet_number
-		 	cart.save
+		 	if cart.sheet_number < product.stock_count
+		 		cart.save
+		 		redirect_to carts_path
+		 	else
+		 		redirect_to product_path(product)
+		 	end
+
 		else
 		 	# cart = Cart.new(cart_params)
 			add_cart.product_id = params[:product_id]
 			add_cart.user_id = current_user.id
 			# 枚数はパラメーター(ストロングパラメーター)
-			add_cart.save
+			if add_cart.sheet_number < product.stock_count
+		 		add_cart.save
+				redirect_to carts_path
+		 	else
+		 		redirect_to product_path(product)
+		 	end
 		end
-			redirect_to carts_path
 	end
 
 # ex: def (ここでform受け取って2個の処理をしてtopにredirectさせる)
@@ -83,4 +96,3 @@ class CartsController < ApplicationController
     	# end
 
 end
-
