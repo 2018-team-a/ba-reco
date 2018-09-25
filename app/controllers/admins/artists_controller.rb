@@ -7,7 +7,7 @@ class Admins::ArtistsController < ApplicationController
 	def create
 	  artist = Artist.new(artist_params)
 	  artist.save
-	  redirect_to new_admins_artist_path(artist.id)
+	  redirect_to new_admins_artist_path
 	end
 
 	def index

@@ -1,0 +1,13 @@
+<br>
+<br>
+<br>
+<br>
+
+<h1>Admins::Genres#edit</h1>
+
+<h3><%= form_for [:admins, @genre] do |f| %></h3>
+<%= f.text_field :name %>
+<%= f.submit '保存' %>
+<%end%>
+
+<h3><%= link_to '戻る', genre_path(@genre.id) %></h3>

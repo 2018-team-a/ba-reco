@@ -1,0 +1,13 @@
+<br>
+<br>
+<br>
+<br>
+
+<h1>Admins::Genres#new</h1>
+
+<%= form_for [:admins, (@genre)] do |f| %>
+<%= f.text_field :name %>
+<%= f.submit "登録" %>
+<% end %>
+
+<h3><%= link_to "一覧", admins_genres_path %></h3>

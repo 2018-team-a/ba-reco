@@ -15,24 +15,16 @@
 				<th>アーティスト名</th>
 				<th>ジャンル名</th>
 				<th></th>
-				<th></th>
 			</tr>
 			<tr>
 				<td><%= d.id %></td>
 				<td><%= f.text_field :title %></td>
 				<td><%= f.collection_select :artist_id, Artist.all, :id, :name, :prompt => "選択" %></td>
-				<td>
-					<select name="tune[genre_id]">
-						<option>選択</option>
-						<option value="1">J-pop</option>
-						<option value="2">RAP</option>
-						<option value="3">ROCK</option>
-					</select>
-				</td>
+				<td><%= f.collection_select :genre_id, Genre.all, :id, :name, :prompt => "選択" %></td>
 				<td><%= f.submit "Add"%></td>
-				<td>Delete</td>
 			</tr>
 	</table>
 	<%end%>
 <%end%>
 </h4>
+<h4>Top</h4>
