@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     resources :purchases
     resources :admins
     resources :genres
+    resources :labels
   end
 
   devise_for :admins, controllers: {
