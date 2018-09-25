@@ -1,4 +1,4 @@
-class AdminsController < ApplicationController
+class Admins::AdminsController < ApplicationController
   before_action :authenticate_admin!
 
   layout 'admins'
@@ -8,6 +8,9 @@ class AdminsController < ApplicationController
   #   adminx = Admin.search(params[:search])
   #     @admins_search = adminx.page(params[:page]).reverse_order
   # end
+
+  def index
+  end
 
   def top
 

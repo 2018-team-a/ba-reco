@@ -1,5 +1,7 @@
 class Admins::ProductsController < ApplicationController
 
+  layout "admins"
+
   def new
     @product = Product.new
     @product.discs.build
