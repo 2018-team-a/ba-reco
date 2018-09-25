@@ -8,17 +8,15 @@ class Admins::ProductsController < ApplicationController
   def create
     product = Product.new(product_params)
     product.save
+
     product.disc_count.times do |num|
        disc = Disc.new
-       disc.product_id = product.id #productになっているので編集の必要あり
+       disc.product_id = product.id
        disc.save
     end
+
     disc = Disc.find_by(product_id: product.id)
-
-    # book = Book.find_by(title: "dddd")
-
     redirect_to new_admins_product_disc_tune_path(product_id: product.id,disc_id: disc.id)
-    binding.pry
   end
 
   def index

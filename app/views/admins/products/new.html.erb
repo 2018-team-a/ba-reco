@@ -1,25 +1,32 @@
+<br>
+<br>
+<br>
+<br>
 <h1>Admins::Products#new</h1>
 
-<%= form_for [:admins, @product] do |f| %>
+<h4>
+<table border="1">
+  <%= form_for [:admins, @product] do |f| %>
+	<tr>
+		<th>ジャケットイメージ</th>
+		<th>商品名</th>
+		<th>レーベル名</th>
+		<th>値段</th>
+		<th>在庫数</th>
+		<th>ディスク枚数</th>
+		<th></th>
+	</tr>
 
-	<h3>ジャケットイメージ</h3>
-	<%= f.attachment_field :image %>
 
-	<h3>商品名</h3>
-	<%= f.text_field :title %>
-
-	<h3>レーベル名</h3>
-	<%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %>
-
-	<h3>値段</h3>
-    <%= f.text_field :price %>
-
-	<h3>在庫数</h3>
-	<%= f.text_field :stock_count %>
-
-	<h3>ディスク枚数</h3>
-	<%= f.text_field :disc_count %>
-
-    <h4><%= f.submit '登録' %></h4>
-<%end%>
-
+	<tr>
+		<td><%= f.attachment_field :image %></td>
+		<td><%= f.text_field :title %></td>
+		<td><%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %></td>
+		<td><%= f.text_field :price %></td>
+		<td><%= f.text_field :stock_count %></td>
+		<td><%= f.text_field :disc_count %></td>
+		<td><%= f.submit '登録' %></td>
+	</tr>
+  <%end%>
+</table>
+</h4>
