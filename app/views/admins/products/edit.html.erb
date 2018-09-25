@@ -1,32 +1,36 @@
-<br>
-<br>
-<br>
-<br>
-<h1>Admins::Products#edit</h1>
+<h1>商品の編集ページ</h1>
 
-<h4>
-<table border="1">
-  <%= form_for [:admins, @product] do |f| %>
-	<tr>
-		<th>ジャケットイメージ</th>
-		<th>商品名</th>
-		<th>レーベル名</th>
-		<th>値段</th>
-		<th>在庫数</th>
-		<th>ディスク枚数</th>
-		<th></th>
-	</tr>
+<%= form_for [:admins, @product] do |f| %>
+
+  <%= f.label "商品画像" %><br>
+  <%= f.attachment_field :image %><br>
+
+  <%= f.label "商品タイトル" %><br>
+  <%= f.text_field :title %><br>
+
+  <%= f.label "レーベル名" %><br>
+  <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} %><br>
+
+  <%= f.label "値段" %><br>
+  <%= f.text_field :price %><br>
+
+  <%= f.label "リリース日" %><br>
+  <%= f.date_field :release_date %><br>
+
+  <%= f.label "在庫数" %><br>
+  <%= f.number_field :stock_count %><br>
+
+  <%= f.label "収容Disc枚数" %><br>
+  <%= f.number_field :disc_count %><br>
 
 
-	<tr>
-		<td><%= f.attachment_field :image %></td>
-		<td><%= f.text_field :title %></td>
-		<td><%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %></td>
-		<td><%= f.text_field :price %></td>
-		<td><%= f.text_field :stock_count %></td>
-		<td><%= f.text_field :disc_count %></td>
-		<td><%= f.submit '編集完了' %></td>
-	</tr>
-  <%end%>
-</table>
-</h4>
+
+  <%= f.submit '登録' %>
+
+<% end %>
+
+<h2>収録ディスク内容の編集</h2>
+
+<% @product.discs.each do |a| %>
+  <%= link_to "Disc_id#{a.id}", edit_admins_disc_path(a.id), class: "aaa"  %><br>
+<% end %>

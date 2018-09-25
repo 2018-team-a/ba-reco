@@ -9,7 +9,7 @@ class Admins::LabelsController < ApplicationController
   def create
     label = Label.new(label_params)
     label.save
-    redirect_to labels_path
+    redirect_to admins_labels_path
   end
 
   def index

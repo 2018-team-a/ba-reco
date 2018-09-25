@@ -1,5 +1,7 @@
 class Admins::DiscsController < ApplicationController
 
+  layout "admins"
+
   def new
     # .allではない　回数分を表示する
     binding.pry
@@ -23,12 +25,13 @@ class Admins::DiscsController < ApplicationController
 
   def edit
     @disc = Disc.find(params[:id])
+    @disc.tunes.build
   end
 
   def update
     disc = Disc.find(params[:id])
-    disc.update(disc_params)
-    redirect_to disc_path(disc.id)
+    disc.update(disc_params2)
+    redirect_to edit_admins_disc_path(disc.id)
   end
 
   def destroy
@@ -40,5 +43,19 @@ class Admins::DiscsController < ApplicationController
   private
   def disc_params
     params.require(:disc).permit(:product_id)
+  end
+  def disc_params2
+      params.require(:disc)
+        .permit(
+          :id,
+          tunes_attributes: [
+            :id,
+            :title,
+            :artist_id,
+            :genre_id,
+            :disc_id,
+            :_destroy
+            ]
+        )
   end
 end
