@@ -1,0 +1,12 @@
+<br>
+<br>
+<br>
+<br>
+
+<h1>Admins::Genres#index</h1>
+
+<% @genres.each do |f| %>
+<%= link_to f.name, admins_genre_path(f.id) %>
+<%end%>
+
+<h3><%= link_to "登録ページ", new_admins_genre_path %></h3>
