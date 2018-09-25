@@ -37,7 +37,6 @@ class CartsController < ApplicationController
             purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
             purchase_single.save
 			cart.destroy
-		end
 			redirect_to root_path
 	end
 
@@ -72,7 +71,6 @@ class CartsController < ApplicationController
 		def cart_params
         	params.require(:cart).permit(:product_id, :sheet_number, :user_id)
     	end
-
     	def purchase_params
         	params.require(:purchase).permit(:destination_id, :status, :user_id, :total_price)
     	end
