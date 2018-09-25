@@ -14,10 +14,8 @@ Rails.application.routes.draw do
     resources :purchases
     resources :admins
     resources :genres
+    resources :labels
   end
-
-
-
 
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
@@ -34,7 +32,6 @@ Rails.application.routes.draw do
   post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
   root to: 'products#index'
 
-  get 'admins/top' => 'admins#top', as: :admins_top
   get 'admins/' => 'admins#index', as: :admins
 
   resource :admins do
@@ -56,6 +53,5 @@ Rails.application.routes.draw do
 
   # resources :discs
   resources :tunes
-  resources :labels
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -1,5 +1,7 @@
 class Admins::ArtistsController < ApplicationController
 
+	layout "admins"
+
 	def new
 	  @artist = Artist.new
 	end
