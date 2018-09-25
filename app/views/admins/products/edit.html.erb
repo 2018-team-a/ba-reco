@@ -4,18 +4,29 @@
 <br>
 <h1>Admins::Products#edit</h1>
 
+<h4>
 <table border="1">
+  <%= form_for [:admins, @product] do |f| %>
 	<tr>
-		<th></th>
-		<th></th>
-		<th></th>
+		<th>ジャケットイメージ</th>
+		<th>商品名</th>
+		<th>レーベル名</th>
+		<th>値段</th>
+		<th>在庫数</th>
+		<th>ディスク枚数</th>
 		<th></th>
 	</tr>
-	<tr>
-		<td></td>
-		<td></td>
-		<td></td>
-		<td></td>
-	</tr>
-</table>
 
+
+	<tr>
+		<td><%= f.attachment_field :image %></td>
+		<td><%= f.text_field :title %></td>
+		<td><%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %></td>
+		<td><%= f.text_field :price %></td>
+		<td><%= f.text_field :stock_count %></td>
+		<td><%= f.text_field :disc_count %></td>
+		<td><%= f.submit '編集完了' %></td>
+	</tr>
+  <%end%>
+</table>
+</h4>

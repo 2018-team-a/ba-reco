@@ -35,6 +35,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def update
+    product = Product.find(params[:id])
+    product.update
+    redirect_to
   end
 
   def destroy
