@@ -36,7 +36,6 @@ class CartsController < ApplicationController
             carts.each do |cart|
             purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
             purchase_single.save
-
             cart.product.stock_count -= cart.sheet_number
             cart.product.save
 			cart.destroy
@@ -97,4 +96,3 @@ class CartsController < ApplicationController
     	# end
 
 end
-
