@@ -1,14 +1,9 @@
-<br>
-<br>
-<br>
-<br>
-
 <h1>Admins::Genres#show</h1>
 
 <h3><%= @genre.name %></h3>
 
 <h3><%= link_to "一覧", genres_path %></h3>
 
-<h3><%= link_to "編集", edit_genre_path(@genre.id) %></h3>
+<h3><%= link_to "編集", edit_admins_genre_path(@genre.id) %></h3>
 
 <h3><%= link_to "削除", genre_path(@genre.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></h3>

@@ -2,9 +2,9 @@
 
 <h1>Labels#new</h1>
 
-<%= form_for (@label) do |f| %>
+<%= form_for [:admins, (@label)] do |f| %>
 <%= f.text_field :name %>
 <%= f.submit "登録" %>
 <% end %>
 
-<h3><%= link_to "一覧", labels_path %></h3>
+<h3><%= link_to "一覧", admins_labels_path %></h3>
