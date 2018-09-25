@@ -1,1 +1,10 @@
-<h1>アドミンのインデックスだよ</h1>
+<h1>管理者のインデックスページだよ</h1>
+<nav>
+  <ul>
+    <li><%= link_to "会員の一覧", admins_users_path, class: "aaa" %></li>
+    <li><%= link_to "アーティストの登録", "#", class: "aaa" %></li>
+    <li><%= link_to "商品の登録", "#", class: "aaa" %></li>
+    <li><%= link_to "商品の一覧", admins_products_path, class: "aaa" %></li>
+    <li><%= link_to "購入履歴", admins_purchases_path, class: "aaa" %></li>
+  </ul>
+</nav>

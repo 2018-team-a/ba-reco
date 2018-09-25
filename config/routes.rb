@@ -16,9 +16,6 @@ Rails.application.routes.draw do
     resources :genres
   end
 
-
-
-
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
       passwords:     'admins/passwords',
@@ -34,7 +31,6 @@ Rails.application.routes.draw do
   post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
   root to: 'products#index'
 
-  get 'admins/top' => 'admins#top', as: :admins_top
   get 'admins/' => 'admins#index', as: :admins
 
   resource :admins do
