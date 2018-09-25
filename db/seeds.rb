@@ -65,3 +65,10 @@ Tune.create(:title => "曲5", :artist_id => 1, :genre_id => 2, :disc_id => 2, :t
 # Tune.create(:title => "曲24", :artist_id => 1, :genre_id => 1, :disc_id => 9, :track_number => 1 )
 # Tune.create(:title => "曲25", :artist_id => 5, :genre_id => 1, :disc_id => 9, :track_number => 2 )
 # Tune.create(:title => "曲26", :artist_id => 5, :genre_id => 1, :disc_id => 9, :track_number => 3 )
+
+
+Purchase.create(:user_id => 1, :status => 1, :total_price => 10000, :destination_id => 1, :product_id => 1, :sheet_number => 1 )
+Purchase.create(:user_id => 1, :status => 1, :total_price => 20000, :destination_id => 1, :product_id => 1, :sheet_number => 1 )
+Purchase.create(:user_id => 1, :status => 1, :total_price => 30000, :destination_id => 1, :product_id => 1, :sheet_number => 1 )
+Purchase.create(:user_id => 1, :status => 1, :total_price => 40000, :destination_id => 1, :product_id => 1, :sheet_number => 1 )
+Purchase.create(:user_id => 1, :status => 1, :total_price => 50000, :destination_id => 1, :product_id => 1, :sheet_number => 1 )
