@@ -1,18 +1,38 @@
+<!-- @discs = Disc.all -->
+<br>
+<br>
+<br>
+<br>
 <h1>Admins::Tunes#new</h1>
 
-<% @discs.each do |disc| %>
-	<%= form_for @tune, url: admins_product_disc_tunes_path(product_id: @product.id, disc_id: disc) do |f| %>
-		<h3>曲名</h3>
-		<%= f.text_field :title %>
-
-		<h3>アーティスト名</h3>
-		<%= f.collection_select :artist_id, Artist.all, :id, :name, :prompt => "選択" %>
-
-		<h3>ジャンル名</h3>
-		<%= f.text_field :genre_id %>
-		<%= f.submit "submit"%>
-
-		<h3>---------</h3>
+<h4>
+<% @discs.each do |d| %>
+	<%= form_for @tune, url: admins_product_disc_tunes_path(product_id: @product.id, disc_id: d) do |f| %>
+	<table border="1">
+			<tr>
+				<th>Discのid</th>
+				<th>曲名</th>
+				<th>アーティスト名</th>
+				<th>ジャンル名</th>
+				<th></th>
+				<th></th>
+			</tr>
+			<tr>
+				<td><%= d.id %></td>
+				<td><%= f.text_field :title %></td>
+				<td><%= f.collection_select :artist_id, Artist.all, :id, :name, :prompt => "選択" %></td>
+				<td>
+					<select name="tune[genre_id]">
+						<option>選択</option>
+						<option value="1">J-pop</option>
+						<option value="2">RAP</option>
+						<option value="3">ROCK</option>
+					</select>
+				</td>
+				<td><%= f.submit "Add"%></td>
+				<td>Delete</td>
+			</tr>
+	</table>
 	<%end%>
-<% end %>
-<!-- @discs = Disc.all -->
+<%end%>
+</h4>

@@ -1,17 +1,20 @@
 class Admins::TunesController < ApplicationController
 
   def new
-    #フォームをdisc_countの値分、作成する
   	@tune = Tune.new
     @product = Product.find(params[:product_id])
     @discs = @product.discs
   end
 
   def create
-  	# tune = Tune.new(tune_params)
-  	# tune.save
-  	# redirect_to new_admins_product_disc_tune_path(product.id, disc.id)
+  	tune = Tune.new(disc_id: params[:disc_id], artist_id: params["tune"]["artist_id"], title: params["tune"]["title"], genre_id: params["tune"]["genre_id"])
+    product = Product.find(params[:product_id])
+    disc = Disc.find(params[:disc_id])
+    tune.save
+  	redirect_to new_admins_product_disc_tune_path(product_id: product.id, disc_id: disc.id)
   end
+
+
 
   def index
   end
@@ -25,8 +28,9 @@ class Admins::TunesController < ApplicationController
   def update
   end
 
+
   private
   def tune_params
-    params.require(:tune).permit(:title, :artist_id, :genre_id, :disc_id)
+    params.require(:tune).permit(:title, :artist_id, :genre_id)
   end
 end
