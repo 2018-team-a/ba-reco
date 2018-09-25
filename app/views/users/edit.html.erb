@@ -4,72 +4,77 @@
 <h1>Userの詳細、編集ページだよ</h1>
 
 <%= nested_form_for @user do |f| %>
-
+<table class="table-box">
+  <tr>
   <div class="field">
-    <label for="user_name_family_name">name_family_name</label>
-    <br>
-    <%= f.text_field :name_family_name, class: "name_family_name" %>
+    <td><label for="user_name_family_name">name_family_name</label></td>
+    <td><%= f.text_field :name_family_name, class: "name_family_name" %></td>
   </div>
   <div class="field">
-    <label for="user_name_name">name_name</label>
-    <br>
-    <%= f.text_field :name_name, class: "name_name" %>
+    <td><label for="user_name_name">name_name</label></td>
+    <td><%= f.text_field :name_name, class: "name_name" %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <label for="user_furigana_family_name">furigana_family_name</label>
-    <br>
-    <%= f.text_field :furigana_family_name, class: "furigana_family_name" %>
-  </div>
+    <td><label for="user_furigana_family_name">furigana_family_name</label></td>
+    <td><%= f.text_field :furigana_family_name, class: "furigana_family_name" %></td>
   <div class="field">
-    <label for="user_furigana_name">furigana_name</label>
-    <br>
-    <%= f.text_field :furigana_name, class: "furigana_name" %>
+    <td><label for="user_furigana_name">furigana_name</label></td>
+    <td><%= f.text_field :furigana_name, class: "furigana_name" %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <label for="postal_code">postal_code</label>
-    <br>
-    <%= f.text_field :postal_code, class: "postal_code" %>
+    <td><label for="postal_code">postal_code</label></td>
+    <td><%= f.text_field :postal_code, class: "postal_code" %></td>
   </div>
+  </tr>
+  <tr>
   <div class="address">
-    <label for="address">address</label>
-    <br>
-    <%= f.text_field :address, class: "address" %>
+    <td><label for="address">address</label></td>
+    <td><%= f.text_field :address, class: "address" %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <label for="phone_number">phone_number</label>
-    <br>
-    <%= f.text_field :phone_number, class: "phone_number" %>
+    <td><label for="phone_number">phone_number</label></td>
+    <td><%= f.text_field :phone_number, class: "phone_number" %></td>
   </div>
+  </tr>
+  <tr>
   <div class="field">
-    <label for="email">email</label>
-    <br>
-    <%= f.text_field :email, class: "email" %>
+    <td><label for="email">email</label></td>
+    <td><%= f.text_field :email, class: "email" %></td>
   </div>
-
+  </tr>
     <%= f.fields_for :destinations do |df| %>
+    <tr>
       <div class="postal_code">
-        <label for="postal_code">postal_code</label>
-        <br>
-        <%= df.text_field :postal_code, class: "postal_code" %>
+        <td><label for="postal_code">postal_code</label></td>
+        <td><%= df.text_field :postal_code, class: "postal_code" %></td>
       </div>
-
+    </tr>
+    <tr>
       <div class="destination">
-        <label for="destination">destination</label>
-        <br>
-        <%= df.text_field :destination, class: "destination" %>
+        <td><label for="destination">destination</label></td>
+        <td><%= df.text_field :destination, class: "destination" %></td>
       </div>
-
+    </tr>
       <% if @user.persisted? %>
-        <%= df.check_box :_destroy %>
-        <%= df.label :_destroy, "削除" %><br />
+      <tr>
+        <td><%= df.check_box :_destroy %></td>
+        <td><%= df.label :_destroy, "削除" %></td>
+      </tr>
       <% end %>
 
     <% end %>
-
+  <tr>
   <div class="actions">
-    <%= f.submit %>
+    <td><%= f.submit %></td>
   </div>
-
+  </tr>
+</table>
 <% end %>
 </div>
 <div class="col-lg-3"></div>
