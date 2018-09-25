@@ -15,7 +15,7 @@
 	<% end %>
 	<%= @price %>
 
-<%= form_for (@purchase), url:single_path(user_id: current_user.id,total_price: @price, destination_id: current_user.destination_id, status: "準備中",product_id: current_user.cart.product_id,sheet_number: ) do |f| %>
+<%= form_for (@purchase), url:single_path(user_id: current_user.id,total_price: @price) do |f| %>
 
 	<%= f.select :destination_id, @destinations_array %>
 	<%= f.submit "購入する"  %>
