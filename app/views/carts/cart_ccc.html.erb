@@ -1,18 +1,23 @@
-<h1>購入確定画面</h1>
+<h1 style="padding-top: 200px;">購入確定画面</h1>
 
 <% if current_user.carts.nil? %>
 	<p>中身が存在しません</p>
 <% else %>
+	<% @price = 0 %>
 	<% current_user.carts.each do |cart| %>
-	<%= cart.product.title %>
-	<%= cart.sheet_number %>
-	<%= cart.product.price %> 円
+	Title：<%= cart.product.title %><br>
+	購入枚数：<%= cart.sheet_number %>枚 <br>
+	値段：<%= cart.product.price %> 円 <br>
 
-	合計<%= cart.product.price * cart.sheet_number %>円
+	合計：<%= cart.product.price * cart.sheet_number %>円 <br>
+	<% total_price = cart.product.price * cart.sheet_number %>
+	<% @price += total_price %>
 	<% end %>
+	<%= @price %>
 
-<%= form_for (@purchase), url:cart_last_path(user_id: current_user.id) do |f| %>
-<%= f.select :destination_id, @destinations_array %>
-<%= f.submit "購入する"  %>
+<%= form_for (@purchase), url:single_path(user_id: current_user.id,total_price: @price) do |f| %>
+
+	<%= f.select :destination_id, @destinations_array %>
+	<%= f.submit "購入する"  %>
 <% end %>
 <% end %>

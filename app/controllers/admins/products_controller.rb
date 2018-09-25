@@ -1,5 +1,7 @@
 class Admins::ProductsController < ApplicationController
 
+  layout "admins"
+
   def new
     @product = Product.new
     @product.discs.build
@@ -20,7 +22,8 @@ class Admins::ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    productx = Product.search(params[:search])
+    @products = productx.page(params[:page]).reverse_order
   end
 
   def show
