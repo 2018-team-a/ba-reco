@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       end
     end
     resources :artists
+    resources :purchases
   end
 
 
