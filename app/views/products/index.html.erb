@@ -2,10 +2,12 @@
 <% if !url.include?("search") %>
 <%= render 'products/top' %>
 <% end %>
-
 <div class="row" style="padding-top: 150px">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
+<% if flash[:notice] %>
+  <p><%= flash[:notice] %></p>
+<% end %>
 
 <% if @products.empty? %>
 <h2 class="text-center">一致する商品がありません！</h2>
@@ -14,11 +16,11 @@
 <div class="info-box" style="background-color: #ffffff;">
   <div class="info-image">
 <!--   <%= link_to product_path(product.id) do %>
-	  <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg', fallback: "no_image.jpg" %>
+    <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg', fallback: "no_image.jpg" %>
   <% end %> -->
   </div>
   <div class="index-info-title">
-	<%= link_to product.title, product_path(product.id) %>
+  <%= link_to product.title, product_path(product.id) %>
   </div>
   <div class="index-info-price">
     <%= product.price %>円
@@ -27,8 +29,8 @@
   <% product.discs.each do |disc| %>
     <% disc.tunes.each do |tune| %>
       <% a.push(tune.artist.name) %>
-		<% end %>
-	<% end %>
+    <% end %>
+  <% end %>
     <div class="index-info-artist">
     <%= a.max_by { |v| a.count(v)} %>
     </div>
