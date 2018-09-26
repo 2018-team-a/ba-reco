@@ -2,7 +2,15 @@ class CartsController < ApplicationController
 
 
 	def index
-	 	 # @carts = Cart.where(user_id: current_user.id)
+
+	 	 #@carts = Cart.where(user_id: current_user.id)
+
+	end
+
+	def update
+		carts = Cart.find(params[:id])
+		carts.update(cart_params)
+		redirect_to carts_path
 	end
 
 	# def cart_ccc
@@ -20,27 +28,36 @@ class CartsController < ApplicationController
 	# end
 
 	def cart_ccc
+		if current_user.carts.present?
 		@purchase = current_user.purchases.new
 		@destinations = current_user.destinations
-		@destinations_array = []
-		@destinations.each do |destination|
- 		@destinations_array << [destination.destination, destination.id]
+			if @destinations.present?
+				@destinations_array = []
+				@destinations.each do |destination|
+	 			@destinations_array << [destination.destination, destination.id]
+	 				end
+			else
+				@destinations_array = []
+				@destinations_array << [current_user.address,current_user.address]
+			end
+		else
+			redirect_to root_path
 	 	end
 
 	end
 
 	def cart_last
-			carts = Cart.where(params[:id])
-			purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination_id: purchase_params[:destination_id], status: "準備中")
-            purchase.save
-            carts.each do |cart|
-            purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
-            purchase_single.save
-            cart.product.stock_count -= cart.sheet_number
-            cart.product.save
-			cart.destroy
+		carts = Cart.where(params[:id])
+		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination_id: purchase_params[:destination_id], status: "準備中")
+        purchase.save
+        carts.each do |cart|
+        purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
+        purchase_single.save
+        cart.product.stock_count -= cart.sheet_number
+        cart.product.save
+		cart.destroy
 		end
-			redirect_to root_path
+		redirect_to root_path :notice =>"お買い上げありがとうございます"
 	end
 
 	def destroy
@@ -76,8 +93,7 @@ class CartsController < ApplicationController
 		end
 	end
 
-# ex: def (ここでform受け取って2個の処理をしてtopにredirectさせる)
-# end
+
 
 	private
 	    # cart_params[]
@@ -85,9 +101,11 @@ class CartsController < ApplicationController
 		def cart_params
         	params.require(:cart).permit(:product_id, :sheet_number, :user_id)
     	end
+
     	def purchase_params
         	params.require(:purchase).permit(:destination_id, :status, :user_id, :total_price)
     	end
+
     	def purchase_single_params
             params.require(:purchase_single).permit(:purchase_id, :product_id, :sheet_numer)
     	end
