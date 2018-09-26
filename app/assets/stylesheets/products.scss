@@ -4,97 +4,88 @@
 .top-image-box{
 	height: 850px;
 	width: 100%;
-	background-color: #000000;
+	background-color: black;
 	position: relative;
+    z-index: 0;
 }
 .image-box1{
-    height: 200px;
-    width: 200px;
-    background-color: #ffffff;
+    height: 400px;
+    width: 400px;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 1;
 }
 .image-box2{
-    height: 200px;
-    width: 200px;
-    background-color: #ffff00;
+    height: 600px;
+    width: 600px;
     position: absolute;
     bottom: 0;
     left: 0;
     z-index: 2;
 }
 .image-box3{
-    height: 200px;
-    width: 200px;
-    background-color: #ff00ff;
+    height: 650px;
+    width: 650px;
     position: absolute;
     top: 0;
     right: 0;
     z-index: 3;
 }
 .image-box4{
-    height: 200px;
-    width: 200px;
-    background-color: #00ffff;
+    height: 550px;
+    width: 550px;
     position: absolute;
     bottom: 0;
     right: 0;
     z-index: 4;
 }
 .image-box5{
-    height: 200px;
-    width: 200px;
-    background-color: #ff0000;
+    height: 500px;
+    width: 500px;
     position: absolute;
-    top: 400px;
-    left: 0;
+    top: 200px;
+    left: 300px;
     z-index: 5;
 }
 .image-box6{
-    height: 200px;
-    width: 200px;
-    background-color: #666666;
+    height: 450px;
+    width: 450px;
     position: absolute;
     top: 0;
-    left: 400px;
+    left: 100px;
     z-index: 6;
 }
 .image-box7{
-    height: 200px;
-    width: 200px;
-    background-color: #aaaaaa;
+    height: 300px;
+    width: 300px;
     position: absolute;
-    top: 400px;
-    left: 400px;
+    bottom: 0;
+    left: 500px;
     z-index: 7;
 }
 .image-box8{
     height: 200px;
     width: 200px;
-    background-color: #cccccc;
     position: absolute;
-    top: 0;
+    top: 300px;
     left: 800px;
     z-index: 8;
 }
 .image-box9{
-    height: 200px;
-    width: 200px;
-    background-color: #123456;
+    height: 400px;
+    width: 400px;
     position: absolute;
-    top: 400px;
-    left: 800px;
+    top: 0;
+    left: 500px;
     z-index: 9;
 }
 .image-box10{
-    height: 200px;
-    width: 200px;
-    background-color: #777777;
+    height: 350px;
+    width: 350px;
     position: absolute;
-    top: 600px;
-    right: 0;
+    bottom: 0;
+    left: 700px;
     z-index: 10;
 }
 .info-box{
@@ -109,7 +100,6 @@
 	position: absolute;
 	top: 0;
 	left: 0;
-	background-color: red;
 }
 .index-info-title{
 	position: absolute;
@@ -175,4 +165,19 @@
 	border: solid;
 	margin-top: 20px;
 	background-color: #ffffff;
+}
+.image1{
+    height: 100%;
+    width: 100%;
+    background-color: red;
+}
+.image2{
+    height: 100%;
+    width: 100%;
+    background-color: blue;
+}
+.image3{
+    height: 100%;
+    width: 100%;
+    background-color: yellow;
 }

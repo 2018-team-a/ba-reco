@@ -17,6 +17,7 @@ class Admins::ArtistsController < ApplicationController
 	def create
 	  @artist = Artist.new(artist_params)
 	  if @artist.save
+
 			flash[:notice] = "successfully"
 	  	redirect_to new_admins_artist_path
 		else
@@ -31,7 +32,9 @@ class Admins::ArtistsController < ApplicationController
 	def update
 	  @artist = Artist.find(params[:id])
 	  if @artist.update(artist_params)
+
 			flash[:notice] = "successfully"
+
 	  	redirect_to admins_artist_path(@artist.id)
 		else
 			render :edit

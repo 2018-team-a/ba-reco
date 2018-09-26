@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
+
 $(function(){
 		$(window).scroll(function() {
 		if ($(this).scrollTop() > 200) {

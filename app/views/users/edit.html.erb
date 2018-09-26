@@ -1,80 +1,130 @@
 <div class="row text-center" style="padding-top: 150px;padding-bottom: 100px;">
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
-<h1>Userの詳細、編集ページだよ</h1>
 
+<% r = 1 %>
+<h3 class="text-left">購入履歴</h3>
+<table class="his-table-box">
+  <tr>
+    <th>購入日</th>
+    <th>合計金額</th>
+    <th>配送状況</th>
+  </tr>
+  <% current_user.purchases.each do |purchase| %>
+  <tr>
+    <td><%= purchase.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= purchase.total_price %>円</td>
+    <td><%= purchase.status %></td>
+    <td><button class="show-button<%= r %>">詳細</button></td>
+    <td>
+      <table>
+        <tr>
+          <td class="show-info<%= r %>" style="display: none;">title</td>
+          <td class="show-info<%= r %>" style="display: none;">枚数</td>
+        </tr>
+          <% purchase.purchase_singles.each do |purchase_single| %>
+         <tr>
+          <td class="show-info<%= r %>" style="display: none;">
+            <%= link_to purchase_single.product.title, product_path(purchase_single.product.id) %>
+          </td>
+          <td class="show-info<%= r %>" style="display: none;">
+            <%= purchase_single.sheet_number %>
+          </td>
+          </tr>
+          <% end %>
+        </table>
+    </td>
+  </tr>
+  <script>
+  $(function() {
+        $('.show-button<%= r %>').click(function(){
+        $('.show-info<%= r %>').toggle();
+    });
+  });
+  </script>
+  <% r += 1 %>
+<% end %>
+</table>
+
+
+
+
+<h3 class="text-left">ユーザー情報編集</h3>
 <%= nested_form_for @user do |f| %>
-<table class="table-box">
+<table class="table-box user-edit-box">
   <tr>
   <div class="field">
-    <td><label for="user_name_family_name">name_family_name</label></td>
-    <td><%= f.text_field :name_family_name, class: "name_family_name" %></td>
+    <td class="text-right"><label>名前(名字、名前別)</label></td>
+    <td class="text-left"><%= f.text_field :name_family_name, class: "name_family_name" %></td>
   </div>
   <div class="field">
-    <td><label for="user_name_name">name_name</label></td>
-    <td><%= f.text_field :name_name, class: "name_name" %></td>
-  </div>
-  </tr>
-  <tr>
-  <div class="field">
-    <td><label for="user_furigana_family_name">furigana_family_name</label></td>
-    <td><%= f.text_field :furigana_family_name, class: "furigana_family_name" %></td>
-  <div class="field">
-    <td><label for="user_furigana_name">furigana_name</label></td>
-    <td><%= f.text_field :furigana_name, class: "furigana_name" %></td>
+    <td class="text-left"><%= f.text_field :name_name, class: "name_name" %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><label for="postal_code">postal_code</label></td>
-    <td><%= f.text_field :postal_code, class: "postal_code" %></td>
+    <td class="text-right"><label for="user_furigana_family_name">フリガナ(名字、名前別)</label></td>
+    <td class="text-left"><%= f.text_field :furigana_family_name, class: "furigana_family_name" %></td>
+  <div class="field">
+    <td class="text-left"><%= f.text_field :furigana_name, class: "furigana_name" %></td>
+  </div>
+  </tr>
+  <tr>
+  <div class="field">
+    <td class="text-right"><label for="postal_code">郵便番号</label></td>
+    <td class="text-left" colspan="2"><%= f.text_field :postal_code, class: "postal_code", onKeyUp: "AjaxZip3.zip2addr(this,'','user[address]','user[address]');" %></td>
   </div>
   </tr>
   <tr>
   <div class="address">
-    <td><label for="address">address</label></td>
-    <td><%= f.text_field :address, class: "address" %></td>
+    <td class="text-right"><label for="address">住所</label></td>
+    <td class="text-left" colspan="2"><%= f.text_field :address, name: "user[address]", class: "address", :size => "60" %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><label for="phone_number">phone_number</label></td>
-    <td><%= f.text_field :phone_number, class: "phone_number" %></td>
+    <td class="text-right"><label for="phone_number">電話番号</label></td>
+    <td class="text-left" colspan="2"><%= f.text_field :phone_number, class: "phone_number" %></td>
   </div>
   </tr>
   <tr>
   <div class="field">
-    <td><label for="email">email</label></td>
-    <td><%= f.text_field :email, class: "email" %></td>
+    <td class="text-right"><label for="email">email</label></td>
+    <td class="text-left" colspan="2"><%= f.text_field :email, class: "email", :size => "60" %></td>
   </div>
   </tr>
+  </table>
+    <h3 class="text-left">送付先登録</h3>
     <%= f.fields_for :destinations do |df| %>
+    <table class="table-box dest-box">
     <tr>
       <div class="postal_code">
-        <td><label for="postal_code">postal_code</label></td>
-        <td><%= df.text_field :postal_code, class: "postal_code" %></td>
+        <td class="text-right"><label for="postal_code">郵便番号</label></td>
+        <td class="text-left" colspan="2"><%= df.text_field :postal_code, class: "postal_code" %></td>
       </div>
     </tr>
     <tr>
       <div class="destination">
-        <td><label for="destination">destination</label></td>
-        <td><%= df.text_field :destination, class: "destination" %></td>
+        <td class="text-right"><label for="destination">送付先住所</label></td>
+        <td class="text-left" colspan="2">
+          <%= df.text_field :destination, class: "destination", :size => "60" %>
+        </td>
       </div>
     </tr>
       <% if @user.persisted? %>
       <tr>
-        <td><%= df.check_box :_destroy %></td>
-        <td><%= df.label :_destroy, "削除" %></td>
+        <td class="text-right"><%= df.label :_destroy, "送付先削除" %></td>
+        <td class="text-left"><%= df.check_box :_destroy %></td>
+
       </tr>
       <% end %>
 
     <% end %>
-  <tr>
-  <div class="actions">
-    <td><%= f.submit %></td>
+  </table>
+  <div class="action text-left" style="padding-top: 50px;">
+    <%= f.submit "情報更新" %>
   </div>
-  </tr>
-</table>
+
 <% end %>
 </div>
 <div class="col-lg-3"></div>

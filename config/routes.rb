@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get "carts/cart_ccc" => "carts#cart_ccc", as: "ccc"
-  post "carts/:user_id" => "carts#cart_last", as: "last"
+  post "carts/:user_id/:total_price" => "carts#cart_last", as: "last"
   post "carts/purchase_singles" => "carts#cart_single", as:"single"
 
   namespace :admins do
@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :carts, only: [:index, :destroy]
+  resources :carts, only: [:index, :destroy, :update]
   resources :purchases
   resources :destinations
   resources :products do

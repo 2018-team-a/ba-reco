@@ -1,5 +1,20 @@
 <h1>Admins::Products#show</h1>
 
-<%= form_for (@product) do |f| %>
-<%= attachment_image_tag f, :image, :fill, 100, 100, format: 'jpeg' %>
-<%end%>
+<ul>
+  <li>商品名</li>
+  <li><%= @product.title %></li>
+  <li>レーベル名</li>
+  <li><%= @product.label_id %></li>
+  <li>値段</li>
+  <li><%= @product.price %></li>
+  <li>ジェケ写</li>
+  <li><%= attachment_image_tag @product, :image, :fill, 50, 50, format: 'jpeg', class: "attachment", fallback: "no_image.jpg" %></li>
+  <li>リリース日</li>
+  <li><%= @product.release_date %></li>
+  <li>在庫数</li>
+  <li><%= @product.stock_count %></li>
+  <li>収容Disc数</li>
+  <li><%= @product.disc_count %></li>
+  <li>商品編集画面</li>
+  <li><%= link_to "edit", edit_admins_product_path(@product) %></li>
+</ul>
