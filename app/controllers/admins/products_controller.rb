@@ -34,9 +34,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def update
-    product = Product.find(params[:id])
-    product.update
-    redirect_to
+    @product = Product.find(params[:id])
+    @product.update(product_params)
+    redirect_to admins_product_path
   end
 
   def destroy
@@ -44,7 +44,7 @@ class Admins::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:image_id, :title, :label_id, :price, :release_date, :stock_count, :disc_count, :disc,
+    params.require(:product).permit(:image, :title, :label_id, :price, :release_date, :stock_count, :disc_count, :disc,
     discs_attributes: [:id, :disc_id, :_destroy] )
   end
 end

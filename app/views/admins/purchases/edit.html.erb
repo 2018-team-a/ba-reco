@@ -1,0 +1,30 @@
+<h1>購入履歴の編集</h1>
+
+<h1>商品の編集ページ</h1>
+
+<ul>
+  <li>購入者 id</li>
+  <li><%= @purchase.id %></li>
+  <li>購入者 苗字</li>
+  <li><%= @purchase.user.name_family_name %></li>
+  <li>購入者 名前</li>
+  <li><%= @purchase.user.name_name %></li>
+  <li>苗字（カナ）</li>
+  <li><%= @purchase.user.furigana_family_name %></li>
+  <li>名前（カナ）</li>
+  <li><%= @purchase.user.furigana_name %></li>
+
+
+  <li>会計金額</li>
+  <li><%= @purchase.total_price %></li>
+</ul>
+
+
+<%= form_for [:admins, @purchase] do |f| %>
+
+  <%= f.label "ステータス" %><br>
+  <%= f.select :status, Purchase.statuses.keys.to_a, {} %>
+
+  <%= f.submit '登録' %>
+
+<% end %>

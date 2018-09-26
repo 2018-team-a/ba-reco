@@ -2,16 +2,6 @@ class Admins::ArtistsController < ApplicationController
 
 	layout "admins"
 
-	def new
-	  @artist = Artist.new
-	end
-
-	def create
-	  artist = Artist.new(artist_params)
-	  artist.save
-	  redirect_to new_admins_artist_path
-	end
-
 	def index
 	  @artists = Artist.all
 	end
@@ -20,14 +10,33 @@ class Admins::ArtistsController < ApplicationController
 	  @artist = Artist.find(params[:id])
 	end
 
+	def new
+	  @artist = Artist.new
+	end
+
+	def create
+	  @artist = Artist.new(artist_params)
+	  if @artist.save
+			flash[:notice] = "アーティスト登録完了"
+		  redirect_to new_admins_artist_path
+		else
+			@artists = Artist.all
+			render :new
+		end
+	end
+
 	def edit
 	  @artist = Artist.find(params[:id])
 	end
 
 	def update
-	  artist = Artist.find(params[:id])
-	  artist.update(artist_params)
-	  redirect_to artist_path(artist.id)
+	  @artist = Artist.find(params[:id])
+	  if @artist.update(artist_params)
+			flash[:notice] = "アーティスト登録完了"
+	  	redirect_to admins_artist_path(@artist.id)
+		else
+			render :edit
+		end
 	end
 
 	def destroy
