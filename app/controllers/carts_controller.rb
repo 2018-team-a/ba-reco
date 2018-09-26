@@ -78,11 +78,11 @@ class CartsController < ApplicationController
 				 if Cart.exists?(user_id: current_user.id ,product_id: params[:product_id])
 				 	cart = Cart.find_by(user_id: current_user.id ,product_id: params[:product_id])
 				 	cart.sheet_number = cart.sheet_number + add_cart.sheet_number
-				 	if cart.sheet_number < product.stock_count
+				 	if cart.sheet_number <= product.stock_count
 				 		cart.save
 				 		redirect_to carts_path
 				 	else
-				 		redirect_to product_path(product)
+				 		redirect_to product_path(product), notice: "在庫は#{product.stock_count}枚だよ！"
 				 	end
 
 				else
@@ -94,7 +94,7 @@ class CartsController < ApplicationController
 				 		add_cart.save
 						redirect_to carts_path
 				 	else
-				 		redirect_to product_path(product)
+				 		redirect_to product_path(product), notice: "在庫は#{product.stock_count}枚だよ！"
 				 	end
 				end
 		end
