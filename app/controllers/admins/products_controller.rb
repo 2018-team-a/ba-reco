@@ -11,11 +11,11 @@ class Admins::ProductsController < ApplicationController
     if @product.save
       @product.disc_count.times do |num|
         disc = Disc.new
-        disc.product_id = product.id
+        disc.product_id = @product.id
         disc.save
-        redirect_to edit_admins_product_path(product.id)
       end
-         flash[:notice] = "disc情報を登録して下さい"
+        redirect_to edit_admins_product_path(@product.id)
+        flash[:notice] = "disc情報を登録して下さい"
     else
       render :new
     end

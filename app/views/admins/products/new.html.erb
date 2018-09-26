@@ -20,7 +20,8 @@
 
           <div class="form-group">
             <%= f.label "レーベル名" %>
-            <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} ,class: 'form-control'%>
+            <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} ,class: 'form-control'%><br>
+            <%= link_to "edit", new_admins_label_path %>
           </div>
 
           <div class="form-group">
