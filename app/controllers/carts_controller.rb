@@ -47,15 +47,16 @@ class CartsController < ApplicationController
 	end
 
 	def cart_last
-		carts = Cart.where(params[:id])
-		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination_id: purchase_params[:destination_id], status: "準備中")
-        purchase.save
-        carts.each do |cart|
-        purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
-        purchase_single.save
-        cart.product.stock_count -= cart.sheet_number
-        cart.product.save
-		cart.destroy
+
+			carts = Cart.where(params[:id])
+			purchase = Purchase.new(user_id: current_user.id, total_price: params[:total_price], destination_id: purchase_params[:destination_id], status: 0)
+            purchase.save
+            carts.each do |cart|
+            purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
+            purchase_single.save
+            cart.product.stock_count -= cart.sheet_number
+            cart.product.save
+			cart.destroy
 		end
 		redirect_to root_path :notice =>"お買い上げありがとうございます"
 	end
