@@ -47,18 +47,17 @@ class CartsController < ApplicationController
 	end
 
 	def cart_last
-
-			carts = Cart.where(params[:id])
-			purchase = Purchase.new(user_id: current_user.id, total_price: params[:total_price], destination_id: purchase_params[:destination_id], status: 0)
-            purchase.save
-            carts.each do |cart|
-            purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
-            purchase_single.save
-            cart.product.stock_count -= cart.sheet_number
-            cart.product.save
-			cart.destroy
+		carts = Cart.where(params[:id])
+		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination_id: purchase_params[:destination_id], status: 0)
+        purchase.save
+        carts.each do |cart|
+        purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
+        purchase_single.save
+        cart.product.stock_count -= cart.sheet_number
+        cart.product.save
+		cart.destroy
 		end
-		redirect_to root_path :notice =>"お買い上げありがとうございます"
+		redirect_to root_path, notice: "まいど！！"
 	end
 
 	def destroy
@@ -68,30 +67,36 @@ class CartsController < ApplicationController
 	end
 
 	def add_carts
-		add_cart = Cart.new(cart_params)
-		product = Product.find(params[:product_id])
-		 if Cart.exists?(user_id: current_user.id ,product_id: params[:product_id])
-		 	cart = Cart.find_by(user_id: current_user.id ,product_id: params[:product_id])
-		 	cart.sheet_number = cart.sheet_number + add_cart.sheet_number
-		 	if cart.sheet_number < product.stock_count
-		 		cart.save
-		 		redirect_to carts_path
-		 	else
-		 		redirect_to product_path(product)
-		 	end
-
+		if params["cart"]["sheet_number"] == ""
+			# flash[:notice] = "カートに商品入れてください"
+			redirect_to root_path, notice: "何か入れて！！！"
 		else
-		 	# cart = Cart.new(cart_params)
-			add_cart.product_id = params[:product_id]
-			add_cart.user_id = current_user.id
-			# 枚数はパラメーター(ストロングパラメーター)
-			if add_cart.sheet_number < product.stock_count
-		 		add_cart.save
-				redirect_to carts_path
-		 	else
-		 		redirect_to product_path(product)
-		 	end
+			add_cart = Cart.new(cart_params)
+				product = Product.find(params[:product_id])
+				 if Cart.exists?(user_id: current_user.id ,product_id: params[:product_id])
+				 	cart = Cart.find_by(user_id: current_user.id ,product_id: params[:product_id])
+				 	cart.sheet_number = cart.sheet_number + add_cart.sheet_number
+				 	if cart.sheet_number < product.stock_count
+				 		cart.save
+				 		redirect_to carts_path
+				 	else
+				 		redirect_to product_path(product)
+				 	end
+
+				else
+				 	# cart = Cart.new(cart_params)
+					add_cart.product_id = params[:product_id]
+					add_cart.user_id = current_user.id
+					# 枚数はパラメーター(ストロングパラメーター)
+					if add_cart.sheet_number < product.stock_count
+				 		add_cart.save
+						redirect_to carts_path
+				 	else
+				 		redirect_to product_path(product)
+				 	end
+				end
 		end
+			
 	end
 
 

@@ -4,16 +4,13 @@
 <div class="col-lg-6">
 	<div class="pur-box">
 <table style="border-collapse: separate; border-spacing: 10px;">
-<% if current_user.carts.nil? %>
-	<p>中身が存在しません</p>
-<% else %>
 	<% @price = 0 %>
 	<% current_user.carts.each do |cart| %>
 	<tr>
-	  <td>Title：<%= cart.product.title %></td>
-	  <td>購入枚数：<%= cart.sheet_number %>枚</td>
-	  <td>値段：<%= cart.product.price %> 円</td>
-      <td>小計：<%= cart.product.price * cart.sheet_number %>円</td>
+	  <td class="text">Title：<%= cart.product.title %></td>
+	  <td class="text">購入枚数：<%= cart.sheet_number %>枚</td>
+	  <td class="text">値段：<%= cart.product.price %> 円</td>
+      <td class="text">小計：<%= cart.product.price * cart.sheet_number %>円</td>
     </tr>
 	<% total_price = cart.product.price * cart.sheet_number %>
 	<% @price += total_price %>
@@ -24,10 +21,9 @@
 	合計<%= @price %>円
     <%= form_for (@purchase), url:last_path(user_id: current_user.id,total_price: @price) do |f| %>
     <%= f.select :destination_id, @destinations_array, size:"50" %>
-	<%= f.submit "購入する" %>
+	<%= f.submit "購入する"%>
 <% end %>
 </div>
-<% end %>
 </div>
 <div class="col-lg-3"></div>
 </div>
