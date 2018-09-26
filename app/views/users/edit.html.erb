@@ -2,17 +2,47 @@
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
 
-
-<% current_user.purchases.each do |purchase| %>
-<table>
+<% r = 1 %>
+<h3 class="text-left">購入履歴</h3>
+<table class="his-table-box">
   <tr>
-    <td>合計金額:<%= purchase.total_price %></td>
-  <td>購入日:<%= purchase.created_at.strftime('%Y/%m/%d') %></td>
-  <% purchase.purchase_singles.each do |purchase_single| %>
-    <td>商品名:<%= purchase_single.product.title %></td>
-    <td>枚数:<%= purchase_single.sheet_number %></td>
-  <% end %>
+    <th>購入日</th>
+    <th>合計金額</th>
+    <th>配送状況</th>
   </tr>
+  <% current_user.purchases.each do |purchase| %>
+  <tr>
+    <td><%= purchase.created_at.strftime('%Y/%m/%d') %></td>
+    <td><%= purchase.total_price %>円</td>
+    <td><%= purchase.status %></td>
+    <td><button class="show-button<%= r %>">詳細</button></td>
+    <td>
+      <table>
+        <tr>
+          <td class="show-info<%= r %>" style="display: none;">title</td>
+          <td class="show-info<%= r %>" style="display: none;">枚数</td>
+        </tr>
+          <% purchase.purchase_singles.each do |purchase_single| %>
+         <tr>
+          <td class="show-info<%= r %>" style="display: none;">
+            <%= link_to purchase_single.product.title, product_path(purchase_single.product.id) %>
+          </td>
+          <td class="show-info<%= r %>" style="display: none;">
+            <%= purchase_single.sheet_number %>
+          </td>
+          </tr>
+          <% end %>
+        </table>
+    </td>
+  </tr>
+  <script>
+  $(function() {
+        $('.show-button<%= r %>').click(function(){
+        $('.show-info<%= r %>').toggle();
+    });
+  });
+  </script>
+  <% r += 1 %>
 <% end %>
 </table>
 
