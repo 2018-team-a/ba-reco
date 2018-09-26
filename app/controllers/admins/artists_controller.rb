@@ -17,10 +17,10 @@ class Admins::ArtistsController < ApplicationController
 	def create
 	  @artist = Artist.new(artist_params)
 	  if @artist.save
-			flash[:notice] = "アーティスト登録完了"
-		  redirect_to new_admins_artist_path
+
+			flash[:notice] = "successfully"
+	  	redirect_to new_admins_artist_path
 		else
-			@artists = Artist.all
 			render :new
 		end
 	end
@@ -32,7 +32,9 @@ class Admins::ArtistsController < ApplicationController
 	def update
 	  @artist = Artist.find(params[:id])
 	  if @artist.update(artist_params)
-			flash[:notice] = "アーティスト登録完了"
+
+			flash[:notice] = "successfully"
+
 	  	redirect_to admins_artist_path(@artist.id)
 		else
 			render :edit

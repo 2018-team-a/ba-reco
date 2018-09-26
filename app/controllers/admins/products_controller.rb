@@ -7,17 +7,18 @@ class Admins::ProductsController < ApplicationController
   end
 
   def create
-    product = Product.new(product_params)
-    product.save
-
-    product.disc_count.times do |num|
-       disc = Disc.new
-       disc.product_id = product.id
-       disc.save
+    @product = Product.new(product_params)
+    if @product.save
+      @product.disc_count.times do |num|
+        disc = Disc.new
+        disc.product_id = product.id
+        disc.save
+        redirect_to edit_admins_product_path(product.id)
+      end
+         flash[:notice] = "disc情報を登録して下さい"
+    else
+      render :new
     end
-
-    disc = Disc.find_by(product_id: product.id)
-    redirect_to new_admins_product_disc_tune_path(product_id: product.id, disc_id: disc.id)
   end
 
   def index
@@ -34,9 +35,11 @@ class Admins::ProductsController < ApplicationController
   end
 
   def update
+
     @product = Product.find(params[:id])
     @product.update(product_params)
     redirect_to admins_product_path
+
   end
 
   def destroy
@@ -48,8 +51,3 @@ class Admins::ProductsController < ApplicationController
     discs_attributes: [:id, :disc_id, :_destroy] )
   end
 end
-
-# create
-# tunn = Tune.new(tune_params)
-# tune.disc_id = params[:disc_id]
-# tune.save

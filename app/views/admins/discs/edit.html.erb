@@ -1,7 +1,18 @@
 <h1>ディスクの編集</h1>
 
+<% if @disc.errors.any? %>
+  <h2><%= @disc.errors.count %>件のエラーが発生しました</h2>
+  <ul>
+    <% @disc.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= nested_form_for [:admins, (@disc)] do |f| %>
+
   <%= f.fields_for :tunes do |tf| %>
+
     <%= tf.label "曲名" %><br>
     <%= tf.text_field :title %><br>
 
@@ -10,6 +21,9 @@
 
     <%= tf.label "ジャンル名" %><br>
     <%= tf.select :genre_id, Genre.all.map {|o| [o.name, o.id]} %><br>
+
+    <%= tf.label "曲順" %><br>
+    <%= tf.number_field :track_number %><br>
 
     <td><%= tf.check_box :_destroy %></td>
     <td><%= tf.label :_destroy, "削除" %></td>

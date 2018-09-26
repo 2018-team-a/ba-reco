@@ -4,6 +4,7 @@ class Purchase < ApplicationRecord
 	belongs_to :user
 	belongs_to :destination
 
+
 	enum status: { 商品準備中: 0, 出荷済: 1 }
 
 	def self.search(search)

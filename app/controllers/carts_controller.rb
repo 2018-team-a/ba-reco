@@ -47,6 +47,7 @@ class CartsController < ApplicationController
 	end
 
 	def cart_last
+
 		carts = Cart.where(params[:id])
 		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination_id: purchase_params[:destination_id], status: 0)
         purchase.save
@@ -56,6 +57,7 @@ class CartsController < ApplicationController
         cart.product.stock_count -= cart.sheet_number
         cart.product.save
 		cart.destroy
+
 		end
 		redirect_to root_path, notice: "まいど！！"
 	end
