@@ -3,7 +3,7 @@
   <div class="col-lg-6">
     <div class="info-box" style="background-color: #ffffff;">
       <div class="info-image">
-        <%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
+        <%= attachment_image_tag @product, :image, format: 'jpeg', class: "info-image" %>
       </div>
       <div class="show-info-title">
         <%= @product.title %>

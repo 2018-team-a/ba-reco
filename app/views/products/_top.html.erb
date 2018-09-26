@@ -2,13 +2,18 @@
 <% r = 0 %>
 <% a = (1..10).to_a.sample(10) %>
 <%= a %>
+
 <% @product.last(10).each do |product| %>
-  <div class="image-box<%= a[r] %>">
-  	<div class= '<%= "image#{a[r]}" %>'></div>
+<div class="image-box<%= a[r] %>" style="display: none;">
   <%= link_to product_path(product.id) do %>
-    <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg' %>
+    <%= attachment_image_tag product, :image, format:'jpeg', style:"height: 100%; width: 100%;" %>
   <% end %>
   </div>
+  <script>
+  	$(function(){
+  		$('.image-box<%= a[r] %>').fadeIn(3000);
+  	});
+  </script>
 <% r += 1 %>
 <% end %>
 </div>
