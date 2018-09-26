@@ -40,7 +40,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :carts, only: [:index, :destroy]
+  resources :carts, only: [:index, :destroy, :update]
   resources :purchases
   resources :destinations
   resources :products do
