@@ -1,2 +1,15 @@
 <h1>Discs#edit</h1>
 <p>Find me in app/views/discs/edit.html.erb</p>
+
+<h1>Admins::Discs#edit</h1>
+<p>Find me in app/views/admins/discs/edit.html.erb</p>
+
+<%= nested_form_for @disc do |f| %>
+  <%= f.fields_for :tunes do |tf| %>
+    <%= tf.label "曲名" %><br>
+    <%= tf.text_field :title %><br>
+    <td><%= tf.check_box :_destroy %></td>
+    <td><%= tf.label :_destroy, "削除" %></td>
+  <% end %>
+  <%= f.submit %>
+<% end %>

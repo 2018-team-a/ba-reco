@@ -1,64 +1,28 @@
-<br>
-<br>
-<br>
-<br>
 <h1>Admins::Products#new</h1>
 
-<h4>
-	<table border="1">
-		<%= form_for [:admins, @product] do |f| %>
-		<tr>
-			<th class="info">ジャケットイメージ</th>
-			<th class="info">商品名</th>
-			<th class="info">レーベル名</th>
-			<th class="info">値段</th>
-			<th class="info">在庫数</th>
-			<th class="info">ディスク枚数</th>
-			<th class="info"></th>
-		</tr>
+<%= form_for [:admins, @product] do |f| %>
 
+  <%= f.label "商品画像" %><br>
+  <%= f.attachment_field :image %><br>
 
-		<tr>
-			<td><%= f.attachment_field :image %></td>
-			<td><%= f.text_field :title %></td>
-			<td><%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %></td>
-			<td><%= f.text_field :price %></td>
-			<td><%= f.text_field :stock_count %></td>
-			<td><%= f.text_field :disc_count %></td>
-			<td><%= f.submit '登録' %></td>
-		</tr>
-		<%end%>
-	</table>
-</h4>
+  <%= f.label "商品タイトル" %><br>
+  <%= f.text_field :title %><br>
 
+  <%= f.label "レーベル名" %><br>
+  <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} %><br>
 
+  <%= f.label "値段" %><br>
+  <%= f.text_field :price %><br>
 
+  <%= f.label "リリース日" %><br>
+  <%= f.date_field :release_date %><br>
 
-<div class="container">
-	<div class="row">
-		<div class="col">
-			<%= form_for [:admins, @product] do |f| %>
-			ジャケットイメージ<br>
-			<%= f.attachment_field :image %><br>
+  <%= f.label "在庫数" %><br>
+  <%= f.number_field :stock_count %><br>
 
-			商品名<br>
-			<%= f.text_field :title %><br>
+  <%= f.label "収容Disc枚数" %><br>
+  <%= f.number_field :disc_count %><br>
 
-			レーベル名<br>
-			<%= f.collection_select :label_id, Label.all, :id, :name, :prompt => "選択" %><br>
+  <%= f.submit '登録' %>
 
-			値段<br>
-			<%= f.text_field :price %><br>
-
-			在庫数<br>
-			<%= f.text_field :stock_count %><br>
-
-			ディスク枚数<br>
-			<%= f.text_field :disc_count %><br>
-
-			<%= f.submit '登録' %>
-			<%end%>
-		</div>
-	</div>
-</div>
-
+<% end %>

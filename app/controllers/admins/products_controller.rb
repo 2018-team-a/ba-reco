@@ -4,7 +4,6 @@ class Admins::ProductsController < ApplicationController
 
   def new
     @product = Product.new
-    @product.discs.build
   end
 
   def create
@@ -18,7 +17,7 @@ class Admins::ProductsController < ApplicationController
     end
 
     disc = Disc.find_by(product_id: product.id)
-    redirect_to new_admins_product_disc_tune_path(product_id: product.id,disc_id: disc.id)
+    redirect_to new_admins_product_disc_tune_path(product_id: product.id, disc_id: disc.id)
   end
 
   def index
@@ -45,7 +44,7 @@ class Admins::ProductsController < ApplicationController
 
   private
   def product_params
-    params.require(:product).permit(:image_id, :title, :label_id , :disc, :price, :stock_count, :disc_count,
+    params.require(:product).permit(:image_id, :title, :label_id, :price, :release_date, :stock_count, :disc_count, :disc,
     discs_attributes: [:id, :disc_id, :_destroy] )
   end
 end

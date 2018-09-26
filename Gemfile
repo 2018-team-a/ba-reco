@@ -76,3 +76,4 @@ gem "jquery-rails"
 gem 'jquery-turbolinks'
 # 登録フォームをaddボタンで追加、deleteボタンで削除するgem
 gem 'nested_form', '~> 0.3.2'
+gem 'nested_form_fields'

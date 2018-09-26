@@ -10,6 +10,7 @@ Rails.application.routes.draw do
         resources :tunes
       end
     end
+    resources :discs
     resources :artists
     resources :purchases
     resources :admins
@@ -51,7 +52,6 @@ Rails.application.routes.draw do
   resources :unsubscribes
 
 
-  # resources :discs
   resources :tunes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
