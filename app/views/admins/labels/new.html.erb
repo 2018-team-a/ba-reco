@@ -1,8 +1,22 @@
 <h1>レーベルの新規登録だよ</h1>
 
-<h1>Labels#new</h1>
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <%= form_for [:admins, (@label)] do |f| %>
+
+<% if @label.errors.any? %>
+  <h2><%= @label.errors.count %>件のエラーが発生しました</h2>
+  <ul>
+    <% @label.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= f.text_field :name %>
 <%= f.submit "登録" %>
 <% end %>

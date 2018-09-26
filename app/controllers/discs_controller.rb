@@ -13,8 +13,11 @@ end
 
   def update
     @disc = Disc.find(params[:id])
-    @disc.update(disc_params)
-    redirect_to admins_edit_disc_path(@disc)
+    if @disc.update(disc_params)
+      redirect_to admins_disc_path(@disc)
+    else
+      render :edit
+    end
   end
 
   private
@@ -24,7 +27,7 @@ end
             :id,
 						tunes_attributes: [
 							:title,
-              :disc_id,
+              :track_number,
               :id,
 							:_destroy
 							]

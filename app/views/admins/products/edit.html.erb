@@ -30,7 +30,11 @@
 <% end %>
 
 <h2>収録ディスク内容の編集</h2>
-
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 <% @product.discs.each do |a| %>
   <%= link_to "Disc_id#{a.id}", edit_admins_disc_path(a.id), class: "aaa"  %><br>
 <% end %>

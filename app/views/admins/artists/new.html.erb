@@ -1,11 +1,23 @@
-<br>
-<br>
-<br>
-<br>
 
 <h1>Admins::Artists#new</h1>
 
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <%= form_for [:admins, (@artist)] do |f| %>
+
+<% if @artist.errors.any? %>
+  <h2><%= @artist.errors.count %>件のエラーが発生しました</h2>
+  <ul>
+    <% @artist.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= f.text_field :name %>
 <%= f.submit "登録" %>
 <% end %>

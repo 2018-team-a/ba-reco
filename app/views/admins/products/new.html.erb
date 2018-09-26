@@ -2,6 +2,16 @@
 
 <%= form_for [:admins, @product] do |f| %>
 
+<% if @product.errors.any? %>
+  <h2><%= @product.errors.count %>件のエラーが発生しました</h2>
+  <ul>
+    <% @product.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
   <%= f.label "商品画像" %><br>
   <%= f.attachment_field :image %><br>
 

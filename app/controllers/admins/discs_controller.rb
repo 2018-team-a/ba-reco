@@ -10,9 +10,12 @@ class Admins::DiscsController < ApplicationController
   end
 
   def create
-    disc = Disc.new(disc_params)
-    disc.save
-    redirect_to discs_path
+    @disc = Disc.find(params[:id])
+    if @disc.update(disc_params)
+      redirect_to admins_disc_path(@disc)
+    else
+      render :edit
+    end
   end
 
   def index
@@ -54,6 +57,7 @@ class Admins::DiscsController < ApplicationController
             :artist_id,
             :genre_id,
             :disc_id,
+            :track_number,
             :_destroy
             ]
         )

@@ -1,9 +1,15 @@
 <h1>Admins::Artists#show</h1>
 
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <h3><%= @artist.name %></h3>
 
-<h3><%= link_to "一覧", artists_path %></h3>
+<h3><%= link_to "一覧", admins_artists_path %></h3>
 
-<h3><%= link_to "編集", edit_artist_path(@artist.id) %></h3>
+<h3><%= link_to "編集", edit_admins_artist_path(@artist.id) %></h3>
 
-<h3><%= link_to "削除", artist_path(@artist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></h3>
+<h3><%= link_to "削除", admins_artist_path(@artist.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></h3>
