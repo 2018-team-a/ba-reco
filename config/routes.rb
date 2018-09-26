@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get "carts/cart_ccc" => "carts#cart_ccc", as: "ccc"
   post "carts/:user_id/:total_price" => "carts#cart_last", as: "last"
   post "carts/purchase_singles" => "carts#cart_single", as:"single"
+
   namespace :admins do
     resources :products do
       resources :discs do
@@ -12,10 +13,9 @@ Rails.application.routes.draw do
     resources :artists
     resources :purchases
     resources :admins
+    resources :genres
+    resources :labels
   end
-
-
-
 
   devise_for :admins, controllers: {
       sessions:      'admins/sessions',
@@ -32,7 +32,6 @@ Rails.application.routes.draw do
   post "products/:product_id/carts/" => "carts#add_carts", as: "sss"
   root to: 'products#index'
 
-  get 'admins/top' => 'admins#top', as: :admins_top
   get 'admins/' => 'admins#index', as: :admins
 
   resource :admins do
@@ -40,7 +39,7 @@ Rails.application.routes.draw do
   end
 
   resources :users
-  resources :carts, only: [:index, :destroy]
+  resources :carts, only: [:index, :destroy, :update]
   resources :purchases
   resources :destinations
   resources :products do
@@ -54,6 +53,5 @@ Rails.application.routes.draw do
 
   # resources :discs
   resources :tunes
-  resources :labels
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -16,11 +16,10 @@ class PurchaseSinglesController < ApplicationController
 			purchase = Purchase.new(user_id: current_user.id, destination_id: params[:destination_id])
 			purchase_single.user_id = current_user.id
 
-			
+
 			purchase_single.save
 
 			purchase = Purchase.new(id:purchase_single.id)
-			
 			purchase.save
 			cart.destroy
 			redirect_to root_path
