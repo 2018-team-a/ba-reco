@@ -1,6 +1,24 @@
 <div class="row text-center" style="padding-top: 150px;padding-bottom: 100px;">
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
+
+
+<% current_user.purchases.each do |purchase| %>
+<table>
+  <tr>
+    <td>合計金額:<%= purchase.total_price %></td>
+  <td>購入日:<%= purchase.created_at.strftime('%Y/%m/%d') %></td>
+  <% purchase.purchase_singles.each do |purchase_single| %>
+    <td>商品名:<%= purchase_single.product.title %></td>
+    <td>枚数:<%= purchase_single.sheet_number %></td>
+  <% end %>
+  </tr>
+<% end %>
+</table>
+
+
+
+
 <h3 class="text-left">ユーザー情報編集</h3>
 <%= nested_form_for @user do |f| %>
 <table class="table-box user-edit-box">
@@ -46,35 +64,37 @@
   </div>
   </tr>
   </table>
-    <%= f.fields_for :destinations do |df| %>
     <h3 class="text-left">送付先登録</h3>
+    <%= f.fields_for :destinations do |df| %>
     <table class="table-box dest-box">
     <tr>
       <div class="postal_code">
         <td class="text-right"><label for="postal_code">郵便番号</label></td>
-        <td class="text-left" colspan="2"><%= df.text_field :postal_code, class: "postal_code", onKeyUp: "AjaxZip3.zip2addr(this,'','destination[destination]','destination[destination]');"  %></td>
+        <td class="text-left" colspan="2"><%= df.text_field :postal_code, class: "postal_code" %></td>
       </div>
     </tr>
     <tr>
       <div class="destination">
         <td class="text-right"><label for="destination">送付先住所</label></td>
-        <td class="text-left" colspan="2"><%= df.text_field :destination,name: "destination[destination]", class: "destination", :size => "60" %></td>
+        <td class="text-left" colspan="2">
+          <%= df.text_field :destination, class: "destination", :size => "60" %>
+        </td>
       </div>
     </tr>
       <% if @user.persisted? %>
       <tr>
-        <td class="text-left"><%= df.check_box :_destroy %></td>
         <td class="text-right"><%= df.label :_destroy, "送付先削除" %></td>
+        <td class="text-left"><%= df.check_box :_destroy %></td>
+
       </tr>
       <% end %>
 
     <% end %>
-  <tr>
-  <div class="actions">
-    <td><%= f.submit %></td>
+  </table>
+  <div class="action text-left" style="padding-top: 50px;">
+    <%= f.submit "情報更新" %>
   </div>
-  </tr>
-</table>
+
 <% end %>
 </div>
 <div class="col-lg-3"></div>

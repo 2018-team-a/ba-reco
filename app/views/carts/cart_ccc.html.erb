@@ -1,24 +1,32 @@
-<h1 style="padding-top: 200px;">購入確定画面</h1>
-
+<div class="row text-center" style="padding-top: 200px;">
+<div class="col-lg-3"></div>
+<div class="col-lg-6">
+	<div class="pur-box">
+<table style="border-collapse: separate; border-spacing: 10px;">
 <% if current_user.carts.nil? %>
 	<p>中身が存在しません</p>
 <% else %>
 	<% @price = 0 %>
 	<% current_user.carts.each do |cart| %>
-	Title：<%= cart.product.title %><br>
-	購入枚数：<%= cart.sheet_number %>枚 <br>
-	値段：<%= cart.product.price %> 円 <br>
-
-	合計：<%= cart.product.price * cart.sheet_number %>円 <br>
+	<tr>
+	  <td>Title：<%= cart.product.title %></td>
+	  <td>購入枚数：<%= cart.sheet_number %>枚</td>
+	  <td>値段：<%= cart.product.price %> 円</td>
+      <td>小計：<%= cart.product.price * cart.sheet_number %>円</td>
+    </tr>
 	<% total_price = cart.product.price * cart.sheet_number %>
 	<% @price += total_price %>
 	<% end %>
-	<%= @price %>
-
-
-<%= form_for (@purchase), url:single_path(user_id: current_user.id,total_price: @price) do |f| %>
-
-	<%= f.select :destination_id, @destinations_array %>
-	<%= f.submit "購入する"  %>
+  </table>
+</div>
+<div class="last-box">
+	合計<%= @price %>円
+    <%= form_for (@purchase), url:last_path(user_id: current_user.id,total_price: @price) do |f| %>
+    <%= f.select :destination_id, @destinations_array, size:"50" %>
+	<%= f.submit "購入する" %>
 <% end %>
+</div>
 <% end %>
+</div>
+<div class="col-lg-3"></div>
+</div>
