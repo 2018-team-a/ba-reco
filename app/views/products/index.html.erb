@@ -13,9 +13,9 @@
 <% @products.each do |product| %>
 <div class="info-box" style="background-color: #ffffff;">
   <div class="info-image">
-<!--   <%= link_to product_path(product.id) do %>
-	  <%= attachment_image_tag product, :image, :fill, 50, 50, format:'jpeg', fallback: "no_image.jpg" %>
-  <% end %> -->
+<%= link_to product_path(product.id) do %>
+	  <%= attachment_image_tag product, :image, :fill, 200, 200, format:'jpeg', fallback: "no_image.jpg" %>
+  <% end %>
   </div>
   <div class="index-info-title">
 	<%= link_to product.title, product_path(product.id) %>
