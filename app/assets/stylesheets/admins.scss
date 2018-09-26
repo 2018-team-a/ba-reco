@@ -5,9 +5,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.col {
-	margin: 0 auto;
-	width:400px ;
-	background-color:pink ;
+.body {
+	background-color:#93B1E9 ;
+}
+
+.col-xs-offset-4 {
+	background-color:#A9F5A9 ;
 	font-size:20px;
+}
+
+.btn btn-primary{
 }

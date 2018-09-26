@@ -1,28 +1,52 @@
-<h1>Admins::Products#new</h1>
+<body class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <div><font size="+3">商品登録</font></div><br>
 
-<%= form_for [:admins, @product] do |f| %>
+        <div>
+          <%= form_for [:admins, @product] do |f| %>
 
-  <%= f.label "商品画像" %><br>
-  <%= f.attachment_field :image %><br>
+          <div class="form-group">
+            <%= f.label "商品画像" %><br>
+            <%= f.attachment_field :image, class: 'form-control' %><br>
+          </div>
 
-  <%= f.label "商品タイトル" %><br>
-  <%= f.text_field :title %><br>
+          <div class="form-group">
+            <%= f.label "商品タイトル" %>
+            <%= f.text_field :title, class: 'form-control' %>
+          </div>
 
-  <%= f.label "レーベル名" %><br>
-  <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} %><br>
+          <div class="form-group">
+            <%= f.label "レーベル名" %>
+            <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} ,class: 'form-control'%>
+          </div>
 
-  <%= f.label "値段" %><br>
-  <%= f.text_field :price %><br>
+          <div class="form-group">
+            <%= f.label "値段" %>
+            <%= f.text_field :price, class: 'form-control' %>
+          </div>
 
-  <%= f.label "リリース日" %><br>
-  <%= f.date_field :release_date %><br>
+          <div class="form-group">
+            <%= f.label "リリース日" %>
+            <%= f.date_field :release_date, class: 'form-control' %>
+          </div>
 
-  <%= f.label "在庫数" %><br>
-  <%= f.number_field :stock_count %><br>
+          <div class="form-group">
+            <%= f.label "在庫数" %>
+            <%= f.number_field :stock_count, class: 'form-control' %>
+          </div>
 
-  <%= f.label "収容Disc枚数" %><br>
-  <%= f.number_field :disc_count %><br>
+          <div class="form-group">
+            <%= f.label "収容Disc枚数" %>
+            <%= f.number_field :disc_count, class: 'form-control' %>
+          </div>
 
-  <%= f.submit '登録' %>
+          <%= f.submit '登録' %>
 
-<% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
