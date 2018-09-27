@@ -34,16 +34,15 @@
               <% end %>
               <%= s %></td>
           </tr>
-          <tr>
-              <% if user_signed_in? %>
-              <%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
-          <td><%= f.label :枚数 %>
-              <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %></td>
-          <td><%= f.submit("カート追加") %></td>
-              <% end %>
-              <% end %>
-        </tr></tbody>
-        </table>
+          </tbody>
+          </table>
+          <% if user_signed_in? %>
+            <%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
+            <%= f.label :枚数 %>
+            <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
+            <%= f.submit("カート追加") %>
+            <% end %>
+          <% end %>
   </div>
 </div>
 

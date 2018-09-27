@@ -2,41 +2,8 @@
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
   	<h2>カート</h2>
-
     <% if @carts.present? %>
-  	<% @carts.each do |cart| %>
-      <div class="info-box" style="background-color: #ffffff;">
-        <div class="info-image">
-          <%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpeg' %>
-        </div>
-        <div class="index-info-title">
-          <%= cart.product.title %>
-        </div>
-        <div class="index-info-price">
-          <%= cart.product.price %> 円
-        </div>
-        <div class="index-info-number-box">
-          <%= form_for(cart) do |f| %>
-          <%= f.label :枚数 %>
-          <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
-          <%= f.submit "更新する", class:"btn"%>
-          <% end %>
-
-        </div>
-          <% a = [] %>
-          <% cart.product.discs.each do |disc| %>
-            <% disc.tunes.each do |tune| %>
-              <% a.push(tune.artist.name) %>
-		    <% end %>
-	      <% end %>
-	    <div class="index-info-artist">
-           <%= a.max_by { |v| a.count(v)} %>
-        </div>
-        <div class="index-info-cart-button">
-          <%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
-
-    <% if current_user.carts.present? %>
-  	<% current_user.carts.each do |cart| %>
+  	<%@carts.each do |cart| %>
       <div class="row" style="background-color: #ffffff; height: 200px; border: double; margin-top: 60px;">
         <div class="col-lg-4" style="height: 100%;">
           <%= attachment_image_tag cart.product, :image, format: 'jpeg', fallback: "no_image.jpg", style: "height: 100%;" %>
@@ -66,17 +33,14 @@
                     <% end %>
                     <%= s %></td>
               </tr>
-              <tr>
-                    <%= form_for(cart) do |f| %>
-                <td><%= f.label :枚数 %>
-                    <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
-                    <%= f.submit "更新する" %></td>
-                <td><%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %></td>
-                    <% end %>
-              </tr>
             </tbody>
           </table>
-
+            <%= form_for(cart) do |f| %>
+              <%= f.label :枚数 %>
+              <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
+              <%= f.submit "更新する" %>
+              <%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
+            <% end %>
         </div>
       </div>
     <% end %>
@@ -88,7 +52,7 @@
     <% end %>
     <%= link_to "お買い物を続ける", products_path, class:"back-button" %>
   </div>
-  <%= paginate @carts, class: "pagenate" %>
+ <!--  <%= paginate @carts, class: "pagenate" %> -->
   </div>
   <div class="col-lg-3"></div>
 </div>
