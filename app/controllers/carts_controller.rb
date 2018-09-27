@@ -34,7 +34,7 @@ class CartsController < ApplicationController
 			if @destinations.present?
 				@destinations_array = []
 				@destinations.each do |destination|
-	 			@destinations_array << [destination.destination, destination.id]
+	 			@destinations_array << [destination.destination,destination.destination]
 	 				end
 			else
 				@destinations_array = []
