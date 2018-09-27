@@ -9,12 +9,14 @@
     <th>購入日</th>
     <th>合計金額</th>
     <th>配送状況</th>
+    <th>送付先</th>
   </tr>
-  <% current_user.purchases.each do |purchase| %>
+  <% @purchases.each do |purchase| %>
   <tr>
     <td><%= purchase.created_at.strftime('%Y/%m/%d') %></td>
     <td><%= purchase.total_price %>円</td>
     <td><%= purchase.status %></td>
+    <td><%= purchase.destination %></td>
     <td><button class="show-button<%= r %>">詳細</button></td>
     <td>
       <table>
@@ -45,7 +47,7 @@
   <% r += 1 %>
 <% end %>
 </table>
-
+<%= paginate @purchases, class: "pagenate" %>
 
 
 

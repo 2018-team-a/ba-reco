@@ -14,6 +14,7 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
 		@user.destinations.build
+    @purchases = Purchase.where(user_id:current_user.id).page(params[:page]).reverse_order
     # unless admin_signed_in?
     #   if @users.id != current_user
     #     redirect_to new_user_session_path
