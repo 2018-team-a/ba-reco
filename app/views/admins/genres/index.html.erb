@@ -1,4 +1,10 @@
-<h1>Admins::Genres#index</h1>
+<h1>ジャンル一覧</h1>
+
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
 <%= form_tag admins_genres_path, :method => 'get' do %>
     <p>
@@ -8,9 +14,9 @@
 <% end %>
 
 <% @genres_search.each do |f| %>
-<%= link_to f.name, admins_genre_path(f.id) %>
+  <p><%= link_to f.name, edit_admins_genre_path(f.id) %></p>
 <%end%>
 
-<h3><%= link_to "登録ページ", new_admins_genre_path %></h3>
-
 <%= paginate @genres_search %>
+
+<h3><%= link_to "登録ページ", new_admins_genre_path %></h3>

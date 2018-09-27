@@ -1,13 +1,13 @@
 <%= form_tag admins_purchases_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "検索", :name => nil %>
+      <%= submit_tag "検索", :created_at => nil %>
     </p>
 <% end %>
 
 <h1>購入履歴のインデックスだよ</h1>
 
-<% @purchases.each do |purchase| %>
+<% @purchases_search.each do |purchase| %>
 <ul>
   <li>購入者 id</li>
   <li><%= purchase.user.id %></li>
@@ -19,9 +19,10 @@
   <li><%= purchase.user.furigana_family_name %></li>
   <li>名前（カナ）</li>
   <li><%= purchase.user.furigana_name %></li>
-  <li></li>
-  <li><%= purchase.user.furigana_name %></li>
+  <li>購入日</li>
+  <li><%= purchase.user.created_at %></li>
 
+  <li></li>
   <li>合計金額</li>
   <li><%= purchase.total_price %></li>
   <li><%= link_to "edit", edit_admins_purchase_path(purchase.id) %></li>
@@ -29,4 +30,4 @@
 
 <% end %>
 
-<%= paginate @purchases %>
+<%= paginate @purchases_search %>
