@@ -34,7 +34,7 @@ $(function(){
 		$('.image-box1').css({'z-index': '20'});
 	});
 	$('.image-box1').mouseout(function(){
-		$('.image-box1').css({'z-index': '1'});
+		$('.image-box1').css({'z-index': '2'});
 	});
 });
 $(function(){
@@ -42,7 +42,7 @@ $(function(){
 		$('.image-box2').css({'z-index': '20'});
 	});
 	$('.image-box2').mouseout(function(){
-		$('.image-box2').css({'z-index': '2'});
+		$('.image-box2').css({'z-index': '3'});
 	});
 });
 $(function(){
@@ -50,7 +50,7 @@ $(function(){
 		$('.image-box3').css({'z-index': '20'});
 	});
 	$('.image-box3').mouseout(function(){
-		$('.image-box3').css({'z-index': '3'});
+		$('.image-box3').css({'z-index': '4'});
 	});
 });
 $(function(){
@@ -58,7 +58,7 @@ $(function(){
 		$('.image-box4').css({'z-index': '20'});
 	});
 	$('.image-box4').mouseout(function(){
-		$('.image-box4').css({'z-index': '4'});
+		$('.image-box4').css({'z-index': '5'});
 	});
 });
 $(function(){
@@ -66,7 +66,7 @@ $(function(){
 		$('.image-box5').css({'z-index': '20'});
 	});
 	$('.image-box5').mouseout(function(){
-		$('.image-box5').css({'z-index': '5'});
+		$('.image-box5').css({'z-index': '6'});
 	});
 });
 $(function(){
@@ -74,7 +74,7 @@ $(function(){
 		$('.image-box6').css({'z-index': '20'});
 	});
 	$('.image-box6').mouseout(function(){
-		$('.image-box6').css({'z-index': '6'});
+		$('.image-box6').css({'z-index': '7'});
 	});
 });
 $(function(){
@@ -82,7 +82,7 @@ $(function(){
 		$('.image-box7').css({'z-index': '20'});
 	});
 	$('.image-box7').mouseout(function(){
-		$('.image-box7').css({'z-index': '7'});
+		$('.image-box7').css({'z-index': '8'});
 	});
 });
 $(function(){
@@ -90,7 +90,7 @@ $(function(){
 		$('.image-box8').css({'z-index': '20'});
 	});
 	$('.image-box8').mouseout(function(){
-		$('.image-box8').css({'z-index': '8'});
+		$('.image-box8').css({'z-index': '9'});
 	});
 });
 $(function(){
@@ -98,7 +98,7 @@ $(function(){
 		$('.image-box9').css({'z-index': '20'});
 	});
 	$('.image-box9').mouseout(function(){
-		$('.image-box9').css({'z-index': '9'});
+		$('.image-box9').css({'z-index': '10'});
 	});
 });
 $(function(){
@@ -106,6 +106,6 @@ $(function(){
 		$('.image-box10').css({'z-index': '20'});
 	});
 	$('.image-box10').mouseout(function(){
-		$('.image-box10').css({'z-index': '10'});
+		$('.image-box10').css({'z-index': '11'});
 	});
 });
