@@ -5,14 +5,24 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.header{
+	margin-bottom: 80px;
+}
+
 .body {
-	background-color:#93B1E9 ;
+	background-color: #CEE3F6;
+	background-image: url("desert.jpg")
+
+
 }
 
 .col-xs-offset-4 {
-	background-color:#A9F5A9 ;
+	background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
 	font-size:20px;
+	border-radius:25px/25px ;
 }
 
-.btn btn-primary{
+
+.container-fluid {
+	background: #A9F5D0;
 }

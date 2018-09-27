@@ -7,9 +7,10 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="/admins.scss">
   </head>
 
-  <body>
+<!--   <body>
     <header>
       <div >
         <nav>
@@ -27,4 +28,42 @@
     </header>
     <%= yield %>
   </body>
-</html>
+</html> -->
+
+<header class="header">
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed"data-toggle="collapse"data-target="#navbarEexample8">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        婆ーレコード
+      </a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbarEexample8">
+      <ul class="nav navbar-nav">
+<!--    <li><a href="#">メニュー</a></li>
+        <li><a href="#">メニュー</a></li> -->
+      </ul>
+
+      <% if admin_signed_in? %>
+      <ul>
+      <p class="navbar-text navbar-right">ログイン中</p>
+      <p class="navbar-text navbar-right"><%= link_to " ログアウト", destroy_admin_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %></p>
+      </ul>
+      <%end%>
+
+    </div>
+  </div>
+</nav>
+</header>
+
+<body class="body">
+  <%= yield %>
+</body>
+    </html>
