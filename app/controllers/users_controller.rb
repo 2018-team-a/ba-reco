@@ -12,19 +12,19 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
-		@user.destinations.build
-    # unless admin_signed_in?
-    #   if @users.id != current_user
-    #     redirect_to new_user_session_path
-    #   end
-    # end
+		@user = User.find(params[:id])
+		if @user.id != current_user.id
+			redirect_to products_path
+		else
+			@user = User.find(params[:id])
+			@user.destinations.build
+		end
   end
 
   def update
     @user = User.find(params[:id])
     @user.update(user_params)
-    redirect_to edit_user_path(@user)
+    redirect_to edit_admins_user_path(@user)
   end
 
   def search

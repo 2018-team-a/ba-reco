@@ -1,11 +1,11 @@
+<h1>Userのインデックスだよ</h1>
+
 <%= form_tag admins_users_path, :method => 'get' do %>
     <p>
       <%= text_field_tag :search, params[:search] %>
       <%= submit_tag "検索", :name => nil %>
     </p>
 <% end %>
-
-<h1>Userのインデックスだよ</h1>
 
 <% @users_search.each do |user| %>
 <ul>
@@ -28,9 +28,8 @@
   <li>電話番号</li>
   <li><%= user.phone_number %></li>
   <li>ユーザー編集画面</li>
-  <li><%= link_to "edit", edit_user_path(user), class: "user_#{user.id}" %></li>
+  <li><%= link_to "edit", edit_admins_user_path(user), class: "user_#{user.id}" %></li>
 </ul>
 <% end %>
 
 <%= paginate @users_search %>
-
