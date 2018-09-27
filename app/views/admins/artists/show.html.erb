@@ -8,6 +8,10 @@
 
 <h3><%= @artist.name %></h3>
 
+<% @artist.tunes.each do |t|%>
+<p><%= t.title %></p>
+<% end %>
+
 <h3><%= link_to "一覧", admins_artists_path %></h3>
 
 <h3><%= link_to "編集", edit_admins_artist_path(@artist.id) %></h3>

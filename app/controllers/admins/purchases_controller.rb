@@ -3,8 +3,9 @@ class Admins::PurchasesController < ApplicationController
   layout "admins"
 
   def index
+    @purchases = Purchase.page(params[:page]).reverse_order
     purchasex = Purchase.search(params[:search])
-    @purchases = purchasex.page(params[:page]).reverse_order
+    @purchases_search = purchasex.page(params[:page]).reverse_order
   end
 
   def show

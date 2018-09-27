@@ -23,7 +23,7 @@
     <%= tf.select :genre_id, Genre.all.map {|o| [o.name, o.id]} %><br>
 
     <%= tf.label "曲順" %><br>
-    <%= tf.number_field :track_number %><br>
+    <%= tf.number_field :track_number, min:0 %><br>
 
     <td><%= tf.check_box :_destroy %></td>
     <td><%= tf.label :_destroy, "削除" %></td>
