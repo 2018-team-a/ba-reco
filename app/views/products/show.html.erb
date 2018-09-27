@@ -8,6 +8,7 @@
       <div class="col-lg-4" style="height: 100%;">
         <%= attachment_image_tag @product, :image, format: 'jpeg', style: "height: 100%;"%>
       </div>
+
       <div class="col-lg-8">
         <table class="table" style="margin-top: 40px;">
         <tbody>
@@ -45,6 +46,7 @@
         </table>
   </div>
 </div>
+
     <% b = 1 %>
     <% @product.discs.each do |disc| %>
     <div class="show-tune-box">

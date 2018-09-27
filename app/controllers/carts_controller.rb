@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
 
 	def index
-
+		@carts = Cart.where(user_id: current_user.id).page(params[:page]).reverse_order
 	 	 #@carts = Cart.where(user_id: current_user.id)
 
 	end
@@ -31,15 +31,17 @@ class CartsController < ApplicationController
 		if current_user.carts.present?
 		@purchase = current_user.purchases.new
 		@destinations = current_user.destinations
-			if @destinations.present?
+			# if @destinations.present?
 				@destinations_array = []
 				@destinations.each do |destination|
-	 			@destinations_array << [destination.destination, destination.id]
-	 				end
-			else
-				@destinations_array = []
+	 			@destinations_array << [destination.destination,destination.destination]
 				@destinations_array << [current_user.address,current_user.address]
-			end
+	 				end
+			# else
+			# 	@destinations_array = []
+
+			# 	@destinations_array << [current_user.address,current_user.address]
+			# end
 		else
 			redirect_to root_path
 	 	end
@@ -49,7 +51,9 @@ class CartsController < ApplicationController
 	def cart_last
 
 		carts = Cart.where(params[:id])
-		purchase = Purchase.new(user_id: current_user.id, total_price: params[:total_price], destination_id: purchase_params[:destination_id], status: 0)
+
+		purchase = Purchase.new(user_id: current_user.id, total_price: params[:total_price], destination: purchase_params[:destination], status: 0)
+
         purchase.save
         carts.each do |cart|
         purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
@@ -110,7 +114,7 @@ class CartsController < ApplicationController
     	end
 
     	def purchase_params
-        	params.require(:purchase).permit(:destination_id, :status, :user_id, :total_price)
+        	params.require(:purchase).permit(:destination, :status, :user_id, :total_price)
     	end
 
     	def purchase_single_params
