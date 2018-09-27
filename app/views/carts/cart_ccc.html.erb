@@ -21,7 +21,7 @@
 	合計<%= @price %>円
     <%= form_for (@purchase), url:last_path(user_id: current_user.id,total_price: @price) do |f| %>
 
-    送付先選択<%= f.select :destination_id, @destinations_array %>
+    送付先選択<%= f.select :destination, @destinations_array %>
 
 	<%= f.submit "購入する"%>
 <% end %>
