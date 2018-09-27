@@ -16,6 +16,7 @@
 <div class="row" style="background-color: #ffffff; height: 200px; border: double; margin-top: 60px;">
   <div class="col-lg-4" style="height: 100%;">
 <%= link_to product_path(product.id) do %>
+
 	  <%= attachment_image_tag product, :image, format:'jpeg', fallback: "no_image.jpg", style: "height: 100%;" %>
   <% end %>
 </div>
@@ -49,9 +50,9 @@
               <%= form_for (@cart),url: sss_path(product_id: product) do |f| %>
             <td><%= f.label :枚数 %>
               <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %></td>
-            <td><%= f.submit("カート追加") %></td>
+            <td><%= f.submit("カート追加") %>
                 <% end %>
-                <% end %>
+                <% end %></td>
           </tr>
         </tbody>
       </table>
