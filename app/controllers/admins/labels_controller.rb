@@ -1,9 +1,11 @@
 class Admins::LabelsController < ApplicationController
-
+  before_action :authenticate_admin!
   layout "admins"
 
   def index
-    @labels = Label.all
+    @labels = Label.page(params[:page]).reverse_order
+		labelsx = Label.search(params[:search])
+		@labels_search = labelsx.page(params[:page]).reverse_order
   end
 
   def show

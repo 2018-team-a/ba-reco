@@ -1,19 +1,9 @@
-Genre.seed do |s|
-  s.name = "ジャンル１"
-end
-
-Genre.seed do |s|
-  s.name = "ジャンル２"
-end
-
-Genre.seed do |s|
-  s.name = "ジャンル３"
-end
-
-Genre.seed do |s|
-  s.name = "ジャンル４"
-end
-
-Genre.seed do |s|
-  s.name = "ジャンル５"
-end
+a = "ジャンル"
+b = 0
+100.times {
+    c = b.to_s
+    b += 1
+  Genre.seed do |s|
+    s.name = a + c
+  end
+}

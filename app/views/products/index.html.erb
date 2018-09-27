@@ -13,46 +13,54 @@
 <h2 class="text-center">一致する商品がありません！</h2>
 <% else %>
 <% @products.each do |product| %>
-<div class="info-box" style="background-color: #ffffff;">
+<div class="row" style="background-color: #ffffff; height: 200px; border: double; margin-top: 60px;">
+  <div class="col-lg-4" style="height: 100%;">
 <%= link_to product_path(product.id) do %>
-	  <%= attachment_image_tag product, :image, format:'jpeg', fallback: "no_image.jpg", class: "info-image" %>
+
+	  <%= attachment_image_tag product, :image, format:'jpeg', fallback: "no_image.jpg", style: "height: 100%;" %>
+    
   <% end %>
-  <div class="index-info-title">
-  <%= link_to product.title, product_path(product.id) %>
-  </div>
-  <div class="index-info-price">
-    <%= product.price %>円
-  </div>
-    <% a = [] %>
-  <% product.discs.each do |disc| %>
-    <% disc.tunes.each do |tune| %>
-      <% a.push(tune.artist.name) %>
-    <% end %>
-  <% end %>
-    <div class="index-info-artist">
-    <%= a.max_by { |v| a.count(v)} %>
+</div>
+    <div class="col-lg-8">
+      <table class="table" style="margin-top: 40px;">
+        <tbody>
+          <tr>
+            <td><%= link_to product.title, product_path(product.id) %></td>
+                <% a = [] %>
+                <% product.discs.each do |disc| %>
+                  <% disc.tunes.each do |tune| %>
+                    <% a.push(tune.artist.name) %>
+                  <% end %>
+                <% end %>
+            <td><%= a.max_by { |v| a.count(v)} %></td>
+          </tr>
+          <tr>
+            <td><%= product.price %>円</td>
+            <td><% s = product.stock_count %>
+                  <% if s == 0 %>
+                    売り切れ
+                  <% elsif s >= 1 && s <= 10 %>
+                    在庫残りわずか
+                  <% else s >= 11 %>
+                    在庫有り
+                  <% end %>
+                  <%= s %></td>
+          </tr>
+          <tr>
+              <% if user_signed_in? %>
+              <%= form_for (@cart),url: sss_path(product_id: product) do |f| %>
+            <td><%= f.label :枚数 %>
+              <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %></td>
+            <td><%= f.submit("カート追加") %></td>
+                <% end %>
+                <% end %>
+          </tr>
+        </tbody>
+      </table>
     </div>
-  <% if user_signed_in? %>
-    <%= form_for (@cart),url: sss_path(product_id: product) do |f| %>
-      <div class="index-info-number-box">
-        <%= f.label :枚数 %>
-        <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
-      </div>
-      <div class="index-info-cart-button">
-        <%= f.submit "カート追加", class:"btn" %>
-      </div>
-    <% end %>
+  </div>
   <% end %>
-</div>
-  <% end %>
-</div>
+ <% end %>
+ <div class="text-center"><%= paginate @products, class: "pagenate" %></div>
   <div class="col-lg-3"></div>
-  </div>
- <div class="row">
-    <div class="col-lg-3"></div>
-    <div class="col-lg-6">
-  <%= paginate @products, class: "pagenate" %>
-    </div>
-<% end %>
-    <div class="col-lg-3"></div>
   </div>

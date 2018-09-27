@@ -2,25 +2,27 @@
 <div class="row text-center" style="padding-top: 200px;">
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
-	<div class="pur-box">
-<table style="border-collapse: separate; border-spacing: 10px;">
+	<div class="row" style="background-color: #ffffff; border: double;">
+    <table style="border-collapse: separate; border-spacing: 10px;">
 	<% @price = 0 %>
 	<% current_user.carts.each do |cart| %>
 	<tr>
-	  <td class="text">Title：<%= cart.product.title %></td>
-	  <td class="text">購入枚数：<%= cart.sheet_number %>枚</td>
-	  <td class="text">値段：<%= cart.product.price %> 円</td>
-      <td class="text">小計：<%= cart.product.price * cart.sheet_number %>円</td>
+	  <td>Title：<%= cart.product.title %></td>
+	  <td>購入枚数：<%= cart.sheet_number %>枚</td>
+	  <td>値段：<%= cart.product.price %> 円</td>
+      <td>小計：<%= cart.product.price * cart.sheet_number %>円</td>
     </tr>
 	<% total_price = cart.product.price * cart.sheet_number %>
 	<% @price += total_price %>
 	<% end %>
   </table>
 </div>
-<div class="last-box">
+<div class="row" style="background-color: #ffffff; border: double; margin-top: 30px;" >
 	合計<%= @price %>円
     <%= form_for (@purchase), url:last_path(user_id: current_user.id,total_price: @price) do |f| %>
-    <%= f.select :destination, @destinations_array, size:"50" %>
+
+    送付先選択<%= f.select :destination_id, @destinations_array %>
+
 	<%= f.submit "購入する"%>
 <% end %>
 </div>

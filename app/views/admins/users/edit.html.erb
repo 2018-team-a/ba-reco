@@ -1,0 +1,24 @@
+<h3 class="text-left">ユーザー情報編集</h3>
+<%= nested_form_for @user do |f| %>
+  <ul>
+    <li><%= f.text_field :name_family_name, class: "name_family_name" %></li>
+    <li><%= f.text_field :name_name, class: "name_name" %></li>
+    <li><%= f.text_field :furigana_family_name, class: "furigana_family_name" %></li>
+    <li><%= f.text_field :furigana_name, class: "furigana_name" %></li>
+    <li><%= f.text_field :postal_code, class: "postal_code" %></li>
+    <li><%= f.text_field :address, class: "address" %></li>
+    <li><%= f.text_field :phone_number, class: "phone_number" %></li>
+    <li><%= f.text_field :email, class: "email" %></li>
+  </ul>
+  <h2>送付先</h2>
+  <%= f.fields_for :destinations do |df| %>
+    <ul>
+      <li><%= df.text_field :postal_code, class: "postal_code" %></td></li>
+      <li><%= df.text_field :destination, class: "destination" %></li>
+      <li><%= df.label :_destroy, "送付先削除" %></li>
+      <li><%= df.check_box :_destroy %></li>
+    </ul>
+  <% end %>
+
+  <%= f.submit "情報更新" %>
+<% end %>

@@ -1,19 +1,9 @@
-Label.seed do |s|
-  s.name = "レーベル１"
-end
-
-Label.seed do |s|
-  s.name = "レーベル２"
-end
-
-Label.seed do |s|
-  s.name = "レーベル３"
-end
-
-Label.seed do |s|
-  s.name = "レーベル４"
-end
-
-Label.seed do |s|
-  s.name = "レーベル５"
-end
+a = "レーベル"
+b = 0
+100.times {
+    c = b.to_s
+    b += 1
+  Label.seed do |s|
+    s.name = a + c
+  end
+}

@@ -1,6 +1,13 @@
 class Admins::ProductsController < ApplicationController
-
+  before_action :authenticate_admin!
+  
   layout "admins"
+
+  def index
+    @products = Product.page(params[:page]).reverse_order
+    productx = Product.search(params[:search])
+    @products_search = productx.page(params[:page]).reverse_order
+  end
 
   def new
     @product = Product.new
@@ -21,10 +28,7 @@ class Admins::ProductsController < ApplicationController
     end
   end
 
-  def index
-    productx = Product.search(params[:search])
-    @products = productx.page(params[:page]).reverse_order
-  end
+
 
   def show
     @product = Product.find(params[:id])
@@ -35,11 +39,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def update
-
     @product = Product.find(params[:id])
     @product.update(product_params)
     redirect_to admins_product_path
-
   end
 
   def destroy

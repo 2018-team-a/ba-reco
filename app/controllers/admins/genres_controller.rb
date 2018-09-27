@@ -1,6 +1,12 @@
 class Admins::GenresController < ApplicationController
-
+  before_action :authenticate_admin!
 	layout "admins"
+
+	def index
+		@genres = Genre.page(params[:page]).reverse_order
+		genresx = Genre.search(params[:search])
+		@genres_search = genresx.page(params[:page]).reverse_order
+	end
 
 	def new
 	  @genre = Genre.new
@@ -12,9 +18,7 @@ class Admins::GenresController < ApplicationController
 	  redirect_to new_admins_genre_path
 	end
 
-	def index
-	  @genres = Genre.all
-	end
+
 
 	def show
 	  @genre = Genre.find(params[:id])

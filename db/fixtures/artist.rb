@@ -1,19 +1,9 @@
-Artist.seed do |s|
-  s.name = "アーティスト１"
-end
-
-Artist.seed do |s|
-  s.name = "アーティスト２"
-end
-
-Artist.seed do |s|
-  s.name = "アーティスト３"
-end
-
-Artist.seed do |s|
-  s.name = "アーティスト４"
-end
-
-Artist.seed do |s|
-  s.name = "アーティスト５"
-end
+a = "アーティスト"
+b = 0
+100.times {
+    c = b.to_s
+    b += 1
+  Artist.seed do |s|
+    s.name = a + c
+  end
+}
