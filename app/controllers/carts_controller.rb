@@ -33,9 +33,9 @@ class CartsController < ApplicationController
 		@destinations = current_user.destinations
 			# if @destinations.present?
 				@destinations_array = []
+				@destinations_array << [current_user.address,current_user.address]
 				@destinations.each do |destination|
 	 			@destinations_array << [destination.destination,destination.destination]
-				@destinations_array << [current_user.address,current_user.address]
 	 				end
 			# else
 			# 	@destinations_array = []
