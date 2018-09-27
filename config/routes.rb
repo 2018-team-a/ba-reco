@@ -5,11 +5,13 @@ Rails.application.routes.draw do
   post "carts/purchase_singles" => "carts#cart_single", as:"single"
 
   namespace :admins do
+    resources :users, only: [:index, :edit, :update, :destroy]
     resources :products do
       resources :discs do
         resources :tunes
       end
     end
+
     resources :discs
     resources :artists
     resources :purchases
@@ -35,11 +37,7 @@ Rails.application.routes.draw do
 
   get 'admins/' => 'admins#index', as: :admins
 
-  resource :admins do
-      resources :users, only: [:index, :edit, :update, :destroy]
-  end
-
-  resources :users
+  resources :users, only: [:show, :edit, :destroy, :update]
   resources :carts, only: [:index, :destroy, :update]
   resources :purchases
   resources :destinations
@@ -50,8 +48,6 @@ Rails.application.routes.draw do
   end
   resources :purchase_singles
   resources :unsubscribes
-
-
   resources :tunes
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

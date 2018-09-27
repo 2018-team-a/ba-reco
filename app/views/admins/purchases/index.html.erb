@@ -24,7 +24,9 @@
 
   <li>合計金額</li>
   <li><%= purchase.total_price %></li>
+  <li><%= link_to "edit", edit_admins_purchase_path(purchase.id) %></li>
 </ul>
+
 <% end %>
 
 <%= paginate @purchases %>

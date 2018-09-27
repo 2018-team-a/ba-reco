@@ -1,7 +1,22 @@
 <h1>Admins::Artists#index</h1>
 
-<% @artists.each do |f| %>
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= form_tag admins_artists_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+<% end %>
+
+<% @artists_search.each do |f| %>
 <%= link_to f.name, admins_artist_path(f.id) %>
 <%end%>
 
 <h3><%= link_to "登録ページ", new_admins_artist_path %></h3>
+
+<%= paginate @artists_search %>

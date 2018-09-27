@@ -1,5 +1,5 @@
 class Admins::TunesController < ApplicationController
-
+  before_action :authenticate_admin!
   def new
   	@tune = Tune.new
     @product = Product.find(params[:product_id])

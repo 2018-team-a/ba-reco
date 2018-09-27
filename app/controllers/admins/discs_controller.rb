@@ -1,5 +1,5 @@
 class Admins::DiscsController < ApplicationController
-
+  before_action :authenticate_admin!
   layout "admins"
 
   def new
