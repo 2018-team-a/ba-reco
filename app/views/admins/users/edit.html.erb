@@ -22,3 +22,5 @@
 
   <%= f.submit "情報更新" %>
 <% end %>
+
+<li><%= link_to "delete", admins_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></li>

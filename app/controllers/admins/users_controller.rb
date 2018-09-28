@@ -34,10 +34,9 @@ class Admins::UsersController < ApplicationController
     end
 
     def destroy
-      @user = current_user
-      @user.soft_delete
-      sign_out(@user)
-      redirect_to products_path
+      @user = User.find(params[:id])
+      @user.destroy
+      redirect_to admins_users_path
     end
 
     private

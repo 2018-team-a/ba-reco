@@ -34,7 +34,7 @@ class Admins::LabelsController < ApplicationController
     @label = Label.find(params[:id])
     if @label.update(label_params)
       flash[:notice] = "successfully"
-      redirect_to label_path(@label.id)
+      redirect_to admins_label_path(@label.id)
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class Admins::LabelsController < ApplicationController
   def destroy
     label = Label.find(params[:id])
     label.destroy
-    redirect_to labels_path
+    redirect_to admins_labels_path
   end
 
   private
