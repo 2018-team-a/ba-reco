@@ -11,8 +11,6 @@
 <ul>
   <li>メールアドレス</li>
   <li><%= user.email %></li>
-  <li>ユーザーパスワード</li>
-  <li><%= user.encrypted_password  %></li>
   <li>苗字</li>
   <li><%= user.name_family_name %></li>
   <li>名前</li>
@@ -27,6 +25,7 @@
   <li><%= user.address %></li>
   <li>電話番号</li>
   <li><%= user.phone_number %></li>
+  <li><%= user.deleted_at %></li>
   <li>ユーザー編集画面</li>
   <li><%= link_to "edit", edit_admins_user_path(user), class: "user_#{user.id}" %></li>
 </ul>
