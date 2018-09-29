@@ -2,17 +2,22 @@
 
 <%= form_for [:admins, (@artist)] do |f| %>
 
-<% if @artist.errors.any? %>
-  <h2><%= @artist.errors.count %>件のエラーが発生しました</h2>
-  <ul>
-    <% @artist.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+				<% if @artist.errors.any? %>
+				<h2><%= @artist.errors.count %>件のエラーが発生しました</h2>
+				<ul>
+					<% @artist.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+				<% end %>
 
-<%= f.text_field :name %>
-<%= f.submit "登録" %>
-<% end %>
+				<%= f.text_field :name %>
+				<%= f.submit "登録" %>
+				<% end %>
 
-<h3><%= link_to "一覧", admins_artists_path %></h3>
+				<h3><%= link_to "一覧", admins_artists_path %></h3>
+
+			</div>
+		</div>
+	</div>
+</body>

@@ -4,7 +4,7 @@
 
 <% r = 1 %>
 <h3 class="text-left">購入履歴</h3>
-<table class="his-table-box">
+<table class="his-table-box" style="background-color: #ffffff">
   <tr>
     <th>購入日</th>
     <th>合計金額</th>
@@ -53,7 +53,7 @@
 
 <h3 class="text-left">ユーザー情報編集</h3>
 <%= nested_form_for @user do |f| %>
-<table class="table-box user-edit-box">
+<table class="table-box user-edit-box" style="background-color: #ffffff">
   <tr>
   <div class="field">
     <td class="text-right"><label>名前(名字、名前別)</label></td>
@@ -98,7 +98,7 @@
   </table>
     <h3 class="text-left">送付先登録</h3>
     <%= f.fields_for :destinations do |df| %>
-    <table class="table-box dest-box">
+    <table class="table-box dest-box" style="background-color: #ffffff">
     <tr>
       <div class="postal_code">
         <td class="text-right"><label for="postal_code">郵便番号</label></td>
@@ -123,11 +123,12 @@
 
     <% end %>
   </table>
-  <div class="action text-left" style="padding-top: 50px;">
+  <div style="padding-top: 30px;">
     <%= f.submit "情報更新" %>
-  </div>
-  <button><%= link_to "退会", user_path(current_user.id) %></button>
-
+    <button>
+     <%= link_to "退会ページ", user_path(current_user.id) %>
+    </button>
+</div>
 <% end %>
 </div>
 <div class="col-lg-3"></div>
