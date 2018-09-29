@@ -9,20 +9,38 @@
 	margin-bottom: 80px;
 }
 
-.body {
-	background-color: #CEE3F6;
-	background-image: url("desert.jpg")
-
-
-}
-
 .col-xs-offset-4 {
-	background: linear-gradient(-225deg, #2CD8D5 0%, #C5C1FF 56%, #FFBAC3 100%);
 	font-size:20px;
 	border-radius:25px/25px ;
+	background: -moz-linear-gradient(top, #FFC778, #FFF);
+	background: -webkit-linear-gradient(top, #FFC778, #FFF);
+	background: linear-gradient(to bottom, #FFC778, #FFF);
+}
+
+.col-xs-3 {
+	font-size:20px;
 }
 
 
 .container-fluid {
-	background: #A9F5D0;
+	background: -moz-linear-gradient(top, #FFC778, #FFF);
+	background: -webkit-linear-gradient(top, #FFC778, #FFF);
+	background: linear-gradient(to bottom, #FFC778, #FFF);
+}
+
+navbar-brand {
+	font-siza:20px;
+}
+
+.h1 {
+  padding: .5em .75em;
+  background-color: #f6f6f6;
+}
+
+.h1-products-new {
+  padding: .5em .75em;
+  background-color: #f6f6f6;
+  width:40%;
+  margin:0 auto;
+  margin-bottom: 20px;
 }

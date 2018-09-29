@@ -20,7 +20,7 @@
 <div class="last-box">
 	合計<%= @price %>円
     <%= form_for (@purchase), url:last_path(user_id: current_user.id,total_price: @price) do |f| %>
-    <%= f.select :destination_id, @destinations_array, size:"50" %>
+    <%= f.select :destination, @destinations_array, size:"50" %>
 	<%= f.submit "購入する"%>
 <% end %>
 </div>

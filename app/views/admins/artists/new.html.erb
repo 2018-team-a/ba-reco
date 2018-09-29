@@ -1,25 +1,34 @@
+<body class="body1">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-4 col-xs-offset-4">
 
-<h1>アーティストの登録</h1>
+				<h1>アーティスト登録</h1>
 
-<% if flash[:notice] %>
-  <div class="flash" style="color: green;">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+				<% if flash[:notice] %>
+				<div class="flash" style="color: green;">
+					<%= flash[:notice] %>
+				</div>
+				<% end %>
 
-<%= form_for [:admins, (@artist)] do |f| %>
+				<%= form_for [:admins, (@artist)] do |f| %>
 
-<% if @artist.errors.any? %>
-  <h2><%= @artist.errors.count %>件のエラーが発生しました</h2>
-  <ul>
-    <% @artist.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+				<% if @artist.errors.any? %>
+				<h2><%= @artist.errors.count %>件のエラーが発生しました</h2>
+				<ul>
+					<% @artist.errors.full_messages.each do |message| %>
+					<li><%= message %></li>
+					<% end %>
+				</ul>
+				<% end %>
 
-<%= f.text_field :name %>
-<%= f.submit "登録" %>
-<% end %>
+				<%= f.text_field :name %>
+				<%= f.submit "登録" %>
+				<% end %>
 
-<h3><%= link_to "一覧", admins_artists_path %></h3>
+				<h3><%= link_to "一覧", admins_artists_path %></h3>
+
+			</div>
+		</div>
+	</div>
+</body>

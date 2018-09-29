@@ -49,7 +49,7 @@ class CartsController < ApplicationController
 	def cart_last
 
 		carts = Cart.where(params[:id])
-		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination_id: purchase_params[:destination_id], status: 0)
+		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination: purchase_params[:destination], status: 0)
         purchase.save
         carts.each do |cart|
         purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
@@ -111,7 +111,7 @@ class CartsController < ApplicationController
     	end
 
     	def purchase_params
-        	params.require(:purchase).permit(:destination_id, :status, :user_id, :total_price)
+        	params.require(:purchase).permit(:destination, :status, :user_id, :total_price)
     	end
 
     	def purchase_single_params
