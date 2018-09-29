@@ -4,9 +4,10 @@
 .top-image-box{
 	height: 850px;
 	width: 100%;
-	background-color: black;
 	position: relative;
   z-index: 1;
+  background-color: #000000;
+
 }
 .image-box1{
     height: 400px;
@@ -101,7 +102,7 @@
 	top: 0;
 	left: 0;
 }
-img:hover {
+.product-image:hover {
     opacity: 0.5;
 }
 .index-info-title{
