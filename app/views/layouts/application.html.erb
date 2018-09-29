@@ -11,21 +11,21 @@
   </head>
   <body style="background-color: #d6ffff">
     <div class="header-box">
-    <header class="container-field text-center" style="background-color: #ffffff">
+    <header class="container-field text-center" style="background-color: #d6ffff">
         <div class="row">
-            <h1 class="col-lg-4">
-              <%= link_to "婆ーレコード", products_path, class:"header-title"%>
-            </h1>
-            <h3 class="col-lg-5" style="padding-top: 10px;">
+            <h4 class="col-lg-3" style="font-family: selif;">
+              <%= link_to "婆ーレコード", products_path %>
+            </h4>
+            <h4 class="col-lg-4">
               <div class="search-box text-left">
               <%= form_tag products_path, :method => 'get' do %>
               タイトル検索
-              <%= text_field_tag :search, params[:search], :size => "20"%>
+              <%= text_field_tag :search, params[:search] %>
               <%= submit_tag "検索", :title => nil %>
               <% end %>
               </div>
-            </h3>
-            <nav class="col-lg-3" style="padding-top: 20px;">
+            </h4>
+            <div class="col-lg-2" style="padding-top: 15px;">
               ようこそ、
               <% if user_signed_in? %>
               <%= current_user.name_family_name %>
@@ -33,7 +33,9 @@
               ゲスト
               <% end %>
               さん
-              <ul class="list-inline">
+            </div>
+            <nav class="col-lg-3">
+              <ul class="list-inline" style="padding-top: 5px;">
                 <% if user_signed_in? %>
                   <li>
                       <%= link_to "マイページ", edit_user_path(current_user.id), class:"btn btn-success" %>
