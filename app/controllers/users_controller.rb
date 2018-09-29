@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :authenticate_user!, only: [:show, :edit]
 
 	def index
     @users = User.page(params[:page]).reverse_order
@@ -9,12 +10,19 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to products_path
+    end
   end
 
   def edit
     @user = User.find(params[:id])
-		@user.destinations.build
-    @purchases = Purchase.where(user_id:current_user.id).page(params[:page]).reverse_order
+    if @user.id == current_user.id
+ 		   @user.destinations.build
+       @purchases = Purchase.where(user_id:current_user.id).page(params[:page]).reverse_order
+    else
+       redirect_to products_path
+    end
   end
 
   def update
