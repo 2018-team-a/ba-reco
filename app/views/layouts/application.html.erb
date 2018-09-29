@@ -10,7 +10,7 @@
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
 
-  <body>
+  <body class="haikei">
     <div class="header-box">
     <header class="container-field text-center" style="background-color: black;">
         <div class="row">
@@ -30,7 +30,7 @@
               <% end %>
               </div>
             </h4>
-            <div class="col-lg-2" style="padding-top: 20px; color: white;"">
+            <div class="col-lg-2" style="padding-top: 20px; color: white;">
               ようこそ、
               <% if user_signed_in? %>
               <%= current_user.name_family_name %>
