@@ -12,18 +12,13 @@
   <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} %><br>
 
   <%= f.label "値段" %><br>
-  <%= f.text_field :price %><br>
+  <%= f.number_field :price, min:0 %><br>
 
   <%= f.label "リリース日" %><br>
   <%= f.date_field :release_date %><br>
 
   <%= f.label "在庫数" %><br>
-  <%= f.number_field :stock_count %><br>
-
-  <%= f.label "収容Disc枚数" %><br>
-  <%= f.number_field :disc_count %><br>
-
-
+  <%= f.number_field :stock_count, min:0 %><br>
 
   <%= f.submit '登録' %>
 

@@ -2,48 +2,65 @@
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
   	<h2>カート</h2>
-    <% if current_user.carts.present? %>
-  	<% current_user.carts.each do |cart| %>
-      <div class="info-box" style="background-color: #ffffff;">
-        <div class="info-image">
-          <%= attachment_image_tag cart.product, :image, :fill, 100, 100, format: 'jpeg' %>
+    <% if @carts.present? %>
+  	<%@carts.each do |cart| %>
+      <div class="row" style="background-color: #ffffff; height: 200px; border: double; margin-top: 60px;">
+        <div class="col-lg-4" style="height: 100%;">
+          <%= attachment_image_tag cart.product, :image, format: 'jpeg', fallback: "no_image.jpg", style: "height: 100%;" %>
         </div>
-        <div class="index-info-title">
-          <%= cart.product.title %>
-        </div>
-        <div class="index-info-price">
-          <%= cart.product.price %> 円
-        </div>
-        <div class="index-info-number-box">
-          <%= form_for(cart) do |f| %>
-          <%= f.label :枚数 %>
-          <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
-          <%= f.submit "更新する" %>
-          <% end %>
-
-        </div>
-          <% a = [] %>
-          <% cart.product.discs.each do |disc| %>
-            <% disc.tunes.each do |tune| %>
-              <% a.push(tune.artist.name) %>
-		    <% end %>
-	      <% end %>
-	    <div class="index-info-artist">
-           <%= a.max_by { |v| a.count(v)} %>
-        </div>
-        <div class="index-info-cart-button">
-          <%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
+        <div class="col-lg-8" style="height: 100%;">
+          <table class="table text-left" style="margin-top: 40px;">
+            <tbody>
+              <tr>
+                <td><%= cart.product.title %></td>
+                    <% a = [] %>
+                    <% cart.product.discs.each do |disc| %>
+                      <% disc.tunes.each do |tune| %>
+                        <% a.push(tune.artist.name) %>
+                      <% end %>
+                    <% end %>
+                <td><%= a.max_by { |v| a.count(v)} %></td>
+              </tr>
+              <tr>
+                <td><%= cart.product.price %>円</td>
+                <td><% s = cart.product.stock_count %>
+                    <% if s == 0 %>
+                      売り切れ
+                    <% elsif s >= 1 && s <= 10 %>
+                      在庫残りわずか
+                    <% else s >= 11 %>
+                      在庫有り
+                    <% end %>
+                    <%= s %></td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="text-left">
+            <%= form_for(cart) do |f| %>
+              <%= f.label :枚数 %>
+              <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
+              <%= f.submit "更新する" %>
+              <%= link_to'カートから出す',cart_path(cart.id), method: :delete, "data-confirm" => "本当にカートから出しますか？" %>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
-    <div class="info-box" style="background-color: #ffffff;">
-    <%= link_to '購入ページへ', ccc_path, class:"purchase-button" %>
+    <div class="row" style="background-color: #ffffff; height: 100px; border: double; margin-top: 60px;">
+      <div class="col-lg-3"></div>
+      <div class="col-lg-3" style="padding-top: 35px;">
+        <%= link_to '購入ページへ', ccc_path %>
+      </div>
+      <div class="col-lg-3" style="padding-top: 35px;">
+        <%= link_to "お買い物を続ける", products_path %>
+      </div>
+    <div class="col-lg-3"></div>
+    </div>
     <% else %>
     <p>カートは空です。</p>
     <h1>なんか買ってね！！！</h1>
     <% end %>
-    <%= link_to "お買い物を続ける", products_path, class:"back-button" %>
-  </div>
+    <%= paginate @carts, class: "pagenate" %>
   </div>
   <div class="col-lg-3"></div>
 </div>

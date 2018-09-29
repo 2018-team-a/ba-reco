@@ -1,50 +1,51 @@
 <div class="row" style="padding-top: 150px;padding-bottom: 150px;">
   <div class="col-lg-3"></div>
   <div class="col-lg-6">
-    <div class="info-box" style="background-color: #ffffff;">
-      <div class="info-image">
-        <%= attachment_image_tag @product, :image, :fill, 200, 200, format: 'jpeg' %>
-      </div>
-      <div class="show-info-title">
-        <%= @product.title %>
-      </div>
-      <div class="show-info-price">
-        <%= @product.price %>円
-      </div>
-      <div class="show-info-stock">
-        <% s = @product.stock_count %>
-        <% if s == 0 %>
-          在庫無し
-        <% elsif s >= 1 && s <= 10 %>
-          在庫残りわずか
-        <% else s >= 11 %>
-          在庫有り
+        <% if flash[:notice] %>
+          <p><%= flash[:notice] %></p>
         <% end %>
-        <%= s %>
+    <div class="row" style="background-color: #ffffff; height:200px; border: double;">
+      <div class="col-lg-4" style="height: 100%;">
+        <%= attachment_image_tag @product, :image, format: 'jpeg', style: "height: 100%;"%>
       </div>
-      <% a = [] %>
-      <% @product.discs.each do |disc| %>
-        <% disc.tunes.each do |tune| %>
-          <% a.push(tune.artist.name) %>
-        <% end %>
-      <% end %>
-      <div class="show-info-artist">
-        <%= a.max_by { |v| a.count(v)} %>
-      </div>
-      <% if user_signed_in? %>
-        <%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
-          <div class="show-info-number-box">
+
+      <div class="col-lg-8">
+        <table class="table" style="margin-top: 40px;">
+        <tbody>
+          <tr>
+          <td><%= @product.title %></td>
+              <% a = [] %>
+              <% @product.discs.each do |disc| %>
+                <% disc.tunes.each do |tune| %>
+                  <% a.push(tune.artist.name) %>
+                <% end %>
+              <% end %>
+              <td><%= a.max_by { |v| a.count(v)} %></td>
+          </tr>
+          <tr>
+          <td><%= @product.price %>円</td>
+          <td><% s = @product.stock_count %>
+              <% if s == 0 %>
+                在庫無し
+              <% elsif s >= 1 && s <= 10 %>
+                在庫わずか
+              <% else s >= 11 %>
+                在庫有り
+              <% end %>
+              <%= s %></td>
+          </tr>
+          </tbody>
+          </table>
+          <% if user_signed_in? %>
+            <%= form_for (@cart),url: sss_path(product_id: @product) do |f| %>
             <%= f.label :枚数 %>
             <%= f.number_field :sheet_number, class:"number-field", :min => "1", :max => "99" %>
-          </div>
-          <div class="show-info-cart-button">
-          	<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true">
-            <%= f.submit(["カート追加"]) %>
-            </span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
+            <%= f.submit("カート追加") %>
+            <% end %>
+          <% end %>
+  </div>
+</div>
+
     <% b = 1 %>
     <% @product.discs.each do |disc| %>
     <div class="show-tune-box">

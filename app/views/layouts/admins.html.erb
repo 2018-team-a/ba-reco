@@ -4,7 +4,6 @@
     <title>BaRecord</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link rel="stylesheet" href="/admins.scss">
@@ -14,7 +13,7 @@
     <header>
       <div >
         <nav>
-          <span>婆ーレコード</span>
+          <span><%= link_to "婆ーレコード", admins_path %></span>
         </nav>
         <nav>
           <ul>

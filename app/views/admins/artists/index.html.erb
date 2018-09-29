@@ -1,19 +1,23 @@
-<div class="container">
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-    	<h1 class="h1">登録アーティスト一覧</h1>
-      <tr>
-        <th>アーティスト名</th>
-      </tr>
 
-      <% @artists.each do |f| %>
-      <tr>
-        <td><%= link_to f.name, admins_artist_path(f.id) %></td>
-      </tr>
-      <%end%>
-    </thead>
-  </table>
-  <h3><%= link_to "登録ページ", new_admins_artist_path %></h3>
-</div>
-</div>
+<h1>アーティスト一覧</h1>
+
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
+<%= form_tag admins_artists_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+<% end %>
+
+<% @artists_search.each do |f| %>
+  <p><%= link_to f.name, edit_admins_artist_path(f.id) %></p>
+<%end%>
+
+<%= paginate @artists_search %>
+
+<h3><%= link_to "登録ページ", new_admins_artist_path %></h3>

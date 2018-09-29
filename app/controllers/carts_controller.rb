@@ -2,7 +2,7 @@ class CartsController < ApplicationController
 
 
 	def index
-
+		@carts = Cart.where(user_id: current_user.id).page(params[:page]).reverse_order
 	 	 #@carts = Cart.where(user_id: current_user.id)
 
 	end
@@ -31,15 +31,17 @@ class CartsController < ApplicationController
 		if current_user.carts.present?
 		@purchase = current_user.purchases.new
 		@destinations = current_user.destinations
-			if @destinations.present?
-				@destinations_array = []
-				@destinations.each do |destination|
-	 			@destinations_array << [destination.destination, destination.id]
-	 				end
-			else
+			# if @destinations.present?
 				@destinations_array = []
 				@destinations_array << [current_user.address,current_user.address]
-			end
+				@destinations.each do |destination|
+	 			@destinations_array << [destination.destination,destination.destination]
+	 				end
+			# else
+			# 	@destinations_array = []
+
+			# 	@destinations_array << [current_user.address,current_user.address]
+			# end
 		else
 			redirect_to root_path
 	 	end
@@ -49,7 +51,10 @@ class CartsController < ApplicationController
 	def cart_last
 
 		carts = Cart.where(params[:id])
-		purchase = Purchase.new(user_id: current_user.id, total_price: @price, destination: purchase_params[:destination], status: 0)
+
+
+		purchase = Purchase.new(user_id: current_user.id, total_price: params[:total_price], destination: purchase_params[:destination], status: 0)
+
         purchase.save
         carts.each do |cart|
         purchase_single = PurchaseSingle.new(purchase_id: purchase.id, product_id: cart.product_id, sheet_number: cart.sheet_number)
@@ -78,11 +83,11 @@ class CartsController < ApplicationController
 				 if Cart.exists?(user_id: current_user.id ,product_id: params[:product_id])
 				 	cart = Cart.find_by(user_id: current_user.id ,product_id: params[:product_id])
 				 	cart.sheet_number = cart.sheet_number + add_cart.sheet_number
-				 	if cart.sheet_number < product.stock_count
+				 	if cart.sheet_number <= product.stock_count
 				 		cart.save
 				 		redirect_to carts_path
 				 	else
-				 		redirect_to product_path(product)
+				 		redirect_to product_path(product), notice: "在庫は#{product.stock_count}枚だよ！"
 				 	end
 
 				else
@@ -94,11 +99,10 @@ class CartsController < ApplicationController
 				 		add_cart.save
 						redirect_to carts_path
 				 	else
-				 		redirect_to product_path(product)
+				 		redirect_to product_path(product), notice: "在庫は#{product.stock_count}枚だよ！"
 				 	end
 				end
 		end
-			
 	end
 
 

@@ -1,13 +1,16 @@
 class Admins::ArtistsController < ApplicationController
-
+  before_action :authenticate_admin!
 	layout "admins"
 
 	def index
-	  @artists = Artist.all
+		@artists = Artist.page(params[:page]).reverse_order
+		artistsx = Artist.search(params[:search])
+		@artists_search = artistsx.page(params[:page]).reverse_order
 	end
 
 	def show
 	  @artist = Artist.find(params[:id])
+    @tune = Tune.all
 	end
 
 	def new
@@ -17,9 +20,8 @@ class Admins::ArtistsController < ApplicationController
 	def create
 	  @artist = Artist.new(artist_params)
 	  if @artist.save
-
-			flash[:notice] = "successfully"
-	  	redirect_to new_admins_artist_path
+			flash[:notice] = "アーティスト名登録完了"
+	  	redirect_to admins_artists_path
 		else
 			render :new
 		end
@@ -32,9 +34,7 @@ class Admins::ArtistsController < ApplicationController
 	def update
 	  @artist = Artist.find(params[:id])
 	  if @artist.update(artist_params)
-
-			flash[:notice] = "successfully"
-
+			flash[:notice] = "アーティスト名編集完了"
 	  	redirect_to admins_artist_path(@artist.id)
 		else
 			render :edit
@@ -42,9 +42,9 @@ class Admins::ArtistsController < ApplicationController
 	end
 
 	def destroy
-	  artist = Artist.find(params[:id])
-	  artist.destroy
-	  redirect_to artists_path
+	  @artist = Artist.find(params[:id])
+	  @artist.destroy
+	  redirect_to admins_artists_path
 	end
 
 	private

@@ -1,12 +1,22 @@
-<br>
-<br>
-<br>
-<br>
+<h1>ジャンル一覧</h1>
 
-<h1>Admins::Genres#index</h1>
+<% if flash[:notice] %>
+  <div class="flash" style="color: green;">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
 
-<% @genres.each do |f| %>
-<%= link_to f.name, admins_genre_path(f.id) %>
+<%= form_tag admins_genres_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "検索", :name => nil %>
+    </p>
+<% end %>
+
+<% @genres_search.each do |f| %>
+  <p><%= link_to f.name, edit_admins_genre_path(f.id) %></p>
 <%end%>
+
+<%= paginate @genres_search %>
 
 <h3><%= link_to "登録ページ", new_admins_genre_path %></h3>
