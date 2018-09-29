@@ -1,12 +1,25 @@
-<h1>管理者のインデックスページ</h1>
-<nav>
-  <ul>
-    <li><%= link_to "会員の一覧", admins_users_path, class: "aaa" %></li>
-    <li><%= link_to "アーティストの登録", new_admins_artist_path, class: "aaa" %></li>
-    <li><%= link_to "レーベルの登録", new_admins_label_path, class: "aaa" %></li>
-    <li><%= link_to "ジャンルの登録", new_admins_genre_path, class: "aaa" %></li>
-    <li><%= link_to "商品の登録", new_admins_product_path, class: "aaa" %></li>
-    <li><%= link_to "商品の一覧", admins_products_path, class: "aaa" %></li>
-    <li><%= link_to "購入履歴", admins_purchases_path, class: "aaa" %></li>
-  </ul>
-</nav>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-9 col-xs-offset-2">
+			<h1 class="h1">管理者TOP</h1>
+    <div class="row">
+    	<div class="col-xs-3 col-xs-offset-2">
+    		<h2>登録</h2>
+    		<div><%= link_to "アーティスト", new_admins_artist_path, class: "aaa" %></div>
+    		<div><%= link_to "ジャンル", new_admins_genre_path, class: "aaa" %></div>
+    		<div><%= link_to "レーベル", new_admins_label_path, class: "aaa" %></div>
+    		<div><%= link_to "商品", new_admins_product_path, class: "aaa" %></div>
+    	</div>
+    	<div class="col-xs-3">
+    		<h2>一覧</h2>
+    		<div><%= link_to "アーティスト", admins_artists_path, class: "aaa" %></div>
+    		<div><%= link_to "ジャンル", admins_genres_path, class: "aaa" %></div>
+    		<div><%= link_to "レーベル", admins_labels_path, class: "aaa" %></div>
+    		<div><%= link_to "商品", admins_products_path, class: "aaa" %></div>
+    	</div>
+    	<div class="col-xs-3">
+    		<h2>その他</h2>
+    		<%= link_to "購入履歴", admins_purchases_path, class: "aaa" %>
+    	</div>
+    </div>
+</div>

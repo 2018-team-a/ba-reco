@@ -52,6 +52,7 @@ class CartsController < ApplicationController
 
 		carts = Cart.where(params[:id])
 
+
 		purchase = Purchase.new(user_id: current_user.id, total_price: params[:total_price], destination: purchase_params[:destination], status: 0)
 
         purchase.save
