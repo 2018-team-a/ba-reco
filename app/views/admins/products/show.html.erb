@@ -1,20 +1,30 @@
-<h1>Admins::Products#show</h1>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <h1 class="h1">商品詳細</h1>
+      <thead>
+        <tr>
+          <th>ジャケ</th>
+          <th>商品名</th>
+          <th>収容Disc数</th>
+          <th>レーベル名</th>
+          <th>リリース日</th>
+          <th>値段</th>
+          <th>在庫数</th>
+          <th>商品編集</th>
+        </tr>
 
-<ul>
-  <li>商品名</li>
-  <li><%= @product.title %></li>
-  <li>レーベル名</li>
-  <li><%= @product.label_id %></li>
-  <li>値段</li>
-  <li><%= @product.price %></li>
-  <li>ジェケ写</li>
-  <li><%= attachment_image_tag @product, :image, :fill, 50, 50, format: 'jpeg', class: "attachment", fallback: "no_image.jpg" %></li>
-  <li>リリース日</li>
-  <li><%= @product.release_date %></li>
-  <li>在庫数</li>
-  <li><%= @product.stock_count %></li>
-  <li>収容Disc数</li>
-  <li><%= @product.disc_count %></li>
-  <li>商品編集画面</li>
-  <li><%= link_to "edit", edit_admins_product_path(@product) %></li>
-</ul>
+        <tr>
+          <td><%= attachment_image_tag @product, :image, :fill, 50, 50, format: 'jpeg', class: "attachment", fallback: "no_image.jpg" %></td>
+          <td><%= @product.title %></td>
+          <td><%= @product.disc_count %></td>
+          <td><%= @product.label_id %></td>
+          <td><%= @product.release_date %></td>
+          <td><%= @product.price %></td>
+          <td><%= @product.stock_count %></td>
+          <td><%= link_to "edit", edit_admins_product_path(@product) %></td>
+        </tr>
+      </thead>
+    </table>
+  </div>
+</div>

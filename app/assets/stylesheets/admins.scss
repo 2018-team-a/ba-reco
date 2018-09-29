@@ -5,10 +5,14 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+
 .body{
-  .container{
+	background: #fff;
+}
+
+
+container{
     margin-top: 50px;
-  }
 }
 
 .main-logo{
