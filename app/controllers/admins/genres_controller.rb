@@ -8,18 +8,22 @@ class Admins::GenresController < ApplicationController
 		@genres_search = genresx.page(params[:page]).reverse_order
 	end
 
+  def show
+	  @genre = Genre.find(params[:id])
+	end
+
 	def new
 	  @genre = Genre.new
 	end
 
 	def create
-	  genre = Genre.new(genre_params)
-	  genre.save
-	  redirect_to admins_genres_path
-	end
-
-	def show
-	  @genre = Genre.find(params[:id])
+	  @genre = Genre.new(genre_params)
+	  if @genre.save
+      flash[:notice] = "ジャンル名登録完了"
+  	  redirect_to admins_genres_path
+    else
+      render :new
+    end
 	end
 
 	def edit
@@ -27,9 +31,13 @@ class Admins::GenresController < ApplicationController
 	end
 
 	def update
-	  genre = Genre.find(params[:id])
-	  genre.update(genre_params)
-	  redirect_to admins_genre_path(genre.id)
+	  @genre = Genre.find(params[:id])
+	  if genre.update(genre_params)
+      flash[:notice] = "ジャンル名編集完了"
+	    redirect_to admins_genre_path(genre.id)
+    else
+      render :edit
+    end
 	end
 
 	def destroy

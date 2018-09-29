@@ -19,7 +19,7 @@ class Admins::LabelsController < ApplicationController
   def create
     @label = Label.new(label_params)
     if @label.save
-      flash[:notice] = "successfully"
+      flash[:notice] = "レーベル名登録完了"
       redirect_to admins_labels_path
     else
       render :new
@@ -33,7 +33,7 @@ class Admins::LabelsController < ApplicationController
   def update
     @label = Label.find(params[:id])
     if @label.update(label_params)
-      flash[:notice] = "successfully"
+      flash[:notice] = "レーベル名編集完了"
       redirect_to admins_label_path(@label.id)
     else
       render :edit

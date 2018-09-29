@@ -5,18 +5,15 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
-.body {
-	background-color:#93B1E9 ;
+.body{
+  .container{
+    margin-top: 50px;
+  }
 }
 
-.col-xs-offset-4 {
-	background-color:#A9F5A9 ;
-	font-size:20px;
-}
-
-.btn btn-primary{
-}
-
-span{
-  color:red;
+.main-logo{
+  a{
+    color: #fff;
+    font-size: 26px;
+  }
 }

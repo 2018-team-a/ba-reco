@@ -10,21 +10,26 @@
   </head>
 
   <body>
-    <header>
-      <div >
-        <nav>
-          <span><%= link_to "婆ーレコード", admins_path %></span>
+    <header class="navbar navbar-fixed-top navbar-inverse">
+      <div class="container">
+        <nav class='nav navbar-nav navbar-left' >
+          <span class = "main-logo"><%= link_to "婆ーレコード", admins_path %></span>
         </nav>
         <nav>
-          <ul>
+          <ul class="nav navbar-nav navbar-right">
             <% if admin_signed_in? %>
-              <li>ログイン中</li>
               <li><%= link_to " logout", destroy_admin_session_path, class: "glyphicon glyphicon-log-out logout", method: :delete %></li>
+            <% else %>
+              <li><%= link_to " login", new_user_session_path, class: "glyphicon glyphicon-log-in sign_in" %></li>
             <% end %>
           </ul>
         </nav>
       </div>
     </header>
-    <%= yield %>
+    <div class='body'>
+      <div class='container'>
+        <%= yield %>
+      <div>
+    </div>
   </body>
 </html>
