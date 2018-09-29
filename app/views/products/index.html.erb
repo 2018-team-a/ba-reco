@@ -10,14 +10,14 @@
 <% end %>
 
 <% if @products.empty? %>
-<h2 class="text-center">一致する商品がありません！</h2>
+<h2 class="text-center" style="color: white;">一致する商品がありません！</h2>
 <% else %>
 <% @products.each do |product| %>
 <div class="row" style="background-color: #ffffff; height: 200px; border: double; margin-top: 60px;">
   <div class="col-lg-4" style="height: 100%;">
 <%= link_to product_path(product.id) do %>
 
-	  <%= attachment_image_tag product, :image, format:'jpeg', fallback: "no_image.jpg", style: "height: 100%;" %>
+	  <%= attachment_image_tag product, :image, format:'jpeg', fallback: "no_image.jpg", style: "height: 100%;", class:"product-image" %>
   <% end %>
 </div>
     <div class="col-lg-8">

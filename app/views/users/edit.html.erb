@@ -3,7 +3,7 @@
 <div class="col-lg-6">
 
 <% r = 1 %>
-<h3 class="text-left">購入履歴</h3>
+<h3 class="text-left" style="color: white;">購入履歴</h3>
 <table class="his-table-box" style="background-color: #ffffff">
   <tr>
     <th>購入日</th>
@@ -51,7 +51,7 @@
 
 
 
-<h3 class="text-left">ユーザー情報編集</h3>
+<h3 class="text-left" style="color: white;">ユーザー情報編集</h3>
 <%= nested_form_for @user do |f| %>
 <table class="table-box user-edit-box" style="background-color: #ffffff">
   <tr>
@@ -96,7 +96,7 @@
   </div>
   </tr>
   </table>
-    <h3 class="text-left">送付先登録</h3>
+    <h3 class="text-left" style="color: white;">送付先登録</h3>
     <%= f.fields_for :destinations do |df| %>
     <table class="table-box dest-box" style="background-color: #ffffff">
     <tr>
