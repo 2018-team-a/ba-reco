@@ -15,20 +15,22 @@
     <header class="container-field text-center" style="background-color: black;">
         <div class="row">
             <h4 class="col-lg-3" style="font-family: selif;">
-              <%= link_to "婆ーレコード", products_path %>
+              <%= link_to products_path do %>
+              <%= image_tag "ba-reco2.jpg",style:"height: 40px;"%>
+              <% end %>
             </h4>
             <h4 class="col-lg-4">
               <div class="search-box text-left">
               <%= form_tag products_path, :method => 'get' do %>
-              <div style="color: white;">
+              <div style="color: white; padding-top: 10px;">
               タイトル検索
-              <%= text_field_tag :search, params[:search] %>
+              <%= text_field_tag :search, params[:search], style:"color: black;"%>
               <%= submit_tag "検索", :title => nil, style:"color: black;" %>
               </div>
               <% end %>
               </div>
             </h4>
-            <div class="col-lg-2" style="padding-top: 15px; color: white;"">
+            <div class="col-lg-2" style="padding-top: 20px; color: white;"">
               ようこそ、
               <% if user_signed_in? %>
               <%= current_user.name_family_name %>
@@ -38,7 +40,7 @@
               さん
             </div>
             <nav class="col-lg-3">
-              <ul class="list-inline" style="padding-top: 5px;">
+              <ul class="list-inline" style="padding-top: 13px;">
                 <% if user_signed_in? %>
                   <li>
                       <%= link_to "マイページ", edit_user_path(current_user.id), class:"btn btn-success" %>
