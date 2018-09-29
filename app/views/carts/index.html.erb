@@ -6,7 +6,7 @@
   	<%@carts.each do |cart| %>
       <div class="row" style="background-color: #ffffff; height: 200px; border: double; margin-top: 60px;">
         <div class="col-lg-4" style="height: 100%;">
-          <%= attachment_image_tag cart.product, :image, format: 'jpeg', fallback: "no_image.jpg", style: "height: 100%;" %>
+          <%= attachment_image_tag cart.product, :image, format: 'jpeg', fallback: "no_image.jpg", style: "height: 100%; width: 194px;" %>
         </div>
         <div class="col-lg-8" style="height: 100%;">
           <table class="table text-left" style="margin-top: 40px;">
