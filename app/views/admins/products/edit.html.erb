@@ -1,35 +1,61 @@
-<h1>商品の編集ページ</h1>
+<body class="body1">
+  <div class="container">
 
-<%= form_for [:admins, @product] do |f| %>
+    <div class="row">
+      <h1 class="h1-products-new">商品編集</h1>
+    </div>
 
-  <%= f.label "商品画像" %><br>
-  <%= f.attachment_field :image %><br>
 
-  <%= f.label "商品タイトル" %><br>
-  <%= f.text_field :title %><br>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <%= form_for [:admins, @product] do |f| %>
 
-  <%= f.label "レーベル名" %><br>
-  <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} %><br>
+        <%= f.label "商品画像" %><br>
+        <%= f.attachment_field :image %><br>
 
-  <%= f.label "値段" %><br>
-  <%= f.number_field :price, min:0 %><br>
+        <%= f.label "商品タイトル" %><br>
+        <%= f.text_field :title %><br>
 
-  <%= f.label "リリース日" %><br>
-  <%= f.date_field :release_date %><br>
+        <%= f.label "レーベル名" %><br>
+        <%= f.select :label_id, Label.all.map {|o| [o.name, o.id]} %><br>
 
-  <%= f.label "在庫数" %><br>
-  <%= f.number_field :stock_count, min:0 %><br>
+        <%= f.label "値段" %><br>
+        <%= f.number_field :price, min:0 %><br>
 
-  <%= f.submit '登録' %>
+        <%= f.label "リリース日" %><br>
+        <%= f.date_field :release_date %><br>
 
-<% end %>
+        <%= f.label "在庫数" %><br>
+        <%= f.number_field :stock_count, min:0 %><br>
 
-<h2>収録ディスク内容の編集</h2>
-<% if flash[:notice] %>
-  <div class="flash" style="color: green;">
-    <%= flash[:notice] %>
+        <%= f.submit '登録' %>
+
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row">
+      <h1 class="h1-products-new">収録ディスク内容編集</h1>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <% if flash[:notice] %>
+        <div class="flash" style="color: green;">
+          <%= flash[:notice] %>
+        </div>
+        <% end %>
+        <% @product.discs.each do |a| %>
+        <%= link_to "Disc_id#{a.id}", edit_admins_disc_path(a.id), class: "aaa"  %><br>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
-<% @product.discs.each do |a| %>
-  <%= link_to "Disc_id#{a.id}", edit_admins_disc_path(a.id), class: "aaa"  %><br>
-<% end %>
+</body>
+
+
+
+
+
