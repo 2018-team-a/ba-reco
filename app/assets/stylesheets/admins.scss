@@ -5,6 +5,18 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
+.body{
+  .container{
+    margin-top: 50px;
+  }
+}
+
+.main-logo{
+  a{
+    color: #fff;
+    font-size: 26px;
+  }
+  
 .header{
 	margin-bottom: 80px;
 <<<<<<< HEAD
