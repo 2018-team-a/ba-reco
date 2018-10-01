@@ -1,6 +1,6 @@
 class Admins::ProductsController < ApplicationController
   before_action :authenticate_admin!
-  
+
   layout "admins"
 
   def index
@@ -45,6 +45,9 @@ class Admins::ProductsController < ApplicationController
   end
 
   def destroy
+    product = Product.find(params[:id])
+    product.destroy
+    redirect_to admins_products_path
   end
 
   private

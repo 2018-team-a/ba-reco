@@ -1,34 +1,45 @@
-<h1>Userのインデックスだよ</h1>
+<div class="container">
+  <div class="table-responsive">
+    <table class="table">
+      <%= form_tag admins_users_path, :method => 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "検索", :name => nil %>
+      </p>
+      <% end %>
+      <h1 class="h1">会員一覧</h1>
+      <thead>
+        <tr>
+          <th>苗字</th>
+          <th>名前</th>
+          <th>苗字（カナ）</th>
+          <th>名前（カナ）</th>
+          <th>メールアドレス</th>
+          <th>郵便番号</th>
+          <th>住所</th>
+          <th>電話番号</th>
+          <th>退会日</th>
+          <th></th>
+          <th></th>
+        </tr>
 
-<%= form_tag admins_users_path, :method => 'get' do %>
-    <p>
-      <%= text_field_tag :search, params[:search] %>
-      <%= submit_tag "検索", :name => nil %>
-    </p>
-<% end %>
-
-<% @users_search.each do |user| %>
-<ul>
-  <li>メールアドレス</li>
-  <li><%= user.email %></li>
-  <li>苗字</li>
-  <li><%= user.name_family_name %></li>
-  <li>名前</li>
-  <li><%= user.name_name %></li>
-  <li>苗字（カナ）</li>
-  <li><%= user.furigana_family_name %></li>
-  <li>名前（カナ）</li>
-  <li><%= user.furigana_name %></li>
-  <li>郵便番号</li>
-  <li><%= user.postal_code %></li>
-  <li>住所</li>
-  <li><%= user.address %></li>
-  <li>電話番号</li>
-  <li><%= user.phone_number %></li>
-  <li><%= user.deleted_at %></li>
-  <li>ユーザー編集画面</li>
-  <li><%= link_to "edit", edit_admins_user_path(user), class: "user_#{user.id}" %></li>
-</ul>
-<% end %>
-
-<%= paginate @users_search %>
+        <% @users_search.each do |user| %>
+        <tr>
+          <td><%= user.name_family_name %></td>
+          <td><%= user.name_name %></td>
+          <td><%= user.furigana_family_name %></td>
+          <td><%= user.furigana_name %></td>
+          <td><%= user.email %></td>
+          <td><%= user.postal_code %></td>
+          <td><%= user.address %></td>
+          <td><%= user.phone_number %></td>
+          <td><%= user.deleted_at %></td>
+          <td><%= link_to "編集", edit_admins_user_path(user), class: "user_#{user.id}" %></td>
+          <td><%= link_to "削除", admins_user_path(user.id), method: :delte, "data-confirm"=>"本当に削除しますか？" %></td>
+        </tr>
+          <%end%>
+        </thead>
+      </table>
+      <%= paginate @users_search %>
+    </div>
+  </div>

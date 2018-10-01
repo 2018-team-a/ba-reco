@@ -17,7 +17,8 @@
           <th>リリース日</th>
           <th>値段</th>
           <th>在庫数</th>
-          <th>商品編集</th>
+          <th></th>
+          <th></th>
         </tr>
 
         <% @products_search.each do |product| %>
@@ -29,7 +30,8 @@
           <td><%= product.release_date %></td>
           <td><%= product.price %></td>
           <td><%= product.stock_count %></td>
-          <td><%= link_to "edit", edit_admins_product_path(product) %></td>
+          <td><%= link_to "編集", edit_admins_product_path(product) %></td>
+          <td><%= link_to "削除", admins_product_path(product.id),method: :delete, "data-confirm"=>"本当に削除しますか？" %></td>
         </tr>
         <%end%>
       </thead>
