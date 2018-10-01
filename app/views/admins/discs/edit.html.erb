@@ -37,9 +37,11 @@
           <td><%= tf.label :_destroy, "削除" %></td>
 
         <% end %>
-        <%= f.submit %>
+        <%= f.submit %><br>
         <% end %>
         <%= link_to "商品情報に戻る", edit_admins_product_path(@disc.product_id) %>
+        <br>
+        <%= link_to "商品一覧へ", admins_products_path %>
 
         </div>
       </div>

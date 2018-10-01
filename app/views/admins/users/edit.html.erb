@@ -1,26 +1,51 @@
-<h3 class="text-left">ユーザー情報編集</h3>
-<%= nested_form_for @user do |f| %>
-  <ul>
-    <li><%= f.text_field :name_family_name, class: "name_family_name" %></li>
-    <li><%= f.text_field :name_name, class: "name_name" %></li>
-    <li><%= f.text_field :furigana_family_name, class: "furigana_family_name" %></li>
-    <li><%= f.text_field :furigana_name, class: "furigana_name" %></li>
-    <li><%= f.text_field :postal_code, class: "postal_code" %></li>
-    <li><%= f.text_field :address, class: "address" %></li>
-    <li><%= f.text_field :phone_number, class: "phone_number" %></li>
-    <li><%= f.text_field :email, class: "email" %></li>
-  </ul>
-  <h2>送付先</h2>
-  <%= f.fields_for :destinations do |df| %>
-    <ul>
-      <li><%= df.text_field :postal_code, class: "postal_code" %></td></li>
-      <li><%= df.text_field :destination, class: "destination" %></li>
-      <li><%= df.label :_destroy, "送付先削除" %></li>
-      <li><%= df.check_box :_destroy %></li>
-    </ul>
-  <% end %>
+<body class="body1">
+  <div class="container">
 
-  <%= f.submit "情報更新" %>
-<% end %>
+    <div class="row">
+      <h1 class="h1-products-new">会員編集</h1>
+    </div>
 
-<li><%= link_to "delete", admins_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %></li>
+    <%= nested_form_for [:admins, @user] do |f| %>
+
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <%= f.text_field :name_family_name, class: "name_family_name" %>
+        <%= f.text_field :name_name, class: "name_name" %>
+        <%= f.text_field :furigana_family_name, class: "furigana_family_name" %>
+        <%= f.text_field :furigana_name, class: "furigana_name" %>
+        <%= f.text_field :postal_code, class: "postal_code" %>
+        <%= f.text_field :address, class: "address" %>
+        <%= f.text_field :phone_number, class: "phone_number" %>
+        <%= f.text_field :email, class: "email" %>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row">
+      <h1 class="h1-products-new">送付先</h1>
+    </div>
+
+    <%= f.fields_for :destinations do |df| %>
+    <div class="row">
+      <div class="col-xs-4 col-xs-offset-4">
+        <%= df.text_field :postal_code, class: "postal_code" %>
+        <%= df.text_field :destination, class: "destination" %>
+        <%= df.label :_destroy, "送付先削除" %>
+        <%= df.check_box :_destroy %>
+      </div>
+      <%end%>
+    </div>
+
+    <br>
+
+    <div class="users-edit-submit">
+    <%= f.submit "情報更新" %>
+    <br>
+    <%= link_to "delete", admins_user_path(@user.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    </div>
+
+    <%end%>
+
+  </div>
+</body>
